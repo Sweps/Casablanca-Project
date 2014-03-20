@@ -17,5 +17,6 @@ public class Casablanca {
         // TODO code application logic here
         System.out.println("SMITH!");
         System.out.println("Okay");
+        System.out.println("ok du");
     }
 }
