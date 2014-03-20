@@ -4,6 +4,8 @@
  */
 package casablanca;
 
+import java.util.*;
+
 /**
  *
  * @author christoffer
@@ -14,9 +16,14 @@ public class Casablanca {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.println("SMITH!");
-        System.out.println("Okay");
-        System.out.println("ok du");
+        
+        //Test af at regne med dates
+        Calendar calendar = Calendar.getInstance();
+        Date today = calendar.getTime();
+        System.out.println("Today's Date: " + today);
+        calendar.add(Calendar.DAY_OF_WEEK, 20);
+        Date addMonths = calendar.getTime();
+        System.out.println("Date after 4 months: " + addMonths);
+        
     }
 }
