@@ -26,6 +26,7 @@ public class DBConnector {
       System.out.println("\n*** Remember to insert your Oracle ID and PW in the DBConnector class! ***\n");
       System.out.println("Could not create a Connection in DBConnector.getConnection(): " + e);
     }
+      System.out.println("");
   }
 
   public static Connection getConnection() {
