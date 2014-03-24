@@ -6,8 +6,6 @@
 
 package domain;
 
-import dataSource.DBConnector;
-
 /**
  *
  * @author Phill
@@ -36,12 +34,5 @@ public class RoomType
               
         }
     }
-    public static void main(String[] args)
-      {
-         Connection con = DBConnector.getConnection();
-         
-         
-         
-         
-      }
+
   }

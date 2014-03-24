@@ -15,7 +15,7 @@ public class Room
     private RoomType roomtype;
     private int roomNo, id, version;
     
-    public room()
+    public room(RoomType type, )
             {
                 
             }
