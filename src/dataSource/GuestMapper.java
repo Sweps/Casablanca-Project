@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author Anders
  */
-public class GuestMapper implements GuestMapperInterface
+public class GuestMapper implements GuestMapperInterface 
 {
       private final Connection con;
 
