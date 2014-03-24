@@ -13,12 +13,24 @@ import java.sql.SQLException;
  * @author christoffer
  */
 public class DBConnector {
+    
+  private static DBConnector instance = null;
 
-    //Insert ORACLE id and password SEM2_TEST_GR03 = test db SEM2_GR03 = rigtig db
+  //Insert ORACLE id and password SEM2_TEST_GR03 = test db SEM2_GR03 = rigtig db
   private static final String id = "SEM2_TEST_GR03"; 
   private static final String pw = "SEM2_TEST_GR03";
   private static Connection connection;
-
+  
+  private DBConnector(){
+    }
+  
+  public static DBConnector getDBConnector(){
+      if(instance == null){
+          instance = new DBConnector();
+      }
+      return instance;
+  }
+  
   private static void intializeConnection() {
     try {
       connection = DriverManager.getConnection("jdbc:oracle:thin:@datdb.cphbusiness.dk:1521:dat", id, pw);
