@@ -13,7 +13,8 @@ package domain;
 public class Guest
   {
     private String firstname, lastname, email, address, country;
-    private int id, version, phonenumber;
+    private int version, phonenumber;
+    private long id;
     
     public Guest(String firstname, String lastname, int phonenumber)
       {
@@ -62,12 +63,12 @@ public class Guest
         this.country = country;
       }
 
-    public int getId()
+    public Long getId()
       {
         return id;
       }
 
-    public void setId(int id)
+    public void setId(long id)
       {
         this.id = id;
       }
