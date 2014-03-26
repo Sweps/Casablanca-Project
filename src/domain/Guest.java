@@ -6,6 +6,8 @@
 
 package domain;
 
+import dataSource.DBFacade;
+
 /**
  *
  * @author Phill
@@ -21,6 +23,7 @@ public class Guest
         this.firstname = firstname;
         this.lastname = lastname;
         this.phonenumber = phonenumber;
+        DBFacade.getInstance().registerNewItem(this);
       }
 
     public String getEmail()

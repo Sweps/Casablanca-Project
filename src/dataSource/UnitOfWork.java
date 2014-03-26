@@ -84,7 +84,7 @@ public class UnitOfWork
         {
             if(booking.getId() == null)
             {
-                booking.setID(DBFacade.getInstance().getID());
+                booking.setId(DBFacade.getInstance().getID());
             }
             newRoomBookings.add(booking);
         }
@@ -96,11 +96,11 @@ public class UnitOfWork
          try
          {
           con.setAutoCommit(false);
-          GuestMapper gm = new GuestMapper(con);
-          RoomBookingMapper rbm = new RoomBookingMapper(con);
+          GuestMapper gm = new GuestMapper();
+          RoomBookingMapper rbm = new RoomBookingMapper();
           
-          status = status && gm.insertGuests(newGuests);
-          status = status && rbm.insertRoomBookings(newRoomBookings);
+          status = status && gm.insertGuests(newGuests, con);
+          status = status && rbm.insertRoomBookings(newRoomBookings, con);
           if (!status)
           {
              throw new Exception("Business Transaction Failed")

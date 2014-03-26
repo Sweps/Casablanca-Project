@@ -6,6 +6,9 @@
 
 package domain;
 
+import dataSource.DBFacade;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -16,6 +19,7 @@ public class RoomBooking
   {
     private Guest guest;
     private Date startdate;
+    private Date enddate;
     private int noofnights, version, room;
     private RoomType type;
     private long id;
@@ -23,7 +27,21 @@ public class RoomBooking
     public RoomBooking(Guest guest, Date startdate, int noofnights, int room, 
                        RoomType type)
       {
+        this.guest = guest;
+        this.startdate = startdate;
+        this.noofnights = noofnights;
+        this.room = room;
+        this.type = type;
         
+        //TODO CALCULATE ENDDATE
+        
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Calendar c = Calendar.getInstance();
+            c.setTime(startdate);
+            c.add(Calendar.DATE, noofnights);
+        this.enddate = c.getTime();
+        
+        DBFacade.getInstance().registerNewItem(this);
       }
     public void setVersion(int version)
       {
@@ -65,7 +83,7 @@ public class RoomBooking
         return type;
       }
 
-    public long getId()
+    public Long getId()
       {
         return id;
       }
