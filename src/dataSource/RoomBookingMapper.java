@@ -25,7 +25,7 @@ public class RoomBookingMapper {
         
         for(int i = 0; i < RoomBookingList.size(); i++)
         {
-            RoomBooking rb = RoomBookingList.get(i);                       //ændres
+            RoomBooking rb = RoomBookingList.get(i);     //ændres
             statement.setString(1, rb.getRoomType());    //ændres
             statement.setInt(2, rb.getGuestNo());        //ændres
             statement.setString(3, rb.getStartDate());   //ændres
