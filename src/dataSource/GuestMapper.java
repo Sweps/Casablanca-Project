@@ -23,7 +23,7 @@ public class GuestMapper implements GuestMapperInterface
   }
 
     @Override
-    public boolean InsertGuest(ArrayList<Guest> GuestList, Connection conn) throws SQLException
+    public boolean InsertGuest(ArrayList<Guest> GuestList) throws SQLException
     {
         int rowsInserted = 0;
         String SQLString

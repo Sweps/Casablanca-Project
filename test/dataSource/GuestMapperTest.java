@@ -4,10 +4,13 @@
  */
 package dataSource;
 
+import Mock.GuestMapperMockChrisCopy;
 import domain.Guest;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +22,7 @@ import static org.junit.Assert.*;
  */
 public class GuestMapperTest
 {
+    DBFacade facade;
     
     public GuestMapperTest()
     {
@@ -27,6 +31,8 @@ public class GuestMapperTest
     @Before
     public void setUp()
     {
+        GuestMapperMockChrisCopy gm = new GuestMapperMockChrisCopy();
+        facade = DBFacade.getInstance(gm);
     }
     
     @After

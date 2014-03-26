@@ -15,5 +15,5 @@ import java.util.ArrayList;
  */
 public interface GuestMapperInterface
 {
-    boolean InsertGuest(ArrayList<Guest> GuestList, Connection conn) throws SQLException;
+    boolean InsertGuest(ArrayList<Guest> GuestList) throws SQLException;
 }
