@@ -22,7 +22,8 @@ import static org.junit.Assert.*;
  */
 public class GuestMapperTest
 {
-    DBFacade facade;
+    GuestMapperMockChrisCopy gm;
+    ArrayList<Guest> GuestList;
     
     public GuestMapperTest()
     {
@@ -31,13 +32,48 @@ public class GuestMapperTest
     @Before
     public void setUp()
     {
-        GuestMapperMockChrisCopy gm = new GuestMapperMockChrisCopy();
-        facade = DBFacade.getInstance(gm);
+        gm = new GuestMapperMockChrisCopy();
+        GuestList = new ArrayList();
     }
     
     @After
     public void tearDown()
     {
+        System.out.println("Clearing");
+        System.out.println("");
+        GuestList.clear();
     }
     
+    @Test
+    public void InsertGuest() throws SQLException{
+        
+        Guest g = new Guest("Cave","Johnson",34343434);
+        GuestList.add(g);
+        boolean expResult = true;
+        boolean result = gm.InsertGuest(GuestList);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void InsertGuestAlreadyExist() throws SQLException{
+        
+        Guest g = new Guest("Cave","Johnson",34343434);
+        GuestList.add(g);
+        gm.InsertGuest(GuestList);
+        boolean expResult = false;
+        boolean result = gm.InsertGuest(GuestList);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void InsertGuestMultipleGuests() throws SQLException{
+        Guest g = new Guest("Cave","Johnson",34343434);
+        Guest g2 = new Guest("Caroline","Glados",34343435);
+        
+        GuestList.add(g);
+        GuestList.add(g2);
+        boolean expResult = true;
+        boolean result = gm.InsertGuest(GuestList);
+        assertEquals(expResult, result);
+    }
 }
