@@ -17,9 +17,9 @@ public class Casablanca {
     {
       //Temporary haq
       roomtypes = new RoomType[3];
-      roomtypes[0] = new RoomType("SingleRoom", 60);
-      roomtypes[1] = new RoomType("DoubleRoom", 80);
-      roomtypes[2] = new RoomType("FamilyRoom", 100);
+      roomtypes[0] = new RoomType("SingleRoom", 60, 20);
+      roomtypes[1] = new RoomType("DoubleRoom", 80, 20);
+      roomtypes[2] = new RoomType("FamilyRoom", 100, 20);
       //Temporary haq
       
     }

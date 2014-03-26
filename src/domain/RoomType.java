@@ -15,12 +15,13 @@ public class RoomType
     
     
     private String name;
-    private int price;
+    private int price, amount;
     
-    public RoomType(String name, int price)
+    public RoomType(String name, int price, int amount)
       {
         this.name = name;
         this.price = price;
+        this.amount = amount;
       }
     
 //    public enum roomtypes {singleRoom, doubleRoom, familyRoom};

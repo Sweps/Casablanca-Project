@@ -15,9 +15,43 @@ public class Room
     private RoomType roomtype;
     private int roomNo, id, version;
     
-    public room(RoomType type, )
-            {
-                
-            }
+    public Room(RoomType type,int RoomNo)
+    {
+      this.roomtype = type;
+      this.roomNo = RoomNo;
+      
+    }
+
+    public void setId(int id)
+      {
+        this.id = id;
+      }
+
+    public void setVersion(int version)
+      {
+        this.version = version;
+      }
+
+    public RoomType getRoomtype()
+      {
+        return roomtype;
+      }
+
+    public int getRoomNo()
+      {
+        return roomNo;
+      }
+
+    public int getId()
+      {
+        return id;
+      }
+
+    public int getVersion()
+      {
+        return version;
+      }
+    
+    
     
 }

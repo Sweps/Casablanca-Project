@@ -103,7 +103,7 @@ public class UnitOfWork
           status = status && rbm.insertRoomBookings(newRoomBookings, con);
           if (!status)
           {
-             throw new Exception("Business Transaction Failed")
+             throw new Exception("Business Transaction Failed");
           }
           con.commit();
          }
