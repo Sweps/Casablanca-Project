@@ -7,6 +7,7 @@
 package dataSource;
 import java.sql.*;
 import java.util.ArrayList;
+import domain.*;
 
 /**
  *
@@ -25,13 +26,14 @@ public class RoomBookingMapper {
         
         for(int i = 0; i < RoomBookingList.size(); i++)
         {
-            RoomBooking rb = RoomBookingList.get(i);     //ændres
-            statement.setString(1, rb.getRoomType());    //ændres
-            statement.setInt(2, rb.getGuestNo());        //ændres
-            statement.setString(3, rb.getStartDate());   //ændres
-            statement.setString(4, rb.getEnddate());     //ændres
-            statement.setInt(5, rb.getPartySize());      //ændres
-            statement.setInt(6, rb.getTravelAgency());   //ændres             
+            RoomBooking rb = RoomBookingList.get(i);        //ændres
+            statement.setInt(1, rb.getGuest().getId());     //ændres
+            statement.setDate(2, rb.getStartdate());        //ændres
+            statement.setDate(3, rb.getEnddate();           //ændres
+            statement.setInt(4, rb.getNoofnights());        //ændres
+            statement.setInt(5, rb.getVersion());           //ændres
+            statement.setInt(6, rb.getRoom());              //ændres    
+            statement.setString(7, rb.getType();            //ændres
             rowsInserted += statement.executeUpdate();
         }
         if (testRun)
