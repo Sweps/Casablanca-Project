@@ -7,6 +7,7 @@
 package dataSource;
 
 import domain.Guest;
+import domain.RoomBooking;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -18,17 +19,15 @@ import java.util.ArrayList;
 public class UnitOfWork
   {
     private final Connection con = DBConnector.getConnection();
-    private final ArrayList<Long> sequence;
     private final ArrayList<Guest> newGuests;
-    private final ArrayList<Guest> dirtyGuests;
+//    private final ArrayList<Guest> dirtyGuests;
     private final ArrayList<RoomBooking> newRoomBookings;
-    private final ArrayList<RoomBooking> dirtyRoomBookings;
+//    private final ArrayList<RoomBooking> dirtyRoomBookings;
     
     public UnitOfWork()
     {
 ////        dirtyGuests = new ArrayList<>();
         newGuests = new ArrayList<>();
-        sequence = new ArrayList<>();
         newRoomBookings = new ArrayList<>();
 ////        dirtyRoomBookings = new ArrayList<>();   
     }
