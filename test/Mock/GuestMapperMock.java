@@ -18,13 +18,22 @@ import java.util.Map;
  */
 public class GuestMapperMock implements GuestMapperInterface
 {
-    Map<Integer , Guest> GuestList = new HashMap();
+    Map<Long, Guest> GuestMap = new HashMap();
 
     @Override
-    public boolean InsertGuest(ArrayList<Guest> GuestList, Connection conn) throws SQLException
+    public boolean InsertGuest(ArrayList<Guest> GuestList) throws SQLException
     {
+        for(int i = 0; i<GuestList.size();i++){
+           System.out.println(GuestList.get(i).getFirstname());
+           System.out.println(GuestList.get(i).getId());
+        }
         
-        return ;
+        for(int i = 0; i<GuestList.size();i++){
+            if(GuestMap.containsKey(GuestList.get(i).getId())){
+                return false;
+            }
+            GuestMap.put(GuestList.get(i).getId(),GuestList.get(i));
+        }
+        return true;
     }
-    
 }

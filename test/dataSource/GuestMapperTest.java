@@ -4,7 +4,7 @@
  */
 package dataSource;
 
-import Mock.GuestMapperMockChrisCopy;
+import Mock.GuestMapperMock;
 import domain.Guest;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
  */
 public class GuestMapperTest
 {
-    GuestMapperMockChrisCopy gm;
+    GuestMapperMock gm;
     ArrayList<Guest> GuestList;
     
     public GuestMapperTest()
@@ -32,7 +32,7 @@ public class GuestMapperTest
     @Before
     public void setUp()
     {
-        gm = new GuestMapperMockChrisCopy();
+        gm = new GuestMapperMock();
         GuestList = new ArrayList();
     }
     
