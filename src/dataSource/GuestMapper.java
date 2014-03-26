@@ -4,9 +4,11 @@
  */
 package dataSource;
 
+import domain.Guest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,44 +23,29 @@ public class GuestMapper implements GuestMapperInterface
   }
 
     @Override
-    public boolean addGuest(Object Guest)
+    public boolean InsertGuest(ArrayList<Guest> GuestList, Connection conn) throws SQLException
     {
-        boolean state = false;
-        int rowsInserted;
+        int rowsInserted = 0;
         String SQLString
                 = "insert into Guest "
                 + "values (?,?,?,?,?,?,?)";
         PreparedStatement statement = null;
+        statement = con.prepareStatement(SQLString);
         
-        try {
-            statement = con.prepareStatement(SQLString);
-            statement.setInt(1, Guest.ID);
-            statement.setInt(2, Guest.FirstName);
-            statement.setInt(3, Guest.LastName);
-            statement.setInt(4, Guest.Address);
-            statement.setInt(5, Guest.Country);
-            statement.setInt(6, Guest.Phone);
-            statement.setInt(7, Guest.Email);
-            rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0){
-                state = true;
-            }
-        }catch (SQLException e){
-            System.out.println("Fail in GuestMapper - addGuest");
-            System.out.println(e.getMessage());
-         }
-         finally // must close statement
-    {
-      try {
-        statement.close();
-      } catch (SQLException e) {
-        System.out.println("Fail in GuestMapper - addGuest");
-        System.out.println(e.getMessage());
-      }
-            
-        return state;
+       for(int i = 0; i < GuestList.size(); i++)
+        {
+            Guest g = GuestList.get(i);
+            statement.setLong(1, g.getId());
+            statement.setString(2, g.getFirstname());
+            statement.setString(3, g.getLastname());
+            statement.setString(4, g.getAddress());
+            statement.setString(5, g.getCountry());
+            statement.setInt(6, g.getPhonenumber());
+            statement.setString(7, g.getEmail());
+            rowsInserted += statement.executeUpdate();
+        }    
+        return (rowsInserted == GuestList.size());
     }
-    
 }
-}
+
 
