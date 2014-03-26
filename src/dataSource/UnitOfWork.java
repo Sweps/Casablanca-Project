@@ -7,6 +7,7 @@
 package dataSource;
 
 import domain.Guest;
+import domain.RoomBooking;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -18,17 +19,15 @@ import java.util.ArrayList;
 public class UnitOfWork
   {
     private final Connection con = DBConnector.getConnection();
-    private final ArrayList<Long> sequence;
     private final ArrayList<Guest> newGuests;
-    private final ArrayList<Guest> dirtyGuests;
+//    private final ArrayList<Guest> dirtyGuests;
     private final ArrayList<RoomBooking> newRoomBookings;
-    private final ArrayList<RoomBooking> dirtyRoomBookings;
+//    private final ArrayList<RoomBooking> dirtyRoomBookings;
     
     public UnitOfWork()
     {
 ////        dirtyGuests = new ArrayList<>();
         newGuests = new ArrayList<>();
-        sequence = new ArrayList<>();
         newRoomBookings = new ArrayList<>();
 ////        dirtyRoomBookings = new ArrayList<>();   
     }
@@ -85,7 +84,7 @@ public class UnitOfWork
         {
             if(booking.getId() == null)
             {
-                booking.setID(DBFacade.getInstance().getID());
+                booking.setId(DBFacade.getInstance().getID());
             }
             newRoomBookings.add(booking);
         }
@@ -97,11 +96,11 @@ public class UnitOfWork
          try
          {
           con.setAutoCommit(false);
-          GuestMapper gm = new GuestMapper(con);
-          RoomBookingMapper rbm = new RoomBookingMapper(con);
+          GuestMapper gm = new GuestMapper();
+          RoomBookingMapper rbm = new RoomBookingMapper();
           
-          status = status && gm.insertGuests(newGuests);
-          status = status && rbm.insertRoomBookings(newRoomBookings);
+          status = status && gm.insertGuests(newGuests, con);
+          status = status && rbm.insertRoomBookings(newRoomBookings, con);
           if (!status)
           {
              throw new Exception("Business Transaction Failed")

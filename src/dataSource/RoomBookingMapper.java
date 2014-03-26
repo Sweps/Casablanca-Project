@@ -16,29 +16,29 @@ public class RoomBookingMapper {
     
     static boolean testRun = false;
     
-    public boolean insertRoomBooking(ArrayList<RoomBooking> list, Connection conn) throws SQLException
+    public boolean insertRoomBooking(ArrayList<RoomBooking> RoomBookingList, Connection conn) throws SQLException
     {
         int rowsInserted = 0;
         String SQLString = "INSERT INTO ROOMBOOKING VALUES (?,?,?,?,?,?)";
         PreparedStatement statement = null;
         statement = conn.prepareStatement(SQLString);
         
-        for(int i = 0; i < list.size(); i++) //list skal ændres?
+        for(int i = 0; i < RoomBookingList.size(); i++)
         {
-            list i = list.get(i);                       //ændres
-            statement.setString(1, i.getRoomType());    //ændres
-            statement.setInt(2, i.getGuestNo());        //ændres
-            statement.setString(3, i.getStartDate());   //ændres
-            statement.setString(4, i.getEnddate());     //ændres
-            statement.setInt(5, i.getPartySize());      //ændres
-            statement.setInt(6, i.getTravelAgency());   //ændres             
+            RoomBooking rb = RoomBookingList.get(i);     //ændres
+            statement.setString(1, rb.getRoomType());    //ændres
+            statement.setInt(2, rb.getGuestNo());        //ændres
+            statement.setString(3, rb.getStartDate());   //ændres
+            statement.setString(4, rb.getEnddate());     //ændres
+            statement.setInt(5, rb.getPartySize());      //ændres
+            statement.setInt(6, rb.getTravelAgency());   //ændres             
             rowsInserted += statement.executeUpdate();
         }
         if (testRun)
         {
-            System.out.println("insertOrders(): " + (rowsInserted == list.size()));
+            System.out.println("insertOrders(): " + (rowsInserted == RoomBookingList.size()));
         }
-        return (rowsInserted == list.size());
+        return (rowsInserted == RoomBookingList.size());
     
 }
     
