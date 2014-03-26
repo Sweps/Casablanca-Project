@@ -10,10 +10,10 @@ import java.util.*;
  *
  * @author christoffer
  */
-public class Casablanca {
+public class Controller implements ControllerInterface {
 
     RoomType[] roomtypes;
-    public Casablanca()
+    public Controller()
     {
       //Temporary haq
       roomtypes = new RoomType[3];
@@ -22,16 +22,5 @@ public class Casablanca {
       roomtypes[2] = new RoomType("FamilyRoom", 100, 20);
       //Temporary haq
       
-    }
-    public static void main(String[] args) {
-        
-        //Test af at regne med dates
-        Calendar calendar = Calendar.getInstance();
-        Date today = calendar.getTime();
-        System.out.println("Today's Date: " + today);
-        calendar.add(Calendar.DAY_OF_WEEK, 20);
-        Date addMonths = calendar.getTime();
-        System.out.println("Date after 4 months: " + addMonths);
-        
     }
 }
