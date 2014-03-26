@@ -4,6 +4,7 @@
  */
 package presentation;
 
+import domain.ControllerInterface;
 import javax.swing.DefaultListModel;
 
 /**
@@ -14,13 +15,15 @@ public class Receptionist_gui extends javax.swing.JFrame {
     //laver en model som skal bruges til den liste vi har.
     DefaultListModel NameListModel = new DefaultListModel();
     String PersonCategory = null;
+    ControllerInterface conIf;
     /**
      * Creates new form Receptionist_gui
      */
-    public Receptionist_gui() {
+    public Receptionist_gui(ControllerInterface c) {
         initComponents();
         //Her sættes modellen til den egentlige liste som vi bruger.
         NameList.setModel(NameListModel);
+        conIf = c;
     }
 
     /**
