@@ -12,9 +12,17 @@ import java.util.*;
  */
 public class Casablanca {
 
-    /**
-     * @param args the command line arguments
-     */
+    RoomType[] roomtypes;
+    public Casablanca()
+    {
+      //Temporary haq
+      roomtypes = new RoomType[3];
+      roomtypes[0] = new RoomType("SingleRoom", 60);
+      roomtypes[1] = new RoomType("DoubleRoom", 80);
+      roomtypes[2] = new RoomType("FamilyRoom", 100);
+      //Temporary haq
+      
+    }
     public static void main(String[] args) {
         
         //Test af at regne med dates
