@@ -4,11 +4,16 @@
  */
 package dataSource;
 
+import domain.Guest;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 /**
  *
  * @author Anders
  */
 public interface GuestMapperInterface
 {
-    boolean addGuest(Object Guest);
+    boolean InsertGuest(ArrayList<Guest> GuestList, Connection conn) throws SQLException;
 }
