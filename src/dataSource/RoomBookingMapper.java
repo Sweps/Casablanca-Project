@@ -14,6 +14,8 @@ import domain.*;
  * @author Charlie
  */
 public class RoomBookingMapper {
+     
+            
     
     static boolean testRun = false;
     
@@ -33,7 +35,7 @@ public class RoomBookingMapper {
             statement.setDate(4, (Date) rb.getStartdate());                       
             statement.setDate(5, (Date) rb.getEnddate());                       
             statement.setInt(6, rb.getNoofnights());                          
-            statement.setString(7, rb.getTravelAgency());  
+            statement.setInt(7, 0);  
             statement.setInt(8, rb.getVersion());       
             rowsInserted += statement.executeUpdate();
         }
@@ -42,8 +44,10 @@ public class RoomBookingMapper {
             System.out.println("insertOrders(): " + (rowsInserted == RoomBookingList.size()));
         }
         return (rowsInserted == RoomBookingList.size());
-    
+            
 }
+    
+            
 }
     
     
