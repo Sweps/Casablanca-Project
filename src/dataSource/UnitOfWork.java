@@ -96,11 +96,11 @@ public class UnitOfWork
          try
          {
           con.setAutoCommit(false);
-          GuestMapper gm = new GuestMapper();
+          GuestMapper gm = new GuestMapper(con);
           RoomBookingMapper rbm = new RoomBookingMapper();
           
-          status = status && gm.insertGuests(newGuests, con);
-          status = status && rbm.insertRoomBookings(newRoomBookings, con);
+          status = status && gm.InsertGuest(newGuests);
+          status = status && rbm.insertRoomBooking(newRoomBookings, con);
           if (!status)
           {
              throw new Exception("Business Transaction Failed");

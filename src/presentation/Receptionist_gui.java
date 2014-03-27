@@ -5,6 +5,7 @@
 package presentation;
 
 import domain.ControllerInterface;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -494,10 +495,12 @@ public class Receptionist_gui extends javax.swing.JFrame {
             ListStatus.setText("Missing booker country");
         }
         
-        try {
-            date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(startDate);
-        } catch (ParseException ex) {
-            ListStatus.setText("Error in start date");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+        String datestr = (JTextDay.getText() + "/" + JTextMonth.getText() +  "/" +JTextYear.getText());
+        try { 
+            date = formatter.parse(datestr); }
+        catch (ParseException e) {
+            ListStatus.setText("Error in date");
         }
         
         try{
@@ -528,7 +531,7 @@ public class Receptionist_gui extends javax.swing.JFrame {
             ListStatus.setText("Error in room amount");
         }
         
-        if(!fn.isEmpty() || !email.isEmpty() || !ln.isEmpty() || !address.isEmpty() || !country.isEmpty() || date!=null || 
+        if(!fn.isEmpty() || !email.isEmpty() || !ln.isEmpty() || !address.isEmpty() || !country.isEmpty() || //date!=null || 
                 nights != 0 || phone != 0 || singleR + doubleR + familyR != 0){
         
         conIf.NewRoomBooking(fn, ln, email, phone, address, country, date, nights, singleR, doubleR, familyR, tAgency);
