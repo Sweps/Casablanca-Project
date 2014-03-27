@@ -8,6 +8,7 @@ package dataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import domain.*;
+import java.util.Date;
 
 /**
  *
@@ -15,7 +16,7 @@ import domain.*;
  */
 public class RoomBookingMapper {
      
-             private java.sql.Date convertdate(Date date)
+            private java.sql.Date convertdate(Date date)
     {
        return new java.sql.Date(date.getTime());
     }
@@ -32,12 +33,13 @@ public class RoomBookingMapper {
         
         for(int i = 0; i < RoomBookingList.size(); i++)
         {
+            
             RoomBooking rb = RoomBookingList.get(i);        
             statement.setLong(1, rb.getId());            
             statement.setString(2, rb.getType().getName());           
             statement.setLong(3, rb.getGuest().getId());
             statement.setDate(4, convertdate(rb.getStartdate()));                       
-            statement.setDate(5, (Date) rb.getEnddate());                       
+            statement.setDate(5, convertdate(rb.getEnddate()));                       
             statement.setInt(6, rb.getNoofnights());                          
             statement.setInt(7, 0);  
             statement.setInt(8, rb.getVersion());       
