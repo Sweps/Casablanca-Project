@@ -5,6 +5,11 @@
 package presentation;
 
 import domain.ControllerInterface;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 
 /**
@@ -453,9 +458,82 @@ public class Receptionist_gui extends javax.swing.JFrame {
     }//GEN-LAST:event_EditButtonActionPerformed
 
     private void BookRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookRoomButtonActionPerformed
+        int singleR = 0;
+        int doubleR = 0;
+        int familyR = 0;
+        int nights = 0;
+        int phone = 0;
         
+        Date date = null;
         
+        String fn = JTextFirstNameBooker.getText();
+        String ln = JTextLastNameBooker.getText();
+        String email = JTextEmail.getText();
+        String address = JTextAddress.getText();
+        String country = JTextCountry.getText();
+        String tAgency = JTextTravelAgency.toString();
+        String startDate = JTextDay.getText() + "/" + JTextMonth.toString() + "/" + JTextYear.toString();
         
+        if(fn.isEmpty()){
+            ListStatus.setText("Missing booker firstname");
+        }
+        
+        if(ln.isEmpty()){
+            ListStatus.setText("Missing booker lastname");
+        }
+        
+        if(email.isEmpty()){
+            ListStatus.setText("Missing booker email");
+        }
+        
+        if(address.isEmpty()){
+            ListStatus.setText("Missing booker address");
+        }
+        
+        if(country.isEmpty()){
+            ListStatus.setText("Missing booker country");
+        }
+        
+        try {
+            date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(startDate);
+        } catch (ParseException ex) {
+            ListStatus.setText("Error in start date");
+        }
+        
+        try{
+            phone = Integer.parseInt(JTextPhone.getText());
+        }catch(java.lang.NullPointerException ex){
+            ListStatus.setText("Error in phone number");
+        }
+        
+        try{
+            nights = Integer.parseInt(JTextNightsStaying.toString());
+        }catch(java.lang.NullPointerException ex){
+            ListStatus.setText("Error in nights staying");
+        }
+        
+        try{
+            singleR = Integer.parseInt(JTextNoOfSingle.toString());
+        }catch(java.lang.NullPointerException ex){}
+        
+        try{
+            doubleR = Integer.parseInt(JTextNoOfDouble.toString());
+        }catch(java.lang.NullPointerException ex){}
+        
+        try{
+            familyR = Integer.parseInt(JTextNoOfFamily.toString());
+        }catch(java.lang.NullPointerException ex){}
+        
+        if(singleR == 0 && doubleR == 0 && familyR == 0){
+            ListStatus.setText("Error in room amount");
+        }
+        
+        if(!fn.isEmpty() || !email.isEmpty() || !ln.isEmpty() || !address.isEmpty() || !country.isEmpty() || date!=null || 
+                nights != 0 || phone != 0 || singleR + doubleR + familyR != 0){
+        
+        conIf.NewRoomBooking(fn, ln, email, phone, address, country, date, nights, singleR, doubleR, familyR, tAgency);
+        }
+
     }//GEN-LAST:event_BookRoomButtonActionPerformed
 
 
