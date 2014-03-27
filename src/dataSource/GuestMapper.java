@@ -28,7 +28,7 @@ public class GuestMapper implements GuestMapperInterface
         int rowsInserted = 0;
         String SQLString
                 = "insert into Guest "
-                + "values (?,?,?,?,?,?,?)";
+                + "values (?,?,?,?,?,?,?,?,?)";
         PreparedStatement statement = null;
         statement = con.prepareStatement(SQLString);
         
@@ -42,6 +42,8 @@ public class GuestMapper implements GuestMapperInterface
             statement.setString(5, g.getCountry());
             statement.setInt(6, g.getPhonenumber());
             statement.setString(7, g.getEmail());
+            statement.setInt(8, 0);
+            statement.setInt(9, g.getVersion());
             rowsInserted += statement.executeUpdate();
         }    
         return (rowsInserted == GuestList.size());
