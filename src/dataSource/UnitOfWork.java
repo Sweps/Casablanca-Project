@@ -70,7 +70,7 @@ public class UnitOfWork
     private void registerNewGuest(Guest guest) {
         if (!newGuests.contains(guest))
         {
-            if(guest.getId() == null)
+            if(guest.getId() == 0)
             {
                 guest.setId(DBFacade.getInstance().getID());
             }
@@ -82,7 +82,7 @@ public class UnitOfWork
     private void registerNewRoomBooking(RoomBooking booking) {
         if (!newRoomBookings.contains(booking))
         {
-            if(booking.getId() == null)
+            if(booking.getId() == 0)
             {
                 booking.setId(DBFacade.getInstance().getID());
             }

@@ -66,7 +66,7 @@ public class Guest
         this.country = country;
       }
 
-    public Long getId()
+    public long getId()
       {
         return id;
       }
