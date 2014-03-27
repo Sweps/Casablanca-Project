@@ -48,6 +48,7 @@ public class GuestMapperTest
     public void InsertGuest() throws SQLException{
         
         Guest g = new Guest("Cave","Johnson",34343434);
+        g.setId(1);
         GuestList.add(g);
         boolean expResult = true;
         boolean result = gm.InsertGuest(GuestList);
@@ -58,6 +59,7 @@ public class GuestMapperTest
     public void InsertGuestAlreadyExist() throws SQLException{
         
         Guest g = new Guest("Cave","Johnson",34343434);
+        g.setId(1);
         GuestList.add(g);
         gm.InsertGuest(GuestList);
         boolean expResult = false;
@@ -69,6 +71,8 @@ public class GuestMapperTest
     public void InsertGuestMultipleGuests() throws SQLException{
         Guest g = new Guest("Cave","Johnson",34343434);
         Guest g2 = new Guest("Caroline","Glados",34343435);
+        g.setId(1);
+        g2.setId(2);
         
         GuestList.add(g);
         GuestList.add(g2);
