@@ -15,12 +15,16 @@ import domain.*;
  */
 public class RoomBookingMapper {
      
-            
+             private java.sql.Date convertdate(Date date)
+    {
+       return new java.sql.Date(date.getTime());
+    }
     
     static boolean testRun = false;
     
     public boolean insertRoomBooking(ArrayList<RoomBooking> RoomBookingList, Connection conn) throws SQLException
     {
+        
         int rowsInserted = 0;
         String SQLString = "INSERT INTO ROOMBOOKING VALUES (?,?,?,?,?,?,?,?)";
         PreparedStatement statement = null;
@@ -32,7 +36,7 @@ public class RoomBookingMapper {
             statement.setLong(1, rb.getId());            
             statement.setString(2, rb.getType().getName());           
             statement.setLong(3, rb.getGuest().getId());
-            statement.setDate(4, (Date) rb.getStartdate());                       
+            statement.setDate(4, convertdate(rb.getStartdate()));                       
             statement.setDate(5, (Date) rb.getEnddate());                       
             statement.setInt(6, rb.getNoofnights());                          
             statement.setInt(7, 0);  
@@ -46,6 +50,7 @@ public class RoomBookingMapper {
         return (rowsInserted == RoomBookingList.size());
             
 }
+    
     
             
 }
