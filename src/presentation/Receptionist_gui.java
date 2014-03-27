@@ -515,24 +515,32 @@ public class Receptionist_gui extends javax.swing.JFrame {
             ListStatus.setText("Error in nights staying");
         }
         
-        try{
-            singleR = Integer.parseInt(JTextNoOfSingle.getText());
-        }catch(java.lang.NullPointerException ex){}
+        if(!JTextNoOfSingle.getText().isEmpty()){
+            try{
+                singleR = Integer.parseInt(JTextNoOfSingle.getText());
+            }catch(java.lang.NullPointerException ex){}
+        }
         
-        try{
-            doubleR = Integer.parseInt(JTextNoOfDouble.getText());
-        }catch(java.lang.NullPointerException ex){}
+        if(!JTextNoOfDouble.getText().isEmpty()){
+            try{
+                doubleR = Integer.parseInt(JTextNoOfDouble.getText());
+            }catch(java.lang.NullPointerException ex){}
+        }
         
-        try{
-            familyR = Integer.parseInt(JTextNoOfFamily.getText());
-        }catch(java.lang.NullPointerException ex){}
+        if(!JTextNoOfFamily.getText().isEmpty()){
+            try{
+                familyR = Integer.parseInt(JTextNoOfFamily.getText());
+            }catch(java.lang.NullPointerException ex){}
+        }
         
         if(singleR == 0 && doubleR == 0 && familyR == 0){
             ListStatus.setText("Error in room amount");
         }
         
-        if(!fn.isEmpty() || !email.isEmpty() || !ln.isEmpty() || !address.isEmpty() || !country.isEmpty() || //date!=null || 
-                nights != 0 || phone != 0 || singleR + doubleR + familyR != 0){
+        int totalRooms = singleR + doubleR + familyR;
+        
+        if(!fn.isEmpty() || !email.isEmpty() || !ln.isEmpty() || !address.isEmpty() || !country.isEmpty() || date!=null || 
+                nights != 0 || phone != 0 || totalRooms != 0){
         
         conIf.NewRoomBooking(fn, ln, email, phone, address, country, date, nights, singleR, doubleR, familyR, tAgency);
         }
