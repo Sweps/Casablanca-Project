@@ -20,20 +20,21 @@ public class RoomBookingMapper {
     public boolean insertRoomBooking(ArrayList<RoomBooking> RoomBookingList, Connection conn) throws SQLException
     {
         int rowsInserted = 0;
-        String SQLString = "INSERT INTO ROOMBOOKING VALUES (?,?,?,?,?,?)";
+        String SQLString = "INSERT INTO ROOMBOOKING VALUES (?,?,?,?,?,?,?,?)";
         PreparedStatement statement = null;
         statement = conn.prepareStatement(SQLString);
         
         for(int i = 0; i < RoomBookingList.size(); i++)
         {
-            RoomBooking rb = RoomBookingList.get(i);        //ændres
-            statement.setInt(1, rb.getGuest().getId());     //ændres
-            statement.setDate(2, rb.getStartdate());        //ændres
-            statement.setDate(3, rb.getEnddate();           //ændres
-            statement.setInt(4, rb.getNoofnights());        //ændres
-            statement.setInt(5, rb.getVersion());           //ændres
-            statement.setInt(6, rb.getRoom());              //ændres    
-            statement.setString(7, rb.getType();            //ændres
+            RoomBooking rb = RoomBookingList.get(i);        
+            statement.setLong(1, rb.getId());            
+            statement.setString(2, rb.getType().getName());           
+            statement.setLong(3, rb.getGuest().getId());
+            statement.setDate(4, (Date) rb.getStartdate());                       
+            statement.setDate(5, (Date) rb.getEnddate());                       
+            statement.setInt(6, rb.getNoofnights());                          
+            statement.setString(7, rb.getTravelAgency());  
+            statement.setInt(8, rb.getVersion());       
             rowsInserted += statement.executeUpdate();
         }
         if (testRun)
@@ -42,6 +43,7 @@ public class RoomBookingMapper {
         }
         return (rowsInserted == RoomBookingList.size());
     
+}
 }
     
     
