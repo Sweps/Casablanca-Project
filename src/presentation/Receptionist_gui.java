@@ -510,21 +510,21 @@ public class Receptionist_gui extends javax.swing.JFrame {
         }
         
         try{
-            nights = Integer.parseInt(JTextNightsStaying.toString());
+            nights = Integer.parseInt(JTextNightsStaying.getText());
         }catch(java.lang.NullPointerException ex){
             ListStatus.setText("Error in nights staying");
         }
         
         try{
-            singleR = Integer.parseInt(JTextNoOfSingle.toString());
+            singleR = Integer.parseInt(JTextNoOfSingle.getText());
         }catch(java.lang.NullPointerException ex){}
         
         try{
-            doubleR = Integer.parseInt(JTextNoOfDouble.toString());
+            doubleR = Integer.parseInt(JTextNoOfDouble.getText());
         }catch(java.lang.NullPointerException ex){}
         
         try{
-            familyR = Integer.parseInt(JTextNoOfFamily.toString());
+            familyR = Integer.parseInt(JTextNoOfFamily.getText());
         }catch(java.lang.NullPointerException ex){}
         
         if(singleR == 0 && doubleR == 0 && familyR == 0){
