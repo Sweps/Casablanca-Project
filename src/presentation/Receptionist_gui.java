@@ -19,7 +19,6 @@ import javax.swing.DefaultListModel;
  */
 public class Receptionist_gui extends javax.swing.JFrame {
     //laver en model som skal bruges til den liste vi har.
-    DefaultListModel NameListModel = new DefaultListModel();
     String PersonCategory = null;
     ControllerInterface conIf;
     /**
@@ -28,7 +27,6 @@ public class Receptionist_gui extends javax.swing.JFrame {
     public Receptionist_gui(ControllerInterface c) {
         initComponents();
         //Her sættes modellen til den egentlige liste som vi bruger.
-        JListNameList.setModel(NameListModel);
         conIf = c;
     }
 
@@ -68,11 +66,6 @@ public class Receptionist_gui extends javax.swing.JFrame {
         JTextYear = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        AddButton = new javax.swing.JButton();
-        EditButton = new javax.swing.JButton();
-        DeleteButton = new javax.swing.JButton();
-        JTextFirstNameGuest = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
         JTextNightsStaying = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -86,13 +79,7 @@ public class Receptionist_gui extends javax.swing.JFrame {
         JTextSpecificRoom = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         BookRoomButton = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        JListNameList = new javax.swing.JList();
-        ListStatus = new javax.swing.JLabel();
-        JTextAge = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        JTextLastNameGuest = new javax.swing.JTextField();
-        jLabel24 = new javax.swing.JLabel();
+        JLabelStatus = new javax.swing.JLabel();
 
         jLabel4.setText("Email");
 
@@ -126,29 +113,6 @@ public class Receptionist_gui extends javax.swing.JFrame {
 
         jLabel15.setText("Period Start");
 
-        AddButton.setText("Add");
-        AddButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddButtonActionPerformed(evt);
-            }
-        });
-
-        EditButton.setText("Edit");
-        EditButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditButtonActionPerformed(evt);
-            }
-        });
-
-        DeleteButton.setText("Delete");
-        DeleteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel16.setText("First name");
-
         jLabel17.setText("Nights staying");
 
         jLabel18.setText("Travel agency");
@@ -168,69 +132,45 @@ public class Receptionist_gui extends javax.swing.JFrame {
             }
         });
 
-        JListNameList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(JListNameList);
-
-        jLabel23.setText("Age");
-
-        jLabel24.setText("Last name");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18)
-                    .addComponent(JTextTravelAgency, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(JTextFirstNameBooker, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(JTextLastNameBooker, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2)))
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel5)
-                        .addComponent(JTextPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(JTextAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                    .addComponent(JTextEmail, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel7)
-                                .addComponent(JTextCountry)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(JTextPostalCode, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel8))
-                            .addGap(25, 25, 25)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel9)
-                                .addComponent(JTextCity, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(99, 99, 99)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(DeleteButton)
-                        .addGap(82, 82, 82))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 69, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JTextFirstNameBooker, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JTextLastNameBooker, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(JTextPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(JTextAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                        .addComponent(JTextEmail, javax.swing.GroupLayout.Alignment.LEADING)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(JTextCountry)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JTextPostalCode, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8))
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(JTextCity, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(99, 99, 99)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -269,31 +209,71 @@ public class Receptionist_gui extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel17)
                                     .addComponent(JTextNightsStaying, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel23)
-                            .addComponent(JTextAge, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel22)
                             .addComponent(JTextSpecificRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16)
-                                    .addComponent(JTextFirstNameGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel24)
-                                    .addComponent(JTextLastNameGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(296, 296, 296)
-                .addComponent(BookRoomButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ListStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jLabel18)
+                            .addComponent(JTextTravelAgency, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BookRoomButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JLabelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel15))
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JTextLastNameBooker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel14)
+                                        .addComponent(jLabel17))
+                                    .addGap(1, 1, 1)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(JTextYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(JTextNightsStaying, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel13)
+                                    .addGap(1, 1, 1)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(JTextMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel12)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel10)
+                                    .addGap(1, 1, 1)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(JTextDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel11)))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addGap(1, 1, 1)
+                                .addComponent(JTextNoOfSingle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(1, 1, 1)
+                                .addComponent(JTextNoOfDouble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel21)
+                                .addGap(1, 1, 1)
+                                .addComponent(JTextNoOfFamily, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel22)
+                        .addGap(1, 1, 1)
+                        .addComponent(JTextSpecificRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel18)
+                        .addGap(1, 1, 1)
+                        .addComponent(JTextTravelAgency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(1, 1, 1)
@@ -326,137 +306,16 @@ public class Receptionist_gui extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addGap(1, 1, 1)
                                 .addComponent(JTextAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(57, 57, 57))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel15))
-                        .addGap(1, 1, 1)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(JTextLastNameBooker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(jLabel14)
-                                                .addComponent(jLabel17))
-                                            .addGap(1, 1, 1)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(JTextYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(JTextNightsStaying, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel13)
-                                            .addGap(1, 1, 1)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(JTextMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel12)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
-                                            .addGap(1, 1, 1)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(JTextDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel11)))))
-                                .addGap(11, 11, 11)
-                                .addComponent(jLabel16)
-                                .addGap(2, 2, 2)
-                                .addComponent(JTextFirstNameGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel24)
-                                .addGap(2, 2, 2)
-                                .addComponent(JTextLastNameGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel23)
-                        .addGap(1, 1, 1)
-                        .addComponent(JTextAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AddButton)
-                            .addComponent(EditButton)
-                            .addComponent(DeleteButton))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(1, 1, 1)
-                        .addComponent(JTextTravelAgency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addGap(1, 1, 1)
-                        .addComponent(JTextNoOfSingle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel20)
-                        .addGap(1, 1, 1)
-                        .addComponent(JTextNoOfDouble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel21)
-                        .addGap(1, 1, 1)
-                        .addComponent(JTextNoOfFamily, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addComponent(jLabel22)
-                .addGap(1, 1, 1)
-                .addComponent(JTextSpecificRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(57, 57, 57)))))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BookRoomButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ListStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                    .addComponent(JLabelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-        
-        String age = "";
-        try{
-        age = "" + Integer.parseInt(JTextAge.getText());
-        }catch(java.lang.NumberFormatException ex){
-            ListStatus.setText("missing name or age");
-        }
-        String FirstName = JTextFirstNameGuest.getText();
-        String LastName = JTextLastNameGuest.getText();
-        if(!FirstName.equals("") && !LastName.equals("") && !age.isEmpty()){
-            NameListModel.addElement(FirstName + ", " + LastName + ", " + age);
-            ListStatus.setText("Added person");
-            JTextFirstNameGuest.setText("");
-            JTextLastNameGuest.setText("");
-            JTextAge.setText("");
-        }else{
-            ListStatus.setText("Missing name or age");
-        }
-        
-        
-    }//GEN-LAST:event_AddButtonActionPerformed
-
-    private void DeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteButtonActionPerformed
-        
-            Object selected = JListNameList.getSelectedValue();
-            boolean removed = NameListModel.removeElement(selected);
-            if(removed == true){
-                ListStatus.setText(selected.toString() + " removed");
-            }else{
-                ListStatus.setText("No person selected");
-            }
-        
-    }//GEN-LAST:event_DeleteButtonActionPerformed
-
-    private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
-        
-        try{
-            Object selected = JListNameList.getSelectedValue();
-            boolean removed = NameListModel.removeElement(selected);
-            String[] splitToken = selected.toString().split(", ");
-            JTextFirstNameGuest.setText(splitToken[0]);
-            JTextLastNameGuest.setText(splitToken[1]);
-            JTextAge.setText(splitToken[2]);
-        }catch(java.lang.NullPointerException ex){
-            ListStatus.setText("No person selected");
-        }
-        
-    }//GEN-LAST:event_EditButtonActionPerformed
 
     private void BookRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookRoomButtonActionPerformed
         int singleR = 0;
@@ -476,23 +335,23 @@ public class Receptionist_gui extends javax.swing.JFrame {
         String startDate = JTextDay.getText() + "/" + JTextMonth.toString() + "/" + JTextYear.toString();
         
         if(fn.isEmpty()){
-            ListStatus.setText("Missing booker firstname");
+            JLabelStatus.setText("Missing booker firstname");
         }
         
         if(ln.isEmpty()){
-            ListStatus.setText("Missing booker lastname");
+            JLabelStatus.setText("Missing booker lastname");
         }
         
         if(email.isEmpty()){
-            ListStatus.setText("Missing booker email");
+            JLabelStatus.setText("Missing booker email");
         }
         
         if(address.isEmpty()){
-            ListStatus.setText("Missing booker address");
+            JLabelStatus.setText("Missing booker address");
         }
         
         if(country.isEmpty()){
-            ListStatus.setText("Missing booker country");
+            JLabelStatus.setText("Missing booker country");
         }
         
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
@@ -500,19 +359,19 @@ public class Receptionist_gui extends javax.swing.JFrame {
         try { 
             date = formatter.parse(datestr); }
         catch (ParseException e) {
-            ListStatus.setText("Error in date");
+            JLabelStatus.setText("Error in date");
         }
         
         try{
             phone = Integer.parseInt(JTextPhone.getText());
         }catch(java.lang.NullPointerException ex){
-            ListStatus.setText("Error in phone number");
+            JLabelStatus.setText("Error in phone number");
         }
         
         try{
             nights = Integer.parseInt(JTextNightsStaying.getText());
         }catch(java.lang.NullPointerException ex){
-            ListStatus.setText("Error in nights staying");
+            JLabelStatus.setText("Error in nights staying");
         }
         
         if(!JTextNoOfSingle.getText().isEmpty()){
@@ -534,7 +393,7 @@ public class Receptionist_gui extends javax.swing.JFrame {
         }
         
         if(singleR == 0 && doubleR == 0 && familyR == 0){
-            ListStatus.setText("Error in room amount");
+            JLabelStatus.setText("Error in room amount");
         }
         
         int totalRooms = singleR + doubleR + familyR;
@@ -542,29 +401,47 @@ public class Receptionist_gui extends javax.swing.JFrame {
         if(!fn.isEmpty() || !email.isEmpty() || !ln.isEmpty() || !address.isEmpty() || !country.isEmpty() || date!=null || 
                 nights != 0 || phone != 0 || totalRooms != 0){
         
-        conIf.NewRoomBooking(fn, ln, email, phone, address, country, date, nights, singleR, doubleR, familyR, tAgency);
+        boolean bookedState = conIf.NewRoomBooking(fn, ln, email, phone, address, country, date, nights, singleR, doubleR, familyR, tAgency);
+        
+        if(bookedState==true){
+            JLabelStatus.setText("Succesfull booking");
+            JTextFirstNameBooker.setText("");
+            JTextLastNameBooker.setText("");
+            JTextEmail.setText("");
+            JTextAddress.setText("");
+            JTextCity.setText("");
+            JTextCountry.setText("");
+            JTextDay.setText("");
+            JTextMonth.setText("");
+            JTextYear.setText("");
+            JTextNightsStaying.setText("");
+            JTextPhone.setText("");
+            JTextPostalCode.setText("");
+            JTextSpecificRoom.setText("");
+            JTextTravelAgency.setText("");
+            JTextNoOfDouble.setText("");
+            JTextNoOfSingle.setText("");
+            JTextNoOfFamily.setText("");
+        }else{
+            JLabelStatus.setText("Error in booking");
+        }
+        
         }
 
     }//GEN-LAST:event_BookRoomButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddButton;
     private javax.swing.JButton BookRoomButton;
-    private javax.swing.JButton DeleteButton;
-    private javax.swing.JButton EditButton;
     private javax.swing.JTextField EmailField1;
-    private javax.swing.JList JListNameList;
+    private javax.swing.JLabel JLabelStatus;
     private javax.swing.JTextField JTextAddress;
-    private javax.swing.JTextField JTextAge;
     private javax.swing.JTextField JTextCity;
     private javax.swing.JTextField JTextCountry;
     private javax.swing.JTextField JTextDay;
     private javax.swing.JTextField JTextEmail;
     private javax.swing.JTextField JTextFirstNameBooker;
-    private javax.swing.JTextField JTextFirstNameGuest;
     private javax.swing.JTextField JTextLastNameBooker;
-    private javax.swing.JTextField JTextLastNameGuest;
     private javax.swing.JTextField JTextMonth;
     private javax.swing.JTextField JTextNightsStaying;
     private javax.swing.JTextField JTextNoOfDouble;
@@ -575,7 +452,6 @@ public class Receptionist_gui extends javax.swing.JFrame {
     private javax.swing.JTextField JTextSpecificRoom;
     private javax.swing.JTextField JTextTravelAgency;
     private javax.swing.JTextField JTextYear;
-    private javax.swing.JLabel ListStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -583,7 +459,6 @@ public class Receptionist_gui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -591,8 +466,6 @@ public class Receptionist_gui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -600,6 +473,5 @@ public class Receptionist_gui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
