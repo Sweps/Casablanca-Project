@@ -85,4 +85,14 @@ public class Controller implements ControllerInterface {
         return DBFacade.getInstance().commitBusinessTransaction();
         
     }
+
+    @Override
+    public Boolean CancelRoomBooking(String firstName, String lastName, int phonenumber, Date startDate, int noOfNights) {
+        boolean cancelStatus = false;
+        
+        DBFacade dbf = DBFacade.getInstance();
+        
+        
+        return cancelStatus;
+    }
 }

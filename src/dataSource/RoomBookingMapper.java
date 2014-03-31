@@ -33,7 +33,6 @@ public class RoomBookingMapper {
         
         for(int i = 0; i < RoomBookingList.size(); i++)
         {
-            
             RoomBooking rb = RoomBookingList.get(i);        
             statement.setLong(1, rb.getId());            
             statement.setString(2, rb.getType().getName());           
@@ -52,7 +51,34 @@ public class RoomBookingMapper {
         return (rowsInserted == RoomBookingList.size());
             
 }
-    
+    public boolean cancelRoomBooking(String firstName, String lastName, int phonenumber,
+            Date startDate, int noOfNights, Connection conn) throws SQLException
+    {
+        boolean status = false;
+        String SQLString = "delete from roombooking" +
+        "where GUESTNO in(" +
+        "select guestid from GUEST" +
+        "where GUEST.FIRSTNAME = ? " +
+        "and GUEST.LASTNAME = ?" +
+        "and GUEST.PHONE = ?" +
+        ")" +
+        "and startdate = ?" +
+        "and NOOOFNIGHTS = ?";
+        PreparedStatement statement = null;
+        statement = conn.prepareStatement(SQLString);
+        
+        statement.setString(1, firstName);            
+        statement.setString(2, lastName);           
+        statement.setInt(3, phonenumber);
+        statement.setDate(4, convertdate(startDate));                       
+        statement.setInt(5, noOfNights);   
+        
+        int succes = statement.executeUpdate();
+        if(succes > 0){
+            status = true;
+        }
+        return status;
+    }
     
             
 }
