@@ -12,9 +12,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 
 /**
  *
@@ -28,6 +30,16 @@ public class GuestMapperTest
     public GuestMapperTest()
     {
     }
+
+    @BeforeClass
+    public static void setUpClass() throws Exception
+      {
+      }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception
+      {
+      }
     
     @Before
     public void setUp()
@@ -80,4 +92,25 @@ public class GuestMapperTest
         boolean result = gm.InsertGuest(GuestList);
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test of find method, of class GuestMapper.
+     */
+    @Test
+
+    /**
+     * Test of InsertGuest method, of class GuestMapper.
+     */
+    @Test
+    public void testInsertGuest() throws Exception
+      {
+        System.out.println("InsertGuest");
+        ArrayList<Guest> GuestList = null;
+        GuestMapper instance = null;
+        boolean expResult = false;
+        boolean result = instance.InsertGuest(GuestList);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+      }
 }

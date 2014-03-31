@@ -23,6 +23,33 @@ public class RoomBookingMapper {
     
     static boolean testRun = false;
     
+//    public RoomBooking find(long id, Connection con) throws SQLException
+//      {
+//        RoomBooking rb = null;
+//        String findstring = "SELECT * FROM RoomBooking WHERE roombookingid = ?";
+//        PreparedStatement statement;
+//        try{
+//        statement = con.prepareStatement(findstring);
+//        statement.setLong(1, id);
+//        ResultSet rs = statement.executeQuery();
+//        if (rs.next()){
+//            rb = new RoomBooking(null,
+//                                 null,
+//                                 noofnights,
+//                                 room,
+//                                 null,
+//                                 findstring)
+//                    
+//        }
+//        
+//        }
+//        catch(Exception e)
+//          {
+//            return null;
+//          }
+//        
+//      }
+    
     public boolean insertRoomBooking(ArrayList<RoomBooking> RoomBookingList, Connection conn) throws SQLException
     {
         
