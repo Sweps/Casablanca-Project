@@ -64,7 +64,22 @@ public class Controller implements ControllerInterface {
             g.setCountry(country);
         }
         
-        RoomBooking rb = new RoomBooking(g, startDate, noOfNights, 0, roomtypes[0],travelAgency);
+        
+            for (int i = 0; i < singleRooms; i++)
+            {
+
+            RoomBooking burgerking = new RoomBooking(g, startDate, noOfNights, 0, roomtypes[0], travelAgency);
+            }
+
+            for (int i = 0; i < doubleRooms; i++)
+            {
+            RoomBooking burgerking = new RoomBooking(g, startDate, noOfNights, 0, roomtypes[1], travelAgency);
+            }
+            for (int i = 0; i < familyRooms; i++)
+            {
+            RoomBooking burgerking = new RoomBooking(g, startDate, noOfNights, 0, roomtypes[2], travelAgency);
+            }
+      
         
         
         return DBFacade.getInstance().commitBusinessTransaction();
