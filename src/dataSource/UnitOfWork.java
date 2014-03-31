@@ -10,6 +10,8 @@ import domain.Guest;
 import domain.RoomBooking;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -23,7 +25,7 @@ public class UnitOfWork
 //    private final ArrayList<Guest> dirtyGuests;
     private final ArrayList<RoomBooking> newRoomBookings;
 //    private final ArrayList<RoomBooking> dirtyRoomBookings;
-    
+    private Map items = new HashMap();
     public UnitOfWork()
     {
 ////        dirtyGuests = new ArrayList<>();
@@ -42,7 +44,56 @@ public class UnitOfWork
 //////////          Guest p = new Guest("test","Test",1230);
 //////////          uow.registerNewItem(p);
 //////      }
-         
+    
+//Identity map, tilføjer Guest til mappet    
+    public void addGuest(Guest guest)
+    {
+        items.put(guest.getId(), guest);
+    }
+    public Guest getGuest(long hej)
+    {
+        return getGuest(new Long(hej));
+    }
+    //Identity map, tilføjer RoomBooking til mappet
+    public void addRoomBooking (RoomBooking rb)
+    {
+        items.put(rb.getId(), rb);
+    }
+    public RoomBooking getRoomBooking (long hej1)
+    {
+        return getRoomBooking(new Long(hej1));
+    }
+    //Hvis nøglen findes i mappet returneres den, ellers hentes det matchede object fra databasen
+    public Guest findGuest(long id)
+    {
+        if(items.containsKey(id))
+        {
+            return (Guest)items.get(id);
+        }
+        else
+        {
+        GuestMapper gm = new GuestMapper(con);
+        Guest guest = gm.find(id, con);
+        addGuest(guest);
+        return guest;
+        }
+    }
+    //Hvis nøglen findes i mappet returneres den, ellers hentes det matchede object fra databasen
+    public RoomBooking findRoomBooking(long id)
+    {
+        if (items.containsKey(id))
+        {
+            return (RoomBooking)items.get(id);
+        }
+        else
+        {
+            RoomBookingMapper rbm = new RoomBookingMapper();
+            RoomBooking roombooking = rbm.find(id, con);
+            addRoomBooking(roombooking);
+            return roombooking;
+        }
+    }
+    
     public void registerNewItem(Object obj)
     {
 
