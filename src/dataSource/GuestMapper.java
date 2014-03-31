@@ -7,6 +7,7 @@ package dataSource;
 import domain.Guest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -22,6 +23,44 @@ public class GuestMapper implements GuestMapperInterface
     this.con = con;
   }
 
+    public Guest find(long id, Connection con) throws SQLException
+      {
+        Guest guest = null;
+        String findstring = "SELECT * FROM guest WHERE guestid = ?";
+        PreparedStatement statement;
+        try{
+        statement = con.prepareStatement(findstring);
+        statement.setLong(1, id);
+        ResultSet rs = statement.executeQuery();
+        if (rs.next()){
+            guest = new Guest(rs.getString(2),
+                           rs.getString(3),
+                           rs.getInt(6));
+            
+            guest.setId(rs.getLong(1));
+            guest.setVersion(rs.getInt(9));
+            
+            String Address = rs.getString(4);
+            if (!rs.wasNull())
+            guest.setAddress(Address);
+            
+            String Country = rs.getString(5);
+            if (!rs.wasNull())
+            guest.setCountry(Country);
+            
+            String Email = rs.getString(7);
+            if (!rs.wasNull())
+            guest.setEmail(Email);
+                    
+        }
+        
+        }
+        catch(Exception e)
+          {
+            return null;
+          }
+        return guest;
+      }
     @Override
     public boolean InsertGuest(ArrayList<Guest> GuestList) throws SQLException
     {

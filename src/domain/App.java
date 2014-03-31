@@ -23,6 +23,8 @@ public class App {
         Controller c = new Controller(); 
         Receptionist_gui frame = new Receptionist_gui(c);
         frame.setVisible(true);
+        
+        
     }
 
 }
