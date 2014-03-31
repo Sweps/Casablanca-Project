@@ -354,7 +354,7 @@ public class Receptionist_gui extends javax.swing.JFrame {
             JLabelStatus.setText("Missing booker country");
         }
         
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/YYYY");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String datestr = (JTextDay.getText() + "/" + JTextMonth.getText() +  "/" +JTextYear.getText());
         try { 
             date = formatter.parse(datestr); }
