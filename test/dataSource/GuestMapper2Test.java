@@ -9,6 +9,7 @@ package dataSource;
 import domain.Guest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -91,4 +92,41 @@ public class GuestMapper2Test
      * Test of InsertGuest method, of class GuestMapper.
      */
    
+    public void testUpdateGuest() throws SQLException
+    {
+        //SETUP
+        Connection con = DBConnector.getConnection();
+        GuestMapper gmap = new GuestMapper(con);
+        //TEMPGUESTFULD
+        Guest testguest = new Guest("testUpdate", "testUpdate", 1437);
+        testguest.setId(1437);
+        testguest.setAddress("123");
+        testguest.setCountry("123");
+        testguest.setEmail("123");
+        testguest.setVersion(1);
+        testguest.setPhonenumber(123);
+        ArrayList al = new ArrayList<>();
+        al.add(testguest);
+        //Test
+        System.out.println(testguest.getAddress());
+        System.out.println(testguest.getCountry());
+        System.out.println(testguest.getEmail());
+        gmap.InsertGuest(al);
+        testguest = (Guest) al.get(0);
+        al.remove(0);
+        testguest.setAddress("333");
+        testguest.setCountry("444");
+        testguest.setEmail("555");
+        al.add(testguest);
+        gmap.updateGuest(al, con);
+        
+        System.out.println(testguest.getAddress());
+        System.out.println(testguest.getCountry());
+        System.out.println(testguest.getEmail());
+        
+        assertTrue(testguest.getAddress().equals("333"));
+        assertTrue(testguest.getCountry().equals("444"));
+        assertTrue(testguest.getEmail().equals("555"));
+        
+    }
   }
