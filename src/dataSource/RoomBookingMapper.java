@@ -107,6 +107,11 @@ public class RoomBookingMapper {
         return status;
     }
     
+//    public boolean updateRoombooking()
+//    {
+//        int rowsUpdated = 0;
+//        String SQLString = 
+//    }
             
 }
     
