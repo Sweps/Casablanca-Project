@@ -43,7 +43,10 @@ public class Guest
 
     public void setEmail(String email)
       {
-        this.email = email;
+        if (address != null)
+        {
+          this.email = email;
+        }
       }
 
     public String getAddress()
@@ -53,7 +56,10 @@ public class Guest
 
     public void setAddress(String address)
       {
-        this.address = address;
+        if (address != null)
+          {
+            this.address = address;
+          }
       }
 
     public String getCountry()
@@ -63,7 +69,10 @@ public class Guest
 
     public void setCountry(String country)
       {
-        this.country = country;
+        if (country != null)
+          {
+               this.country = country;
+          }
       }
 
     public long getId()
@@ -93,7 +102,7 @@ public class Guest
 
     public void setPhonenumber(int phonenumber)
       {
-        this.phonenumber = phonenumber;
+        this.phonenumber = phonenumber;     
       }
     
     

@@ -141,6 +141,22 @@ public class UnitOfWork
         }
     }
     
+    public boolean cancelRoomBooking(String firstname, String lastname, int phonenumber, Date startDate, int noOfNights, Connection con)throws SQLException
+     {
+         boolean status = false;
+         try{
+            RoomBookingMapper rbm = new RoomBookingMapper();
+            status = rbm.cancelRoomBooking(firstname, lastname, phonenumber, startDate, noOfNights, con);
+            con.commit();
+         }catch(SQLException ex){
+             System.out.println("Error in unit of work - cancelRoomBooking");
+             con.rollback();
+             status = false;
+         }
+         
+         return status;
+     }
+    
     public boolean commit(Connection con)throws SQLException
      {
          boolean status = true;

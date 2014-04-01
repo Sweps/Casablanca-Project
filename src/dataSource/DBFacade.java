@@ -58,6 +58,14 @@ public class DBFacade {
         }
         return status;
     }
+    
+    public boolean deleteRoomBookingTransaction(String firstname, String lastname, int phonenumber, Date startDate, int noOfNights)throws SQLException
+    {
+        uow = new UnitOfWork();
+        boolean status = uow.cancelRoomBooking(firstname, lastname, phonenumber, startDate, noOfNights, con);
+        return status;
+    }
+    
     public void registerNewItem(Object obj) {
         if (uow != null) {
             uow.registerNewItem(obj);
