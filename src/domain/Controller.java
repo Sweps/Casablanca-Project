@@ -5,6 +5,7 @@
 package domain;
 
 import dataSource.DBFacade;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -87,11 +88,9 @@ public class Controller implements ControllerInterface {
     }
 
     @Override
-    public Boolean CancelRoomBooking(String firstName, String lastName, int phonenumber, Date startDate, int noOfNights) {
-        boolean cancelStatus = false;
-        
-        DBFacade dbf = DBFacade.getInstance();
-        
+    public Boolean CancelRoomBooking(String firstName, String lastName, int phonenumber, Date startDate, int noOfNights)throws SQLException {
+        boolean cancelStatus = DBFacade.getInstance().deleteRoomBookingTransaction(firstName,
+                lastName, phonenumber, (java.sql.Date) startDate, noOfNights);
         
         return cancelStatus;
     }
