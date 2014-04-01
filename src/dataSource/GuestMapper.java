@@ -23,10 +23,13 @@ public class GuestMapper implements GuestMapperInterface
     this.con = con;
   }
 
-    public Guest find(long id, Connection con) throws SQLException
+    public Guest find(long id, Connection con)
       {
         Guest guest = null;
-        String findstring = "SELECT * FROM guest WHERE guestid = ?";
+        String findstring = "SELECT guestid, firstname,"
+                          + " lastname, address, country,"
+                          + " phone, email, age, version"
+                          + " FROM guest WHERE guestid = ?";
         PreparedStatement statement;
         try{
         statement = con.prepareStatement(findstring);
@@ -39,18 +42,9 @@ public class GuestMapper implements GuestMapperInterface
             
             guest.setId(rs.getLong(1));
             guest.setVersion(rs.getInt(9));
-            
-            String Address = rs.getString(4);
-            if (!rs.wasNull())
-            guest.setAddress(Address);
-            
-            String Country = rs.getString(5);
-            if (!rs.wasNull())
-            guest.setCountry(Country);
-            
-            String Email = rs.getString(7);
-            if (!rs.wasNull())
-            guest.setEmail(Email);
+            guest.setAddress(rs.getString(4));   
+            guest.setCountry(rs.getString(5));           
+            guest.setEmail(rs.getString(7));
                     
         }
         

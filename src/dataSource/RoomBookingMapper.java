@@ -23,36 +23,40 @@ public class RoomBookingMapper {
     
     static boolean testRun = false;
     
-//    public RoomBooking find(long id, Connection con) throws SQLException
-//      {
-//        RoomBooking rb = null;
-//        String findstring = "SELECT * FROM RoomBooking WHERE roombookingid = ?";
-//        PreparedStatement statement;
-//        try{
-//        statement = con.prepareStatement(findstring);
-//        statement.setLong(1, id);
-//        ResultSet rs = statement.executeQuery();
-//        if (rs.next()){
-//            rb = new RoomBooking(null,
-//                                 null,
-//                                 noofnights,
-//                                 room,
-//                                 null,
-//                                 findstring)
-//                    
-//        }
-//        
-//        }
-//        catch(Exception e)
-//          {
-//            return null;
-//          }
-//        
-//      }
+    public RoomBooking find(long id, Connection con)
+      {
+        RoomBooking rb = null;
+        String findstring = "SELECT roombookingid, roomtype, guestno,"
+                          + "startdate, enddate, nooofnights, travelagency,"
+                          + "version FROM RoomBooking WHERE roombookingid = ?";
+        PreparedStatement statement;
+        try{
+        statement = con.prepareStatement(findstring);
+        statement.setLong(1, id);
+        ResultSet rs = statement.executeQuery();
+        if (rs.next()){
+            GuestMapper gmap = new GuestMapper(con);
+            Guest guest = gmap.find(rs.getLong(3), con);
+            // room set to 0 fix lator 
+            // roomtype set manually, fix lator. wordskilove.
+            // travelagency skal laves til et object senere lullerskates
+            rb = new RoomBooking(guest, rs.getDate(4), rs.getInt(6),0,
+                                (new RoomType(rs.getString(2),0,0)),
+                                 rs.getString(7));
+            
+                   
+        }
+        
+        }
+        catch(Exception e)
+          {
+            return null;
+          }
+        return rb;
+      }
     
     public boolean insertRoomBooking(ArrayList<RoomBooking> RoomBookingList, Connection conn) throws SQLException
     {
-        
         int rowsInserted = 0;
         String SQLString = "INSERT INTO ROOMBOOKING VALUES (?,?,?,?,?,?,?,?)";
         PreparedStatement statement = null;
