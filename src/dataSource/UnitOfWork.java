@@ -50,18 +50,19 @@ public class UnitOfWork
     {
         items.put(guest.getId(), guest);
     }
-    public Guest getGuest(long hej)
-    {
-        return getGuest(new Long(hej));
+    public Guest findGuest(Long key)
+    {  
+        return findGuest(key.longValue());
     }
     //Identity map, tilføjer RoomBooking til mappet
     public void addRoomBooking (RoomBooking rb)
     {
         items.put(rb.getId(), rb);
     }
-    public RoomBooking getRoomBooking (long hej1)
+    
+    public RoomBooking findRoomBooking (Long key)
     {
-        return getRoomBooking(new Long(hej1));
+        return findRoomBooking(key.longValue());
     }
     //Hvis nøglen findes i mappet returneres den, ellers hentes det matchede object fra databasen
     public Guest findGuest(long id)
@@ -93,10 +94,10 @@ public class UnitOfWork
             return roombooking;
         }
     }
-    
+     
     public void registerNewItem(Object obj)
     {
-
+     
         switch((obj.getClass()).getSimpleName())
         {
             case "Guest" : registerNewGuest((Guest)obj);
