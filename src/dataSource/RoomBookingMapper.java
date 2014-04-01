@@ -111,10 +111,36 @@ public class RoomBookingMapper {
         return status;
     }
     
-//    public boolean updateRoombooking()
+//    public boolean updateRoombooking(ArrayList<RoomBooking> RoomBookingList, Connection conn)
 //    {
 //        int rowsUpdated = 0;
-//        String SQLString = 
+//        String SQLString ="UPDATE ROOMBOOKING "
+//                + "SET ROOMTYPE = ?, STARTDATE = ?, ENDDATE = ?, NOOOFNIGHTS = ?, TRAVELAGENCY = ? VERSION = ? "
+//                + "WHERE ROOMBOOKINGID = ? and VERSION = ?";
+//        
+//        PreparedStatement statement = null;
+//        
+//        statement = con.prepareStatement(SQLString);
+//        for (int i = 0; i < RoomBookingList.size(); i++)
+//        {         
+//            RoomBooking rb = RoomBookingList.get(i);        
+//                     
+//            statement.setString(1, rb.getType().getName());           
+//            statement.setDate(2, convertdate(rb.getStartdate()));                       
+//            statement.setDate(3, convertdate(rb.getEnddate()));                       
+//            statement.setInt(4, rb.getNoofnights());                          
+//            statement.setInt(5, 0);  
+//            statement.setInt(6, rb.getVersion() + 1);  // next version number
+//            statement.setLong(7, rb.getId());  
+//            statement.setInt(8, rb.getVersion()); 
+//            int tupleUpdated = statement.executeUpdate();
+//            if (tupleUpdated == 1)
+//            {
+//                rb.setVersion(+ 1);
+//            }
+//            rowsUpdated += tupleUpdated;
+//        }
+//        return rowsUpdated == RoomBookingList.size(); // false if any conflict in version number 
 //    }
             
 }

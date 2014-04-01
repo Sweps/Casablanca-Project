@@ -85,8 +85,8 @@ public class GuestMapper implements GuestMapperInterface
     public boolean updateGuest(ArrayList<Guest> GuestList, Connection con) throws SQLException
     {
         int rowsUpdated = 0;
-        String SQLString ="UPDATE GUEST"
-                + "SET FIRSTNAME = ?, LASTNAME = ?, ADDRESS = ?, COUNTRY = ?, PHONENUMBER = ?, EMAIL = ?, AGE = ?, VERSION = ?"
+        String SQLString ="UPDATE GUEST "
+                + "SET FIRSTNAME = ?, LASTNAME = ?, ADDRESS = ?, COUNTRY = ?, PHONE = ?, EMAIL = ?, AGE = ?, VERSION = ? "
                 + "WHERE GUESTID = ? and VERSION = ?";
         
         PreparedStatement statement = null;
@@ -105,11 +105,11 @@ public class GuestMapper implements GuestMapperInterface
             statement.setInt(7, 0);
             statement.setInt(8, g.getVersion() + 1); // next version number
             statement.setLong(9, g.getId());
-            statement.setInt(10, g.getVersion()); //kigges efter
+            statement.setInt(10, g.getVersion());
             int tupleUpdated = statement.executeUpdate();
             if (tupleUpdated == 1)
             {
-                g.setVersion(+1);
+                g.setVersion(+ 1);
             }
             rowsUpdated += tupleUpdated;
         }

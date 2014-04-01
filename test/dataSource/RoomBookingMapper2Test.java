@@ -11,6 +11,7 @@ import domain.RoomBooking;
 import domain.RoomType;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
@@ -162,5 +163,36 @@ public class RoomBookingMapper2Test
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
       }
+    
+    
+    //Slettes måske senere. Overvejes
+//    @Test
+//    public void testUpdateRoomBooking() throws SQLException
+//    {
+//        
+//        //TEMPGUESTFULD
+//        Guest guest = new Guest("Søren", "Hansen", 55555555);
+//        guest.setId(69);
+//        //save guest to db
+//        glist.add(guest);
+//        gmap.InsertGuest(glist);
+//        //make roombooking #TODO FIX ROOMTYPE,ROOM AND TRAVELAGENCYHAQS
+//        RoomBooking booking = new RoomBooking(guest,new Date(),6,0,(new RoomType("singleroom",0,0)),"0");
+//        booking.setId(70);
+//        //save roombooking
+//        rblist.add(booking);
+//        rbmap.insertRoomBooking(rblist, con);
+//        //change booking
+//        
+//        //update booking
+//        rbmap.updateRoombooking(rblist, con);
+//        
+//        
+//        
+//        //find the roombooking
+//        RoomBooking returnedbooking = rbmap.find(70, con);
+//        
+//        assertTrue();
+//    }
     
   }
