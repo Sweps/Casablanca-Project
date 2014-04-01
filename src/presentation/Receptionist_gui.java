@@ -480,7 +480,6 @@ public class Receptionist_gui extends javax.swing.JFrame {
         String address = JTextAddress.getText();
         String country = JTextCountry.getText();
         String tAgency = JTextTravelAgency.toString();
-        String startDate = JTextDay.getText() + "/" + JTextMonth.toString() + "/" + JTextYear.toString();
         
         if(fn.isEmpty()){
             JLabelStatus.setText("Missing booker firstname");
@@ -615,12 +614,14 @@ public class Receptionist_gui extends javax.swing.JFrame {
             JLabelDeleteStatus.setText("Missing nights staying");
         }
         
+        if(day!=0 && month!=0 && year!=0){
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String datestr = (JTextDay.getText() + "/" + JTextMonth.getText() +  "/" +JTextYear.getText());
+        String datestr = (JTextdayDelete.getText() + "/" + JTextMonthDelete.getText() +  "/" +JTextYearDelete.getText());
         try { 
             date = formatter.parse(datestr); }
         catch (ParseException e) {
             JLabelStatus.setText("Error in date");
+        }
         }
         
         if(fn.isEmpty()){

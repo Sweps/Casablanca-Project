@@ -89,8 +89,13 @@ public class Controller implements ControllerInterface {
 
     @Override
     public Boolean CancelRoomBooking(String firstName, String lastName, int phonenumber, Date startDate, int noOfNights)throws SQLException {
+        System.out.println("controller");
+        
+        java.util.Date utilStartDate = startDate;
+        java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
+        
         boolean cancelStatus = DBFacade.getInstance().deleteRoomBookingTransaction(firstName,
-                lastName, phonenumber, (java.sql.Date) startDate, noOfNights);
+                lastName, phonenumber, (java.sql.Date) sqlStartDate, noOfNights);
         
         return cancelStatus;
     }

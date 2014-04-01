@@ -61,6 +61,7 @@ public class DBFacade {
     
     public boolean deleteRoomBookingTransaction(String firstname, String lastname, int phonenumber, Date startDate, int noOfNights)throws SQLException
     {
+        System.out.println("DBFacade");
         uow = new UnitOfWork();
         boolean status = uow.cancelRoomBooking(firstname, lastname, phonenumber, startDate, noOfNights, con);
         return status;
