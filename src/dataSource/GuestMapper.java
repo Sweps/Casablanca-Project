@@ -87,6 +87,42 @@ public class GuestMapper implements GuestMapperInterface
         }    
         return (rowsInserted == GuestList.size());
     }
+    
+    public boolean updateGuest(ArrayList<Guest> GuestList, Connection con) throws SQLException
+    {
+        int rowsUpdated = 0;
+        String SQLString ="UPDATE GUEST"
+                + "SET FIRSTNAME = ?, LASTNAME = ?, ADDRESS = ?, COUNTRY = ?, PHONENUMBER = ?, EMAIL = ?, AGE = ?, VERSION = ?"
+                + "WHERE GUESTID = ? and VERSION = ?";
+        
+        PreparedStatement statement = null;
+        
+        statement = con.prepareStatement(SQLString);
+        for (int i = 0; i < GuestList.size(); i++)
+        {
+            Guest g = GuestList.get(i);
+            
+            statement.setString(1, g.getFirstname());
+            statement.setString(2, g.getLastname());
+            statement.setString(3, g.getAddress());
+            statement.setString(4, g.getCountry());
+            statement.setInt(5, g.getPhonenumber());
+            statement.setString(6, g.getEmail());
+            statement.setInt(7, 0);
+            statement.setInt(8, g.getVersion() + 1); // next version number
+            statement.setLong(9, g.getId());
+            statement.setInt(10, g.getVersion()); //kigges efter
+            int tupleUpdated = statement.executeUpdate();
+            if (tupleUpdated == 1)
+            {
+                g.setVersion(+1);
+            }
+            rowsUpdated += tupleUpdated;
+        }
+        return rowsUpdated == GuestList.size(); // false if any conflict in version number 
+                
+                
+    }
 }
 
 
