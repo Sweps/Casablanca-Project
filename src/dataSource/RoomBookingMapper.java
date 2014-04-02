@@ -16,7 +16,7 @@ import java.util.Date;
  */
 public class RoomBookingMapper {
     
-    TESTESTESTESTEST
+    Tester ny branch her 
      
             private java.sql.Date convertdate(Date date)
     {
