@@ -86,14 +86,14 @@ public class RoomBookingMapper {
             Date startDate, int noOfNights, Connection conn) throws SQLException
     {
         boolean status = false;
-        String SQLString = "delete from roombooking" +
+        String SQLString = "delete from roombooking " +
         "where GUESTNO in(" +
-        "select guestid from GUEST" +
+        "select guestid from GUEST " +
         "where GUEST.FIRSTNAME = ? " +
-        "and GUEST.LASTNAME = ?" +
+        "and GUEST.LASTNAME = ? " +
         "and GUEST.PHONE = ?" +
-        ")" +
-        "and startdate = ?" +
+        ") " +
+        "and startdate = ? " +
         "and NOOOFNIGHTS = ?";
         PreparedStatement statement = null;
         statement = conn.prepareStatement(SQLString);

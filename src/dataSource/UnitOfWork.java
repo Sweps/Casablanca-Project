@@ -146,11 +146,13 @@ public class UnitOfWork
      {
          boolean status = false;
          try{
+            con.setAutoCommit(false);
             RoomBookingMapper rbm = new RoomBookingMapper();
             status = rbm.cancelRoomBooking(firstname, lastname, phonenumber, startDate, noOfNights, con);
             con.commit();
          }catch(SQLException ex){
              System.out.println("Error in unit of work - cancelRoomBooking");
+             System.out.println(ex);
              con.rollback();
              status = false;
          }

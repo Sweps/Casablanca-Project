@@ -474,12 +474,12 @@ public class Receptionist_gui extends javax.swing.JFrame {
         
         Date date = null;
         
-        String fn = JTextFirstNameBooker.getText();
-        String ln = JTextLastNameBooker.getText();
-        String email = JTextEmail.getText();
-        String address = JTextAddress.getText();
-        String country = JTextCountry.getText();
-        String tAgency = JTextTravelAgency.toString();
+        String fn = JTextFirstNameBooker.getText().toLowerCase();
+        String ln = JTextLastNameBooker.getText().toLowerCase();
+        String email = JTextEmail.getText().toLowerCase();
+        String address = JTextAddress.getText().toLowerCase();
+        String country = JTextCountry.getText().toLowerCase();
+        String tAgency = JTextTravelAgency.toString().toLowerCase();
         
         if(fn.isEmpty()){
             JLabelStatus.setText("Missing booker firstname");
@@ -585,8 +585,8 @@ public class Receptionist_gui extends javax.swing.JFrame {
         int year = 0;
         int nights = 0;
         Date date = null;
-        String fn = JTextFirstNameDelete.getText();
-        String ln = JTextLastNameDelete.getText();
+        String fn = JTextFirstNameDelete.getText().toLowerCase();
+        String ln = JTextLastNameDelete.getText().toLowerCase();
         
         try{
             phoneNr = Integer.parseInt(JTextphoneDelete.getText());
