@@ -91,7 +91,7 @@ public class GuestMapper2Test
     /**
      * Test of InsertGuest method, of class GuestMapper.
      */
-   
+   @Test
     public void testUpdateGuest() throws SQLException
     {
         //SETUP
@@ -100,11 +100,11 @@ public class GuestMapper2Test
         //TEMPGUESTFULD
         Guest testguest = new Guest("testUpdate", "testUpdate", 1437);
         testguest.setId(1437);
-        testguest.setAddress("123");
-        testguest.setCountry("123");
-        testguest.setEmail("123");
+        testguest.setAddress("rævevej");
+        testguest.setCountry("danmark");
+        testguest.setEmail("12345@dk.dk");
         testguest.setVersion(1);
-        testguest.setPhonenumber(123);
+        testguest.setPhonenumber(45454545);
         ArrayList al = new ArrayList<>();
         al.add(testguest);
         //Test
@@ -114,19 +114,24 @@ public class GuestMapper2Test
         gmap.InsertGuest(al);
         testguest = (Guest) al.get(0);
         al.remove(0);
-        testguest.setAddress("333");
-        testguest.setCountry("444");
-        testguest.setEmail("555");
+        testguest.setAddress("fuldførtaddress");
+        testguest.setCountry("fuldførtcountry");
+        testguest.setEmail("fuldførtemail");
         al.add(testguest);
         gmap.updateGuest(al, con);
         
+        System.out.println("===Info er blevet ændret===");
         System.out.println(testguest.getAddress());
         System.out.println(testguest.getCountry());
         System.out.println(testguest.getEmail());
         
-        assertTrue(testguest.getAddress().equals("333"));
-        assertTrue(testguest.getCountry().equals("444"));
-        assertTrue(testguest.getEmail().equals("555"));
+        assertTrue(testguest.getAddress().equals("fuldførtaddress"));
+        assertTrue(testguest.getCountry().equals("fuldførtcountry"));
+        assertTrue(testguest.getEmail().equals("fuldførtemail"));
         
+        //cleanup
+        String delstatement = "DELETE FROM GUEST WHERE GUESTID = 1437";
+          PreparedStatement statement = con.prepareCall(delstatement);
+          statement.execute();
     }
   }
