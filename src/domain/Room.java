@@ -13,7 +13,7 @@ package domain;
 public class Room 
 {   
     private RoomType roomtype;
-    private int roomNo, id, version;
+    private int roomNo;
     
     public Room(RoomType type,int RoomNo)
     {
