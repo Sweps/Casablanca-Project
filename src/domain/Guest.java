@@ -23,7 +23,6 @@ public class Guest
         this.firstname = firstname;
         this.lastname = lastname;
         this.phonenumber = phonenumber;
-        DBFacade.getInstance().registerNewItem(this);
       }
 
     public String getEmail()
@@ -43,7 +42,7 @@ public class Guest
 
     public void setEmail(String email)
       {
-        if (address != null)
+        if (email != null && !(email.isEmpty()))
         {
           this.email = email;
         }
@@ -56,7 +55,7 @@ public class Guest
 
     public void setAddress(String address)
       {
-        if (address != null)
+        if (address != null && !(address.isEmpty()))
           {
             this.address = address;
           }
@@ -69,7 +68,7 @@ public class Guest
 
     public void setCountry(String country)
       {
-        if (country != null)
+        if (country != null && !(country.isEmpty()) )
           {
                this.country = country;
           }
@@ -100,10 +99,10 @@ public class Guest
         return phonenumber;
       }
 
-    public void setPhonenumber(int phonenumber)
-      {
-        this.phonenumber = phonenumber;     
+    public void setPhonenumber(int i) {
+        this.phonenumber = i;
       }
+    
     
     
   }

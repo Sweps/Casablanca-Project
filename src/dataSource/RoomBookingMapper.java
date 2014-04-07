@@ -26,7 +26,7 @@ public class RoomBookingMapper {
     public RoomBooking find(long id, Connection con)
       {
         RoomBooking rb = null;
-        String findstring = "SELECT roombookingid, roomtype, guestno,"
+        String findstring = "SELECT roombookingid, roomno, guestno,"
                           + "startdate, enddate, nooofnights, travelagency,"
                           + "version FROM RoomBooking WHERE roombookingid = ?";
         PreparedStatement statement;
@@ -37,11 +37,12 @@ public class RoomBookingMapper {
         if (rs.next()){
             GuestMapper gmap = new GuestMapper(con);
             Guest guest = gmap.find(rs.getLong(3), con);
+            RoomMapper rmap = new RoomMapper();
+            Room room = rmap.find(rs.getLong(2), con);
             // room set to 0 fix lator 
             // roomtype set manually, fix lator. wordskilove.
             // travelagency skal laves til et object senere lullerskates
-            rb = new RoomBooking(guest, rs.getDate(4), rs.getInt(6),0,
-                                (new RoomType(rs.getString(2),0,0)),
+            rb = new RoomBooking(guest, rs.getDate(4), rs.getInt(6),room,
                                  rs.getString(7));
             
                    
@@ -66,7 +67,7 @@ public class RoomBookingMapper {
         {
             RoomBooking rb = RoomBookingList.get(i);        
             statement.setLong(1, rb.getId());            
-            statement.setString(2, rb.getType().getName());           
+            statement.setLong(2, rb.getRoom().getRoomNo());           
             statement.setLong(3, rb.getGuest().getId());
             statement.setDate(4, convertdate(rb.getStartdate()));                       
             statement.setDate(5, convertdate(rb.getEnddate()));                       

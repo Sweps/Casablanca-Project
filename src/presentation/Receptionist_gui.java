@@ -466,7 +466,7 @@ public class Receptionist_gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BookRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookRoomButtonActionPerformed
-        int singleR = 0;
+                int singleR = 0;
         int doubleR = 0;
         int familyR = 0;
         int nights = 0;
@@ -547,8 +547,22 @@ public class Receptionist_gui extends javax.swing.JFrame {
         
         if(!fn.isEmpty() || !email.isEmpty() || !ln.isEmpty() || !address.isEmpty() || !country.isEmpty() || date!=null || 
                 nights != 0 || phone != 0 || totalRooms != 0){
-        
-        boolean bookedState = conIf.NewRoomBooking(fn, ln, email, phone, address, country, date, nights, singleR, doubleR, familyR, tAgency);
+            
+        //EDIT BY PHILL - TEMP HAQ
+        boolean bookedState = false;
+        if(singleR == 1)
+        {
+            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "singleroom", tAgency);
+        }
+        else if(doubleR == 1)
+        {
+            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "doubleroom", tAgency);
+        }
+        else if(familyR == 1)
+        {
+            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "familyroom", tAgency);
+        }
+        // TEMP HAQ END
         
         if(bookedState==true){
             JLabelStatus.setText("Succesfull booking");

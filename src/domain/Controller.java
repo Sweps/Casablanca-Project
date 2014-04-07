@@ -17,13 +17,7 @@ public class Controller implements ControllerInterface {
     RoomType[] roomtypes;
     public Controller()
     {
-      //Temporary haq
-      roomtypes = new RoomType[3];
-      roomtypes[0] = new RoomType("singleroom", 60, 20);
-      roomtypes[1] = new RoomType("doubleroom", 80, 20);
-      roomtypes[2] = new RoomType("familyroom", 100, 20);
-      //Temporary haq
-      
+      //RIP HAQ
     }
     //testtransaction with dummy data 
     // i den rigtige me
@@ -44,45 +38,25 @@ public class Controller implements ControllerInterface {
 //       return DBFacade.getInstance().commitBusinessTransaction();
 //    }
     
-    public Boolean NewRoomBooking(String firstName, String lastName, String email, int phonenumber,
-            String address, String country, Date startDate, int noOfNights, int singleRooms, int doubleRooms, int familyRooms, String travelAgency)
-    {
-        Date tempdate = Calendar.getInstance().getTime();
-        
+    @Override
+    public Boolean newRoomBooking(String firstName, String lastName, String email, int phonenumber,
+            String address, String country, Date startDate, int noOfNights, String type, String travelAgency)
+    { 
         DBFacade.getInstance().startNewBusinessTransaction();
         Guest g = new Guest(firstName, lastName, phonenumber);
-        
-        if(!address.isEmpty())
-        {
             g.setAddress(address);
-        }
-        if(!email.isEmpty());
-        {
             g.setEmail(email);
-        }
-        if(!country.isEmpty())
-        {
             g.setCountry(country);
-        }
-        
-        
-            for (int i = 0; i < singleRooms; i++)
-            {
+        DBFacade.getInstance().registerNewItem(g);
+            
+            Room theroom = DBFacade.getInstance().getAvailableRoom(startDate, noOfNights, type);
+            
+            RoomBooking burgerking = new RoomBooking(g, startDate, noOfNights, theroom, travelAgency);
+            DBFacade.getInstance().registerNewItem(burgerking);
 
-            RoomBooking burgerking = new RoomBooking(g, startDate, noOfNights, 0, roomtypes[0], travelAgency);
-            }
-
-            for (int i = 0; i < doubleRooms; i++)
-            {
-            RoomBooking burgerking = new RoomBooking(g, startDate, noOfNights, 0, roomtypes[1], travelAgency);
-            }
-            for (int i = 0; i < familyRooms; i++)
-            {
-            RoomBooking burgerking = new RoomBooking(g, startDate, noOfNights, 0, roomtypes[2], travelAgency);
-            }
-      
+            
         
-        
+                     
         return DBFacade.getInstance().commitBusinessTransaction();
         
     }

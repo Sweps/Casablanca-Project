@@ -25,18 +25,16 @@ public class RoomBooking
     
 
     
-    private int noofnights, version, room;
-    private RoomType type;
+    private int noofnights, version;
+    private Room room;
     private long id;
     
-    public RoomBooking(Guest guest, Date startdate, int noofnights, int room, 
-                       RoomType type, String travelAgency)
+    public RoomBooking(Guest guest, Date startdate, int noofnights,Room room, String travelAgency)
       {
         this.guest = guest;
         this.startdate = startdate;
         this.noofnights = noofnights;
         this.room = room;
-        this.type = type;
         this.travelAgency = travelAgency;
         
         //TODO CALCULATE ENDDATE
@@ -46,8 +44,6 @@ public class RoomBooking
             c.setTime(startdate);
             c.add(Calendar.DATE, noofnights);
         this.enddate = c.getTime();
-        
-        DBFacade.getInstance().registerNewItem(this);
       }
     public void setVersion(int version)
       {
@@ -79,14 +75,9 @@ public class RoomBooking
         return version;
       }
 
-    public int getRoom()
+    public Room getRoom()
       {
         return room;
-      }
-
-    public RoomType getType()
-      {
-        return type;
       }
 
     public Long getId()

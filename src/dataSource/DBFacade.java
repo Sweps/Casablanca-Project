@@ -6,8 +6,10 @@
 
 package dataSource;
 
+import domain.Room;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  *
@@ -130,5 +132,33 @@ public class DBFacade {
         {
             //add stuff
         }
+    }
+    /**
+    * @Author Phill
+    * Takes a startdate, a number of nights and a room type
+    * returns an available room of given type in given period.
+    * can return a null
+    **/
+    public Room getAvailableRoom(java.util.Date startDate, int noOfNights, String type) {
+        java.util.Date endDate;
+        Calendar c = Calendar.getInstance();
+        c.setTime(startDate);
+        c.add(Calendar.DATE, noOfNights);
+        endDate = c.getTime();
+        
+        RoomMapper rmap = new RoomMapper();
+        switch(type)
+        {
+            case"singleroom":
+            {return rmap.getRandomAvailableSingle(startDate, endDate);}
+            case"doubleroom":
+            {return rmap.getRandomAvailableDouble(startDate, endDate);}
+            case"familyroom":
+            {return rmap.getRandomAvailableFamily(startDate, endDate);}
+            default:
+            {return null;}
+            
+}
+        
     }
 }

@@ -94,7 +94,12 @@ public class UnitOfWork
             return roombooking;
         }
     }
-     
+    /**
+     * 
+     * @author Phill
+     * modtager et rent object til database persistering, 
+     * ser hvilket type objekt det er og sender det videre alt afhængelig
+     */
     public void registerNewItem(Object obj)
     {
      
@@ -119,6 +124,13 @@ public class UnitOfWork
 //////        }
 //////    }
 
+    
+/**
+ * @Author Phill
+ * modtager et rent gæsteobjekt fra registerNewItem,
+ * tjekker om det allerede er blevet lagt ind til persistering og 
+ * hvis ikke, lægger det ind i arraylisten til persistering
+ */
     private void registerNewGuest(Guest guest) {
         if (!newGuests.contains(guest))
         {
@@ -126,17 +138,30 @@ public class UnitOfWork
             {
                 guest.setId(DBFacade.getInstance().getID());
             }
+            if(guest.getVersion() == 0)
+            {
+                guest.setVersion(1);
+            }
             newGuests.add(guest);
         }
        
     }
-
+/**
+ * @Author Phill
+ * modtager et rent roombookingobjekt fra registerNewItem,
+ * tjekker om det allerede er blevet lagt ind til persistering og 
+ * hvis ikke, lægger det ind i arraylisten til persistering
+ */
     private void registerNewRoomBooking(RoomBooking booking) {
         if (!newRoomBookings.contains(booking))
         {
             if(booking.getId() == 0)
             {
                 booking.setId(DBFacade.getInstance().getID());
+            }
+            if(booking.getVersion() == 0)
+            {
+                booking.setVersion(1);
             }
             newRoomBookings.add(booking);
         }
