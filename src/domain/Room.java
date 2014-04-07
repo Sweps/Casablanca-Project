@@ -12,46 +12,27 @@ package domain;
  */
 public class Room 
 {   
-    private RoomType roomtype;
-    private int roomNo;
+    private String roomType;
+    private int roomNo, price;
     
-    public Room(RoomType type,int RoomNo)
+    public Room(String roomType,int RoomNo, int price)
     {
-      this.roomtype = type;
+      this.roomType = roomType;
       this.roomNo = RoomNo;
+      this.price = price;
       
     }
 
-    public void setId(int id)
-      {
-        this.id = id;
-      }
+    public String getRoomType() {
+        return roomType;
+    }
 
-    public void setVersion(int version)
-      {
-        this.version = version;
-      }
-
-    public RoomType getRoomtype()
-      {
-        return roomtype;
-      }
-
-    public int getRoomNo()
-      {
+    public int getRoomNo() {
         return roomNo;
-      }
+    }
 
-    public int getId()
-      {
-        return id;
-      }
+    public int getPrice() {
+        return price;
+    }
 
-    public int getVersion()
-      {
-        return version;
-      }
-    
-    
-    
 }
