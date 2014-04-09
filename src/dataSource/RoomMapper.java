@@ -36,7 +36,9 @@ public class RoomMapper {
             }
         catch(Exception e)
         {
+//            room = new Room("lol",666,999);
             return null;
+//            return room;
         }
         return room;
     }

@@ -8,6 +8,7 @@ package dataSource;
 
 import domain.Room;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,6 +34,18 @@ public class RoomMapperTest {
         //Room 30 er et singleroom der koster 60
         //assertture price= 0
         //assertture.type.(singleroom)
+        Connection con = DBConnector.getConnection();
+        
+        RoomMapper rm = new RoomMapper();
+              
+        Room test1 = rm.find(30, con);
+        System.out.print(test1.getPrice());
+        
+        
+        assertTrue(test1 instanceof Room);
+        int price = test1.getPrice();
+        assertTrue(price == 60);
+//        assertTrue(price == 999);
         
     }
 
