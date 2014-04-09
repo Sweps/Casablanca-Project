@@ -17,10 +17,10 @@ public class RoomMapper {
     
     public Room find(long id, Connection con)
     {
-        Room rm = null;
-        String SQLString = "SELECT ROOM.ROOMNO, ROOMTYPE.PRICE, ROOM.ROOMTYPE"
+        Room room = null;
+        String SQLString = "SELECT ROOM.ROOMTYPE, ROOM.ROOMNO, ROOMTYPE.PRICE"
                 + "FROM ROOMTYPE, ROOM"
-                + "WHERE ROOMNO = ? AND ROOM.ROOMTYPE = ROOMTPYE.ROOMTPYE";
+                + "WHERE ROOMNO = ? AND ROOM.ROOMTYPE = ROOMTYPE.ROOMTYPE";
         PreparedStatement statement;
         
         try{
@@ -29,7 +29,7 @@ public class RoomMapper {
             ResultSet rs = statement.executeQuery();
             if(rs.next()){
                 
-                Room room = new Room(rs.getString(1), rs.getInt(2), rs.getInt(3));
+                room = new Room(rs.getString(1), rs.getInt(2), rs.getInt(3));
  
             }
             
@@ -38,7 +38,7 @@ public class RoomMapper {
         {
             return null;
         }
-        return rm;
+        return room;
     }
 /**
     * @Author Phill
