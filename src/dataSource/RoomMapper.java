@@ -48,8 +48,38 @@ public class RoomMapper {
     * returns an available Family room in given period.
     * can return a null
     **/
-    public Room getRandomAvailableFamily(java.util.Date startDate, java.util.Date endDate) {
-        return new Room("familyroom", 103, 100);
+    public Room getNextAvailableFamily(java.util.Date startDate, java.util.Date endDate, Connection con) {
+        Room returnroom = null;
+        String SQLString = "SELECT r.roomno FROM room r " + "LEFT JOIN roombooking rb "
+                                                   + "ON r.roomno = rb.roomno "
+       + "WHERE r.roomno NOT IN (SELECT roomno FROM roombooking "
+                               + "WHERE enddate > ? "
+                               + "AND startdate < ?) " 
+       +"AND r.roomtype = 'familyroom' "
+       +"AND ROWNUM = 1 "
+       +"ORDER BY r.roomno";
+        PreparedStatement statement;
+        
+        try{
+            statement = con.prepareStatement(SQLString);
+            statement.setDate(1, convertDate(startDate));
+            statement.setDate(2, convertDate(endDate));
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                
+      
+                returnroom = find(rs.getLong(1), con);
+                
+ 
+            }
+            
+            }
+        catch(Exception e)
+        {
+
+            return null;
+        }
+        return returnroom;
     }
     /**
     * @Author Phill
@@ -57,8 +87,36 @@ public class RoomMapper {
     * returns an available Double room in given period.
     * can return a null
     **/
-    public Room getRandomAvailableDouble(java.util.Date startDate, java.util.Date endDate) {
-        return new Room("doubleroom", 102, 80);
+    public Room getNextAvailableDouble(java.util.Date startDate, java.util.Date endDate, Connection con) {
+        Room returnroom = null;
+        String SQLString = "SELECT r.roomno FROM room r " + "LEFT JOIN roombooking rb "
+                                                   + "ON r.roomno = rb.roomno "
+       + "WHERE r.roomno NOT IN (SELECT roomno FROM roombooking "
+                               + "WHERE enddate > ? "
+                               + "AND startdate < ?) " 
+       +"AND r.roomtype = 'doubleroom' "
+       +"AND ROWNUM = 1 "
+       +"ORDER BY r.roomno";
+        PreparedStatement statement;
+        
+        try{
+            statement = con.prepareStatement(SQLString);
+            statement.setDate(1, convertDate(startDate));
+            statement.setDate(2, convertDate(endDate));
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                
+                returnroom = find(rs.getLong(1), con);
+                
+ 
+            }
+            
+            }
+        catch(Exception e)
+        {
+            return null;
+        }
+        return returnroom;
        }
     /**
     * @Author Phill
@@ -66,8 +124,40 @@ public class RoomMapper {
     * returns an available Single room in given period.
     * can return a null
     **/
-    public Room getRandomAvailableSingle(java.util.Date startDate, java.util.Date endDate) {
-        return new Room("singleroom", 101, 60);
+    public Room getNextAvailableSingle(java.util.Date startDate, java.util.Date endDate, Connection con) {
+        
+        Room returnroom = null;
+        String SQLString = "SELECT r.roomno FROM room r " + "LEFT JOIN roombooking rb "
+                                                   + "ON r.roomno = rb.roomno "
+       + "WHERE r.roomno NOT IN (SELECT roomno FROM roombooking "
+                               + "WHERE enddate > ? "
+                               + "AND startdate < ?) " 
+       +"AND r.roomtype = 'singleroom' "
+       +"AND ROWNUM = 1 "
+       +"ORDER BY r.roomno";
+        PreparedStatement statement;
+        
+        try{
+            statement = con.prepareStatement(SQLString);
+            statement.setDate(1, convertDate(startDate));
+            statement.setDate(2, convertDate(endDate));
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                returnroom = find(rs.getLong(1), con);
+                
+ 
+            }
+            
+            }
+        catch(Exception e)
+        {
+            return null;
+        }
+        return returnroom;
     }
     
+    private java.sql.Date convertDate(java.util.Date date)
+    {
+       return new java.sql.Date(date.getTime());
+    }
 }
