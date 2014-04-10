@@ -11,7 +11,7 @@ import java.sql.*;
 
 /**
  *
- * @author Charlie
+ * @author Charles
  */
 public class RoomMapper {
     //Charles

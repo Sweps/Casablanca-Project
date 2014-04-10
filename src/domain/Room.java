@@ -8,7 +8,7 @@ package domain;
 
 /**
  *
- * @author Charles-HP
+ * @author Charles
  */
 public class Room 
 {   
