@@ -27,25 +27,33 @@ public class RoomMapperTest {
     public void setUp() {
     }
 
+    //Charles
+    //testFind tester at et objeckt bliver lavet korrert.
+    //I denne test bruger vi rum 30, som vi ved i databasen koster 60$ og er et singleroom
+    //Vi kalder metoden med id 30 og en connnection, og ser om det nu er rigtigt prisen er 60$ og rummet er et singleroom
     @Test
     public void testFind() {
-       
-        //Vi ved at rum 30 er i databasen, så vi henter det. Og demonstarter at objecet er lavet ordenligt
-        //Room 30 er et singleroom der koster 60
-        //assertture price= 0
-        //assertture.type.(singleroom)
+        //Setup
         Connection con = DBConnector.getConnection();
-        
         RoomMapper rm = new RoomMapper();
-              
+        //Kalder metoden      
         Room test1 = rm.find(30, con);
-        System.out.print(test1.getPrice());
-        
-        
+        //Her tjekker vi om test1(objecket) er en instance af klassen Room
         assertTrue(test1 instanceof Room);
+        
         int price = test1.getPrice();
+        //Vi ser om prisen rent faktisk er 60$ og ikke prisen af f.eks et doubleroom
         assertTrue(price == 60);
-//        assertTrue(price == 999);
+        assertFalse(price == 80);
+        assertFalse(price == 100);
+        //Vi tjekker om rummet er et singleroom
+        assertTrue(test1.getRoomType().equals("singleroom"));
+        assertFalse(test1.getRoomType().equals("doubleroom"));
+        assertFalse(test1.getRoomType().equals("familyroom"));
+        
+        assertTrue(test1.getRoomNo() == 30);
+        assertFalse(test1.getRoomNo() == 31);
+        
         
     }
 

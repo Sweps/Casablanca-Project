@@ -14,12 +14,14 @@ import java.sql.*;
  * @author Charlie
  */
 public class RoomMapper {
-    
+    //Charles
+    //SQLString giver os en tabel med RoomType, RoomNo og Price tilbage
+    //Fra de 2 tabeller Room, RoomType og sørger for at det rette RoomType til det givene rum passer
     public Room find(long id, Connection con)
     {
         Room room = null;
-        String SQLString = "SELECT ROOM.ROOMTYPE, ROOM.ROOMNO, ROOMTYPE.PRICE"
-                + "FROM ROOMTYPE, ROOM"
+        String SQLString = "SELECT ROOM.ROOMTYPE, ROOM.ROOMNO, ROOMTYPE.PRICE "
+                + "FROM ROOMTYPE, ROOM "
                 + "WHERE ROOMNO = ? AND ROOM.ROOMTYPE = ROOMTYPE.ROOMTYPE";
         PreparedStatement statement;
         
@@ -36,9 +38,7 @@ public class RoomMapper {
             }
         catch(Exception e)
         {
-//            room = new Room("lol",666,999);
             return null;
-//            return room;
         }
         return room;
     }
