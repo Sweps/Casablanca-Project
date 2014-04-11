@@ -73,4 +73,13 @@ public class Controller implements ControllerInterface {
         
         return cancelStatus;
     }
+
+    @Override
+    public Boolean addGuest(String firstName, String lastName, int phonenumber) {
+        DBFacade.getInstance().startNewBusinessTransaction();
+        Guest g = new Guest(firstName, lastName, phonenumber);
+        DBFacade.getInstance().registerNewItem(g);
+        
+        return DBFacade.getInstance().commitBusinessTransaction();
+    }
 }

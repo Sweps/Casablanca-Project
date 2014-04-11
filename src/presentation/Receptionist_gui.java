@@ -101,6 +101,15 @@ public class Receptionist_gui extends javax.swing.JFrame {
         JTextphoneDelete = new javax.swing.JTextField();
         ButtonDeleteBooking = new javax.swing.JButton();
         JLabelDeleteStatus = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        JTextFirstNameGuest = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        JTextLastNameGuest = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        JTextPhoneGuest = new javax.swing.JTextField();
+        jbuttonAddGuest = new javax.swing.JButton();
+        jLabelAddGuestStatus = new javax.swing.JLabel();
 
         jLabel4.setText("Email");
 
@@ -451,6 +460,69 @@ public class Receptionist_gui extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Delete Booking", jPanel2);
 
+        jLabel30.setText("First name");
+
+        jLabel31.setText("Last name");
+
+        jLabel32.setText("Phone");
+
+        jbuttonAddGuest.setText("add guest");
+        jbuttonAddGuest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbuttonAddGuestActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JTextFirstNameGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel30))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(JTextLastNameGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel31)))
+                            .addComponent(jLabel32)
+                            .addComponent(JTextPhoneGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelAddGuestStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jbuttonAddGuest)))
+                .addContainerGap(451, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JTextLastNameGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JTextFirstNameGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel30))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel32)
+                .addGap(1, 1, 1)
+                .addComponent(JTextPhoneGuest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(jbuttonAddGuest)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelAddGuestStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Add guest", jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -660,6 +732,38 @@ public class Receptionist_gui extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ButtonDeleteBookingActionPerformed
 
+    private void jbuttonAddGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonAddGuestActionPerformed
+        String fnGuest = JTextFirstNameGuest.getText().toLowerCase();
+        String lnGuest = JTextLastNameGuest.getText().toLowerCase();
+        boolean succes = false;
+        int phoneNr = 0;
+        
+        try{
+            phoneNr = Integer.parseInt(JTextPhoneGuest.getText());
+        }catch(java.lang.NullPointerException ex){
+            jLabelAddGuestStatus.setText("Missing phone number");
+        }
+        if(fnGuest.isEmpty()){
+            jLabelAddGuestStatus.setText("Missing Firstname");
+        }
+        if(lnGuest.isEmpty()){
+            jLabelAddGuestStatus.setText("Missing Lastname");
+        }
+        
+        if(!fnGuest.isEmpty() && !lnGuest.isEmpty() && phoneNr != 0 ){
+            try{
+                succes = conIf.addGuest(fnGuest, lnGuest, phoneNr);
+            }catch(Exception ex){
+                succes = false;
+            }
+        }
+        if(succes == true){
+            jLabelAddGuestStatus.setText("guest added");
+        }else{
+            jLabelAddGuestStatus.setText("guest not added");
+        }
+    }//GEN-LAST:event_jbuttonAddGuestActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BookRoomButton;
@@ -674,8 +778,10 @@ public class Receptionist_gui extends javax.swing.JFrame {
     private javax.swing.JTextField JTextEmail;
     private javax.swing.JTextField JTextFirstNameBooker;
     private javax.swing.JTextField JTextFirstNameDelete;
+    private javax.swing.JTextField JTextFirstNameGuest;
     private javax.swing.JTextField JTextLastNameBooker;
     private javax.swing.JTextField JTextLastNameDelete;
+    private javax.swing.JTextField JTextLastNameGuest;
     private javax.swing.JTextField JTextMonth;
     private javax.swing.JTextField JTextMonthDelete;
     private javax.swing.JTextField JTextNightStayingDelete;
@@ -684,6 +790,7 @@ public class Receptionist_gui extends javax.swing.JFrame {
     private javax.swing.JTextField JTextNoOfFamily;
     private javax.swing.JTextField JTextNoOfSingle;
     private javax.swing.JTextField JTextPhone;
+    private javax.swing.JTextField JTextPhoneGuest;
     private javax.swing.JTextField JTextPostalCode;
     private javax.swing.JTextField JTextSpecificRoom;
     private javax.swing.JTextField JTextTravelAgency;
@@ -714,14 +821,20 @@ public class Receptionist_gui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAddGuestStatus;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton jbuttonAddGuest;
     // End of variables declaration//GEN-END:variables
 }
