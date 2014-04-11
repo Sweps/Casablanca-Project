@@ -38,6 +38,7 @@ public class Controller implements ControllerInterface {
 //       return DBFacade.getInstance().commitBusinessTransaction();
 //    }
     
+    //Charles & Phil
     @Override
     public Boolean newRoomBooking(String firstName, String lastName, String email, int phonenumber,
             String address, String country, Date startDate, int noOfNights, String type, String travelAgency)

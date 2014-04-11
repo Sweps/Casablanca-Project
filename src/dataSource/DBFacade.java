@@ -150,11 +150,11 @@ public class DBFacade {
         switch(type)
         {
             case"singleroom":
-            {return rmap.getRandomAvailableSingle(startDate, endDate);}
+            {return rmap.getNextAvailableSingle(startDate, endDate, con);}
             case"doubleroom":
-            {return rmap.getRandomAvailableDouble(startDate, endDate);}
+            {return rmap.getNextAvailableDouble(startDate, endDate, con);}
             case"familyroom":
-            {return rmap.getRandomAvailableFamily(startDate, endDate);}
+            {return rmap.getNextAvailableFamily(startDate, endDate, con);}
             default:
             {return null;}
             

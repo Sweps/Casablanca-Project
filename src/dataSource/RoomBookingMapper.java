@@ -56,6 +56,7 @@ public class RoomBookingMapper {
         return rb;
       }
     
+    //Charles
     public boolean insertRoomBooking(ArrayList<RoomBooking> RoomBookingList, Connection conn) throws SQLException
     {
         int rowsInserted = 0;
