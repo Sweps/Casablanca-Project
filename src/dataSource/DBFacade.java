@@ -6,6 +6,7 @@
 
 package dataSource;
 
+import domain.Guest;
 import domain.Room;
 import java.sql.*;
 import java.util.ArrayList;
@@ -161,4 +162,9 @@ public class DBFacade {
 }
         
     }
+   public Guest findGuest(long id)
+   {
+       GuestMapper gm = new GuestMapper(con);
+       return gm.find(id, con);
+   }
 }
