@@ -6,6 +6,7 @@
 
 package domain;
 
+import presentation.ChooseAction;
 import presentation.Receptionist_gui;
 
 /*----------------------------------------------------------------
@@ -21,9 +22,11 @@ public class App {
      */
     public static void main(String[] args) {
         Controller c = new Controller(); 
-        Receptionist_gui frame = new Receptionist_gui(c);
-        frame.setVisible(true);
+//        Receptionist_gui frame = new Receptionist_gui(c);
+//        frame.setVisible(true);
         
+        ChooseAction frame = new ChooseAction(c);
+        frame.setVisible(true);
         
     }
 
