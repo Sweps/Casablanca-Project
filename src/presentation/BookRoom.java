@@ -130,6 +130,12 @@ public class BookRoom extends javax.swing.JFrame {
             }
         });
 
+        jCheckBoxDouble.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxDoubleActionPerformed(evt);
+            }
+        });
+
         jCheckBoxFamily.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxFamilyActionPerformed(evt);
@@ -336,11 +342,17 @@ public class BookRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_JTextNightsStayingActionPerformed
 
     private void jCheckBoxSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSingleActionPerformed
-        // TODO add your handling code here:
+        if(jCheckBoxSingle.isSelected()){
+            jCheckBoxDouble.setSelected(false);
+            jCheckBoxFamily.setSelected(false);
+        }
     }//GEN-LAST:event_jCheckBoxSingleActionPerformed
 
     private void jCheckBoxFamilyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFamilyActionPerformed
-        // TODO add your handling code here:
+        if(jCheckBoxFamily.isSelected()){
+            jCheckBoxDouble.setSelected(false);
+            jCheckBoxSingle.setSelected(false);
+        }
     }//GEN-LAST:event_jCheckBoxFamilyActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -494,6 +506,13 @@ public class BookRoom extends javax.swing.JFrame {
         
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jCheckBoxDoubleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxDoubleActionPerformed
+        if(jCheckBoxDouble.isSelected()){
+            jCheckBoxSingle.setSelected(false);
+            jCheckBoxFamily.setSelected(false);
+        }
+    }//GEN-LAST:event_jCheckBoxDoubleActionPerformed
 
     /**
      * @param args the command line arguments
