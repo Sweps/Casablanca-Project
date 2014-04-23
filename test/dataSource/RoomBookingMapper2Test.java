@@ -7,6 +7,7 @@
 package dataSource;
 
 import domain.Guest;
+import domain.Room;
 import domain.RoomBooking;
 import domain.RoomType;
 import java.sql.Connection;
@@ -33,6 +34,7 @@ public class RoomBookingMapper2Test
     GuestMapper gmap;
     ArrayList<RoomBooking> rblist;
     ArrayList<Guest> glist;
+    RoomMapper rmap;
     
     public RoomBookingMapper2Test()
       {
@@ -57,6 +59,7 @@ public class RoomBookingMapper2Test
         gmap = new GuestMapper(con);
         rblist = new ArrayList<>();
         glist = new ArrayList<>();
+        rmap = new RoomMapper();
       }
     
     @After
@@ -83,8 +86,10 @@ public class RoomBookingMapper2Test
         //save guest to db
         glist.add(guest);
         gmap.InsertGuest(glist);
+        // make make room
+        Room temproom = rmap.find(0, con);
         //make roombooking #TODO FIX ROOMTYPE,ROOM AND TRAVELAGENCYHAQS
-        RoomBooking booking = new RoomBooking(guest,new Date(),4,0,(new RoomType("singleroom",0,0)),"0");
+        RoomBooking booking = new RoomBooking(guest,new Date(),4,temproom,"0");
         booking.setId(100);
         //save roombooking
         rblist.add(booking);
@@ -164,7 +169,23 @@ public class RoomBookingMapper2Test
         fail("The test case is a prototype.");
       }
     
-    
+     @Test
+     public void testSearchPhonenumber() throws Exception
+     {
+        
+        ArrayList<RoomBooking> rbl =  rbmap.searchPhonenumber(34343434, con);
+         System.out.println(rbl.size() + " Roombookings were fetched:");
+       for (int i = 0; i < rbl.size(); i++)
+       {
+           RoomBooking rb = rbl.get(i);
+         System.out.println(rb.getGuest().getFirstname());
+         System.out.println(rb.getGuest().getLastname());
+         System.out.println(rb.getGuest().getPhonenumber());
+         System.out.println(rb.getStartdate());
+         System.out.println(rb.getVersion());
+       }
+         
+     }
     //Slettes måske senere. Overvejes
 //    @Test
 //    public void testUpdateRoomBooking() throws SQLException

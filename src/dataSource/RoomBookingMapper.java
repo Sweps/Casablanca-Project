@@ -113,45 +113,47 @@ public class RoomBookingMapper {
         return status;
     }
     
-//    //virker ikke!
-//    public RoomBooking searchPhonenumber(int phonenumber, Connection conn) throws SQLException{
-//        
-//        ArrayList<RoomBooking> searchPhonenumber = new ArrayList<RoomBooking>();
-//        
-//        Guest guest = null;
-//        Room room = null;
-//        
-//        RoomBooking rb = null;
-//        String findstring = "SELECT GUEST.FIRSTNAME, GUEST.LASTNAME, GUEST.PHONE, ROOMBOOKING.STARTDATE, ROOMBOOKING.NOOOFNIGHTS "
-//                + "FROM GUEST, ROOMBOOKING "
-//                + "WHERE GUEST.GUESTID=ROOMBOOKING.GUESTNO AND GUEST.PHONE=?";
-//        
-//        PreparedStatement statement;
-//        
-//        try{
-//        statement = conn.prepareStatement(findstring);
-//        statement.setInt(1, phonenumber);
-//        ResultSet rs = statement.executeQuery();
-//        while(rs.next()){
-//            
-//            guest = new Guest(rs.getString(1),
-//                                rs.getString(2),
-//                                rs.getInt(3));
-//
-//            
-//              rb = new RoomBooking(guest, rs.getDate(4), rs.getInt(5), room, "travel");
-//              
-//              searchPhonenumber.add(rb);
-//        }
-//        
-//        }
-//        
-//        catch(Exception e){
-//            return null;
-//        }
-//        return rb;
-//        
-//}
+    //virker ikke!
+    public ArrayList<RoomBooking> searchPhonenumber(int phonenumber, Connection conn) throws SQLException{
+        
+        ArrayList<RoomBooking> searchPhonenumber = new ArrayList<RoomBooking>();
+        
+        Guest guest = null;
+        Room room = null;
+        RoomBooking rb = null;
+        
+        
+        String findstring = "SELECT GUEST.FIRSTNAME, GUEST.LASTNAME, GUEST.PHONE, ROOMBOOKING.STARTDATE, ROOMBOOKING.NOOOFNIGHTS, ROOMBOOKING.ROOMNO "
+                + "FROM GUEST, ROOMBOOKING "
+                + "WHERE GUEST.GUESTID=ROOMBOOKING.GUESTNO AND GUEST.PHONE=?";
+        
+        PreparedStatement statement;
+        
+        try{
+        statement = conn.prepareStatement(findstring);
+        statement.setInt(1, phonenumber);
+        ResultSet rs = statement.executeQuery();
+        RoomMapper rm = new RoomMapper();
+        while(rs.next()){
+            room = rm.find(rs.getLong(6), conn);
+            guest = new Guest(rs.getString(1),
+                                rs.getString(2),
+                                rs.getInt(3));
+
+             
+              rb = new RoomBooking(guest, rs.getDate(4), rs.getInt(5), room, "0");
+              
+              searchPhonenumber.add(rb);
+        }
+        
+        }
+        
+        catch(Exception e){
+            return null;
+        }
+        return searchPhonenumber;
+        
+}
     
     
 //    public boolean updateRoombooking(ArrayList<RoomBooking> RoomBookingList, Connection conn)
