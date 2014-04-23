@@ -54,13 +54,22 @@ public class Controller implements ControllerInterface {
             
             RoomBooking burgerking = new RoomBooking(g, startDate, noOfNights, theroom, travelAgency);
             DBFacade.getInstance().registerNewItem(burgerking);
-
-            
-        
-                     
+                  
         return DBFacade.getInstance().commitBusinessTransaction();
         
     }
+    
+    @Override
+    public Boolean newTravelAngecy(String companyName, int companyPhone, String companyEmail)
+    {
+        DBFacade.getInstance().startNewBusinessTransaction();
+        TravelAngecy t = new TravelAngecy(companyName, companyPhone, companyEmail);
+        
+        DBFacade.getInstance().registerNewItem(t);
+        
+        return DBFacade.getInstance().commitBusinessTransaction();
+    }    
+    
 
     @Override
     public Boolean CancelRoomBooking(String firstName, String lastName, int phonenumber, Date startDate, int noOfNights)throws SQLException {
@@ -74,6 +83,8 @@ public class Controller implements ControllerInterface {
         
         return cancelStatus;
     }
+    
+   
 
     @Override
     public Boolean addGuest(String firstName, String lastName, int phonenumber) {
@@ -82,5 +93,18 @@ public class Controller implements ControllerInterface {
         DBFacade.getInstance().registerNewItem(g);
         
         return DBFacade.getInstance().commitBusinessTransaction();
+    }
+    
+    //Charles
+    //Tilføjer en guest med en email
+    @Override
+    public Boolean addGuestEmail(String firstName, String lastName, int phonenumber, String email){
+        DBFacade.getInstance().startNewBusinessTransaction();
+        Guest g = new Guest(firstName, lastName, phonenumber);
+        g.setEmail(email);
+        DBFacade.getInstance().registerNewItem(g);
+        
+        return DBFacade.getInstance().commitBusinessTransaction();
+        
     }
 }

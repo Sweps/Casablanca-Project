@@ -12,6 +12,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -179,14 +180,31 @@ public class AddGuest extends javax.swing.JFrame {
         if(!fnGuest.isEmpty() && !lnGuest.isEmpty() && phoneNr != 0 ){
             try{
                 System.out.println("før succes");
-                succes = conIf.addGuest(fnGuest, lnGuest, phoneNr); //emguest?
+                succes = conIf.addGuestEmail(fnGuest, lnGuest, phoneNr, emGuest); //emguest?
                 System.out.println("efter succes");
             }catch(Exception ex){
                 succes = false;
             }
         }
         if(succes == true){
-            jLabelAddGuestStatus.setText("guest added");
+            JTextFirstNameGuest.setText("");
+            JTextLastNameGuest.setText("");
+            JTextPhoneGuest.setText("");
+            JTextEmailGuest.setText("");
+            
+            int reply = JOptionPane.showConfirmDialog(
+            fr1,
+            "Would you like to add another guest?",
+            "Guest added successfully",
+            JOptionPane.YES_NO_OPTION);
+            
+            if(reply == JOptionPane.NO_OPTION){
+                fr1.setVisible(true);
+                this.setVisible(false);
+            }
+            
+            
+            
         }else{
             jLabelAddGuestStatus.setText("guest not added");
         }

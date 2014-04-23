@@ -12,13 +12,56 @@ package domain;
  */
 public class TravelAngecy 
 {
-    private int companyId, companyPhone, version;
+    private int companyPhone, version;
     private String companyName, companyEmail;
+    private long companyId;
     
-    public TravelAngecy(String companyName, int companyPhone)
+    public TravelAngecy(String companyName, int companyPhone, String companyEmail)
     {
     this.companyName = companyName;
     this.companyPhone = companyPhone;
+    this.companyEmail = companyEmail;
+    }
+
+
+    public int getCompanyPhone() {
+        return companyPhone;
+    }
+
+    public void setCompanyPhone(int companyPhone) {
+        this.companyPhone = companyPhone;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getCompanyEmail() {
+        return companyEmail;
+    }
+
+    public void setCompanyEmail(String companyEmail) {
+        this.companyEmail = companyEmail;
+    }
+
+    public long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(long companyId) {
+        this.companyId = companyId;
     }
     
 }

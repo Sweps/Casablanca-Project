@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -362,11 +363,8 @@ public class BookRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println("book start");
         
-        int singleR = 0;
-        int doubleR = 0;
-        int familyR = 0;
+        
         int nights = 0;
         int phone = 0;
         
@@ -401,7 +399,6 @@ public class BookRoom extends javax.swing.JFrame {
             JLabelStatus.setText("Missing booker country");
         }
         
-        System.out.println("date start");
         
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String datestr = (JTextDay.getText() + "/" + JTextMonth.getText() +  "/" +JTextYear.getText());
@@ -460,14 +457,11 @@ public class BookRoom extends javax.swing.JFrame {
         //EDIT BY PHILL - TEMP HAQ
         boolean bookedState = false;
         if(jCheckBoxSingle.isSelected())
-        {
-            System.out.println("single");
-            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "singleroom", tAgency);
-            System.out.println("single efter");
+        {           
+            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "singleroom", "tAgency");            
         }
         else if(jCheckBoxDouble.isSelected())
-        {
-            System.out.println("lort");
+        {            
             bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "doubleroom", "tAgency");
         }
         else if(jCheckBoxFamily.isSelected())
@@ -476,30 +470,35 @@ public class BookRoom extends javax.swing.JFrame {
         }
         // TEMP HAQ END
         
-            System.out.println("efter bookedstate");
+            
         
         if(bookedState==true){
-            JLabelStatus.setText("Succesfull booking");
             JTextFirstNameBooker.setText("");
             JTextLastNameBooker.setText("");
             JTextEmail.setText("");
             JTextAddress.setText("");
-//            JTextCity.setText("");
             JTextCountry.setText("");
             JTextDay.setText("");
             JTextMonth.setText("");
             JTextYear.setText("");
             JTextNightsStaying.setText("");
             JTextPhone.setText("");
-//            JTextPostalCode.setText("");
             JTextSpecificRoom.setText("");
-//            JTextTravelAgency.setText("");
             jCheckBoxSingle.setSelected(false);
             jCheckBoxDouble.setSelected(false);
             jCheckBoxFamily.setSelected(false);
-//            JTextNoOfDouble.setText("");
-//            JTextNoOfSingle.setText("");
-//            JTextNoOfFamily.setText("");
+            
+            int reply = JOptionPane.showConfirmDialog(
+            fr1,
+            "Would you like to add another room booking?",
+            "Room booked successfully",
+            JOptionPane.YES_NO_OPTION);
+            
+            if(reply == JOptionPane.NO_OPTION){
+                fr1.setVisible(true);
+                this.setVisible(false);
+            }
+            
         }else{
             JLabelStatus.setText("Error in booking");
         }

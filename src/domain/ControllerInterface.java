@@ -21,4 +21,9 @@ public interface ControllerInterface
     Boolean CancelRoomBooking(String firstName, String lastName, int phonenumber, Date startDate, int noOfNights)throws SQLException;
     
     Boolean addGuest(String firstName, String lastName, int phonenumber);
+    
+    Boolean addGuestEmail(String firstName, String lastName, int phonenumber, String email);
+    
+    Boolean newTravelAngecy(String CompanyName, int Companyphone, String CompanyEmail); //tester
+    
   }

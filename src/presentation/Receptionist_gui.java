@@ -119,6 +119,12 @@ public class Receptionist_gui extends javax.swing.JFrame {
 
         jLabel2.setText("Last name");
 
+        JTextEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextEmailActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Email");
 
         jLabel5.setText("Phone");
@@ -763,6 +769,10 @@ public class Receptionist_gui extends javax.swing.JFrame {
             jLabelAddGuestStatus.setText("guest not added");
         }
     }//GEN-LAST:event_jbuttonAddGuestActionPerformed
+
+    private void JTextEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextEmailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
