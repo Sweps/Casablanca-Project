@@ -157,7 +157,7 @@ public class RoomBookingMapper {
         
 }
     
-     public int[] searchForFreeRoomsAtDiffDates(java.sql.Date enddate, java.sql.Date startdate, Connection conn) throws SQLException{
+     public int[] searchForFreeRoomsAtDiffDates(java.util.Date enddate, java.util.Date startdate, Connection conn) throws SQLException{
    
         int i = 0;
         int[] roomno = null;

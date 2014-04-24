@@ -28,5 +28,5 @@ public interface ControllerInterface
     
     int GuestRoomCost(int phone);
     
-    int[] searchForFreeRoomsAtDiffDates(java.sql.Date enddate, java.sql.Date startdate) throws SQLException;
+    int[] searchForFreeRoomsAtDiffDates(Date enddate, Date startdate) throws SQLException;
   }

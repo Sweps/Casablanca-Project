@@ -173,8 +173,7 @@ public class DBFacade {
        return gm.GuestRoomCost(phone, con);
    }
    
-      public int[] searchForFreeRoomsAtDiffDates(java.sql.Date enddate,
-           java.sql.Date startdate) throws SQLException{
+      public int[] searchForFreeRoomsAtDiffDates(java.util.Date enddate, java.util.Date startdate) throws SQLException{
        RoomBookingMapper rbm = new RoomBookingMapper();
        return rbm.searchForFreeRoomsAtDiffDates(enddate, startdate, con);
    }
