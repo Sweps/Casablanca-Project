@@ -48,22 +48,27 @@ public class Controller implements ControllerInterface {
             g.setAddress(address);
             g.setEmail(email);
             g.setCountry(country);
+            
         DBFacade.getInstance().registerNewItem(g);
+        
+        TravelAgency t = new TravelAgency(lastName, noOfNights, email);
+        DBFacade.getInstance().registerNewItem(t);
             
             Room theroom = DBFacade.getInstance().getAvailableRoom(startDate, noOfNights, type);
             
-            RoomBooking burgerking = new RoomBooking(g, startDate, noOfNights, theroom, travelAgency);
+            
+            RoomBooking burgerking = new RoomBooking(g, startDate, noOfNights, theroom, t);
             DBFacade.getInstance().registerNewItem(burgerking);
-                  
         return DBFacade.getInstance().commitBusinessTransaction();
         
     }
     
+    //Charles
     @Override
-    public Boolean newTravelAngecy(String companyName, int companyPhone, String companyEmail)
+    public Boolean newTravelAgency(String companyName, int companyPhone, String companyEmail)
     {
         DBFacade.getInstance().startNewBusinessTransaction();
-        TravelAngecy t = new TravelAngecy(companyName, companyPhone, companyEmail);
+        TravelAgency t = new TravelAgency(companyName, companyPhone, companyEmail);
         
         DBFacade.getInstance().registerNewItem(t);
         

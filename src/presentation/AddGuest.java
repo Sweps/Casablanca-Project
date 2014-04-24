@@ -164,7 +164,8 @@ public class AddGuest extends javax.swing.JFrame {
         
         try{
             phoneNr = Integer.parseInt(JTextPhoneGuest.getText());
-        }catch(java.lang.NullPointerException ex){
+        }
+        catch(java.lang.NullPointerException ex){
             jLabelAddGuestStatus.setText("Missing phone number");
         }
         if(fnGuest.isEmpty()){
@@ -178,10 +179,8 @@ public class AddGuest extends javax.swing.JFrame {
         }
         
         if(!fnGuest.isEmpty() && !lnGuest.isEmpty() && phoneNr != 0 ){
-            try{
-                System.out.println("før succes");
-                succes = conIf.addGuestEmail(fnGuest, lnGuest, phoneNr, emGuest); //emguest?
-                System.out.println("efter succes");
+            try{        
+                succes = conIf.addGuestEmail(fnGuest, lnGuest, phoneNr, emGuest); //emguest?                
             }catch(Exception ex){
                 succes = false;
             }

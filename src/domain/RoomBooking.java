@@ -20,7 +20,8 @@ public class RoomBooking
     private Guest guest;
     private Date startdate;
     private Date enddate;
-    private String travelAgency;
+//    private String travelAgency;
+    private TravelAgency travelagency;
 
     
 
@@ -29,13 +30,13 @@ public class RoomBooking
     private Room room;
     private long id;
     
-    public RoomBooking(Guest guest, Date startdate, int noofnights,Room room, String travelAgency)
+    public RoomBooking(Guest guest, Date startdate, int noofnights,Room room, TravelAgency travelagency)
       {
         this.guest = guest;
         this.startdate = startdate;
         this.noofnights = noofnights;
         this.room = room;
-        this.travelAgency = travelAgency;
+        this.travelagency = travelagency;
         
         //TODO CALCULATE ENDDATE
         
@@ -87,7 +88,9 @@ public class RoomBooking
     public Date getEnddate() {
         return enddate;
     }
-    public String getTravelAgency() {
-        return travelAgency;
+
+    public TravelAgency getTravelagency() {
+        return travelagency;
     }
+    
   }

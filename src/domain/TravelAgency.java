@@ -10,13 +10,14 @@ package domain;
  *
  * @author Charles
  */
-public class TravelAngecy 
+public class TravelAgency 
 {
+    
     private int companyPhone, version;
     private String companyName, companyEmail;
     private long companyId;
     
-    public TravelAngecy(String companyName, int companyPhone, String companyEmail)
+    public TravelAgency(String companyName, int companyPhone, String companyEmail)
     {
     this.companyName = companyName;
     this.companyPhone = companyPhone;
