@@ -178,4 +178,16 @@ public class DBFacade {
        RoomBookingMapper rbm = new RoomBookingMapper();
        return rbm.searchForFreeRoomsAtDiffDates(enddate, startdate, con);
    }
+      
+          public ArrayList<Integer> getIncompatibleTennisTimes(java.util.Date time) {
+        FacilityBookingMapper fbm = new FacilityBookingMapper();
+        
+        return fbm.getIncompatibleTennisTimes(time, con);
+    }
+
+    public int bookTennis(Guest currentguest, java.util.Date date) {
+        FacilityBookingMapper fbm = new FacilityBookingMapper();
+        return fbm.bookTennis(currentguest, date, con);//To change body of generated methods, choose Tools | Templates.
+    }
+
 }
