@@ -153,7 +153,44 @@ public class RoomBookingMapper {
         }
         return searchPhonenumber;
         
+        
+        
 }
+    
+     public int[] searchForFreeRoomsAtDiffDates(java.sql.Date enddate, java.sql.Date startdate, Connection conn) throws SQLException{
+   
+        int i = 0;
+        int[] roomno = null;
+    
+        String findfreeroomsdiffdates = "SELECT roomno FROM roombooking "
+                                    + "WHERE enddate > to_date(?,'dd-mm-yyyy') "
+                                    + "AND startdate < to_date(?,'dd-mm-yyyy')";
+    
+        PreparedStatement statement;
+        
+        try
+        {
+             statement = conn.prepareStatement(findfreeroomsdiffdates);
+             statement.setDate(1, convertdate(enddate));
+             statement.setDate(2, convertdate(startdate));
+             ResultSet rs2 = statement.executeQuery();
+             
+             while (rs2.next())
+             {
+                 roomno[i] = rs2.getInt(1);
+                 System.out.println(rs2.getString(1));
+                 i++;
+                 
+             }
+                 
+             
+        }
+        
+        catch(Exception e)  
+                {
+                }
+        return roomno;
+    }
     
     
 //    public boolean updateRoombooking(ArrayList<RoomBooking> RoomBookingList, Connection conn)
