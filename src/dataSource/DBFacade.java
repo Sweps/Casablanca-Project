@@ -167,4 +167,9 @@ public class DBFacade {
        GuestMapper gm = new GuestMapper(con);
        return gm.find(id, con);
    }
+   
+   public int getGuestRoomCost(int phone)throws SQLException{
+       GuestMapper gm = new GuestMapper(con);
+       return gm.GuestRoomCost(phone, con);
+   }
 }

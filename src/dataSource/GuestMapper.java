@@ -117,6 +117,25 @@ public class GuestMapper implements GuestMapperInterface
                 
                 
     }
+    public int GuestRoomCost(int phonenumber, Connection con)throws SQLException{
+        String findCostString = "select sum(rt.price) from ROOMTYPE rt" +
+                    " left join room r on r.roomtype = rt.roomtype" +
+                    " left join roombooking rb on r.roomno = rb.roomno" +
+                    " left join guest g on g.GUESTID = rb.GUESTNO" +
+                    " where g.phone = ?";
+        PreparedStatement statement = null;
+        
+        statement = con.prepareStatement(findCostString);
+        statement.setInt(1, phonenumber);
+        
+        ResultSet rs = statement.executeQuery();
+        
+        rs.next();
+        System.out.println("" + rs.getInt(1));
+        int sum = rs.getInt(1);
+        return sum;
+    }
+    
 }
 
 

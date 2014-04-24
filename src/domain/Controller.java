@@ -107,4 +107,9 @@ public class Controller implements ControllerInterface {
         return DBFacade.getInstance().commitBusinessTransaction();
         
     }
+
+    @Override
+    public int GuestRoomCost(int phone) {
+        return DBFacade.getInstance().getGuestRoomCost(phone);
+    }
 }
