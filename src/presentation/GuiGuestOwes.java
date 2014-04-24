@@ -120,9 +120,9 @@ public class GuiGuestOwes extends javax.swing.JFrame {
            OwesStatus.setText("Error in phone number");
        }
        if(phone!=0){
-           System.out.println("går igang");
-           int roomCost = conIf.GuestRoomCost(phone);
+           try{
            GuestOwes.setText("" + conIf.GuestRoomCost(phone));
+           }catch(Exception ex){}
        }else{
            OwesStatus.setText("Error in phone number");
        }

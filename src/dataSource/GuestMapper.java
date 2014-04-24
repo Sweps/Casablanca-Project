@@ -131,7 +131,6 @@ public class GuestMapper implements GuestMapperInterface
         ResultSet rs = statement.executeQuery();
         
         rs.next();
-        System.out.println("" + rs.getInt(1));
         int sum = rs.getInt(1);
         return sum;
     }
