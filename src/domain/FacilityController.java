@@ -5,6 +5,9 @@
 package domain;
 
 import dataSource.DBFacade;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -37,6 +40,26 @@ public class FacilityController implements FacilityControllerIF{
     {
         //persistance stuff
         this.currentguest = null;
+    }
+    
+    @Override
+    public ArrayList<Date> getIncompatibleTennisTimes(Calendar cal)
+    {
+        Calendar cal2 = Calendar.getInstance();
+        cal2.set(1989, 03, 06, 19, 49);
+        Date testdate = cal2.getTime();
+        
+        ArrayList<Date> ragglefraggle = new ArrayList<>();
+        
+        ragglefraggle.add(testdate);
+        
+        return ragglefraggle;
+    }
+    
+    @Override
+    public int bookTennis(Date date)
+    {
+        return 2;
     }
     
 }

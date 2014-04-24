@@ -5,6 +5,12 @@
 package presentation;
 
 import domain.FacilityControllerIF;
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,6 +20,9 @@ import javax.swing.JOptionPane;
 public class FacilityGui extends javax.swing.JFrame {
 
     FacilityControllerIF control;
+    String day1,day2,day3,day4,day5,day6,day7;
+    String[] days;
+    Calendar pickeddate;
     /**
      * Creates new form FacilityGui
      */
@@ -22,6 +31,114 @@ public class FacilityGui extends javax.swing.JFrame {
         control = c;
         jPanelSplashKeypad.setVisible(true);
         jPanelSplashWelcome.setVisible(false);
+        jLayeredPaneTennis.setVisible(false);
+        jLayeredPaneTimePicker.setVisible(false);
+        
+        //calc dates
+        days = new String[7];
+        Calendar cal = Calendar.getInstance();
+        Locale locale = Locale.ENGLISH;
+        for (int i = 0; i<7 ; i++)
+        { 
+            days[i] = cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, locale);
+            cal.add(Calendar.DAY_OF_WEEK, 1);
+        }
+
+        jButtonTennisDatePickerDay3.setText(days[2]);
+        jButtonTennisDatePickerDay4.setText(days[3]);
+        jButtonTennisDatePickerDay5.setText(days[4]);
+        jButtonTennisDatePickerDay6.setText(days[5]);
+        jButtonTennisDatePickerDay7.setText(days[6]);
+        //calc dates
+
+        
+    }
+    private void bookTennis(int hour)
+    {
+        SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-YYYY HH:MM");
+        SimpleDateFormat sdfTime = new SimpleDateFormat("HH");
+        pickeddate.set(Calendar.HOUR_OF_DAY, hour);
+        Date thedate = pickeddate.getTime();
+        int success = control.bookTennis(thedate);
+        if (success != 0)
+         {
+             JOptionPane.showMessageDialog(this,
+             "You have booked Tennis court number " + success + " on\n"
+                     + sdfDate.format(thedate) + " \n"
+                     + "From " + hour + " To "+ (hour+1));
+             control.logout();
+             cleanTimePicker();
+             pickeddate = null;
+             jLayeredPaneTimePicker.setVisible(false);
+             jLayeredPaneSplash.setVisible(true);
+             jPanelSplashWelcome.setVisible(false);
+             jPanelSplashKeypad.setVisible(true);
+             jTextFieldSplashKeypadGuestID.setText("");
+         }
+        else
+         {
+             
+         }
+        
+    }
+    private void displayTennisTimes(int additionnalday)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_MONTH, additionnalday);
+        pickeddate = cal;
+        ArrayList<Date> indates = control.getIncompatibleTennisTimes(cal);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH");
+        
+        
+        if (indates != null)
+        {
+            for (int i = 0; i<indates.size(); i++)
+            {
+                switch(sdf.format(indates.get(i).getTime()))
+                {
+                   case "08": jButtonTimePickerHour8.setEnabled(false);
+                              break;
+                   case "09": jButtonTimePickerHour9.setEnabled(false);
+                              break;
+                   case "10": jButtonTimePickerHour10.setEnabled(false);
+                              break;
+                   case "11": jButtonTimePickerHour11.setEnabled(false);
+                              break;
+                   case "12": jButtonTimePickerHour12.setEnabled(false);
+                              break;
+                   case "13": jButtonTimePickerHour13.setEnabled(false);
+                              break;
+                   case "14": jButtonTimePickerHour14.setEnabled(false);
+                              break;
+                   case "15": jButtonTimePickerHour15.setEnabled(false);
+                              break;
+                   case "16": jButtonTimePickerHour16.setEnabled(false);
+                              break;
+                   case "17": jButtonTimePickerHour17.setEnabled(false);
+                              break;
+                   case "18": jButtonTimePickerHour18.setEnabled(false);
+                              break;
+                   case "19": jButtonTimePickerHour19.setEnabled(false);
+                              break;
+                }
+            }
+        }
+    }
+    
+    private void cleanTimePicker()
+    {
+        jButtonTimePickerHour8.setEnabled(true);
+        jButtonTimePickerHour9.setEnabled(true);
+        jButtonTimePickerHour10.setEnabled(true);
+        jButtonTimePickerHour11.setEnabled(true);
+        jButtonTimePickerHour12.setEnabled(true);
+        jButtonTimePickerHour13.setEnabled(true);
+        jButtonTimePickerHour14.setEnabled(true);
+        jButtonTimePickerHour15.setEnabled(true);
+        jButtonTimePickerHour16.setEnabled(true);
+        jButtonTimePickerHour17.setEnabled(true);
+        jButtonTimePickerHour18.setEnabled(true);
+        jButtonTimePickerHour19.setEnabled(true);
     }
    
     /**
@@ -65,6 +182,30 @@ public class FacilityGui extends javax.swing.JFrame {
         jButtonSplashWelcomeTableTennis = new javax.swing.JButton();
         jLabelSplashWelcomeWhat = new javax.swing.JLabel();
         jLayeredPaneTennis = new javax.swing.JLayeredPane();
+        jPanelTennisDatePicker = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonTennisDatePickerDay1 = new javax.swing.JButton();
+        jButtonTennisDatePickerDay2 = new javax.swing.JButton();
+        jButtonTennisDatePickerDay3 = new javax.swing.JButton();
+        jButtonTennisDatePickerDay4 = new javax.swing.JButton();
+        jButtonTennisDatePickerDay5 = new javax.swing.JButton();
+        jButtonTennisDatePickerDay6 = new javax.swing.JButton();
+        jButtonTennisDatePickerDay7 = new javax.swing.JButton();
+        jLayeredPaneTimePicker = new javax.swing.JLayeredPane();
+        jLabelTimePickerHeader = new javax.swing.JLabel();
+        jButtonTimePickerHour8 = new javax.swing.JButton();
+        jButtonTimePickerHour9 = new javax.swing.JButton();
+        jButtonTimePickerHour10 = new javax.swing.JButton();
+        jButtonTimePickerHour11 = new javax.swing.JButton();
+        jButtonTimePickerHour12 = new javax.swing.JButton();
+        jButtonTimePickerHour13 = new javax.swing.JButton();
+        jButtonTimePickerHour14 = new javax.swing.JButton();
+        jButtonTimePickerHour15 = new javax.swing.JButton();
+        jButtonTimePickerHour16 = new javax.swing.JButton();
+        jButtonTimePickerHour17 = new javax.swing.JButton();
+        jButtonTimePickerHour18 = new javax.swing.JButton();
+        jButtonTimePickerHour19 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanelSplashLayout = new javax.swing.GroupLayout(jPanelSplash);
         jPanelSplash.setLayout(jPanelSplashLayout);
@@ -78,7 +219,6 @@ public class FacilityGui extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
 
         jPanelSplashKeypad.setPreferredSize(new java.awt.Dimension(515, 100));
 
@@ -193,7 +333,7 @@ public class FacilityGui extends javax.swing.JFrame {
         jPanelSplashKeypadLayout.setHorizontalGroup(
             jPanelSplashKeypadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelSplashKeypadLayout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addGap(117, 117, 117)
                 .addGroup(jPanelSplashKeypadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanelSplashKeypadLayout.createSequentialGroup()
                         .addComponent(jButtonSplashKeypad7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -379,6 +519,243 @@ public class FacilityGui extends javax.swing.JFrame {
         jPanelSplashWelcome.setBounds(150, 50, 510, 490);
         jLayeredPaneSplash.add(jPanelSplashWelcome, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("When do you want to book a tennis court?");
+
+        jButtonTennisDatePickerDay1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonTennisDatePickerDay1.setText("Today");
+        jButtonTennisDatePickerDay1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTennisDatePickerDay1ActionPerformed(evt);
+            }
+        });
+
+        jButtonTennisDatePickerDay2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonTennisDatePickerDay2.setText("Tomorow");
+        jButtonTennisDatePickerDay2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTennisDatePickerDay2ActionPerformed(evt);
+            }
+        });
+
+        jButtonTennisDatePickerDay3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonTennisDatePickerDay3.setText("jButton1");
+        jButtonTennisDatePickerDay3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTennisDatePickerDay3ActionPerformed(evt);
+            }
+        });
+
+        jButtonTennisDatePickerDay4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonTennisDatePickerDay4.setText("jButton1");
+        jButtonTennisDatePickerDay4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTennisDatePickerDay4ActionPerformed(evt);
+            }
+        });
+
+        jButtonTennisDatePickerDay5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonTennisDatePickerDay5.setText("jButton1");
+        jButtonTennisDatePickerDay5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTennisDatePickerDay5ActionPerformed(evt);
+            }
+        });
+
+        jButtonTennisDatePickerDay6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonTennisDatePickerDay6.setText("jButton1");
+        jButtonTennisDatePickerDay6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTennisDatePickerDay6ActionPerformed(evt);
+            }
+        });
+
+        jButtonTennisDatePickerDay7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonTennisDatePickerDay7.setText("jButton1");
+        jButtonTennisDatePickerDay7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTennisDatePickerDay7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelTennisDatePickerLayout = new javax.swing.GroupLayout(jPanelTennisDatePicker);
+        jPanelTennisDatePicker.setLayout(jPanelTennisDatePickerLayout);
+        jPanelTennisDatePickerLayout.setHorizontalGroup(
+            jPanelTennisDatePickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTennisDatePickerLayout.createSequentialGroup()
+                .addGroup(jPanelTennisDatePickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelTennisDatePickerLayout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(jButtonTennisDatePickerDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonTennisDatePickerDay2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonTennisDatePickerDay3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonTennisDatePickerDay4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelTennisDatePickerLayout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelTennisDatePickerLayout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addComponent(jButtonTennisDatePickerDay5, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonTennisDatePickerDay6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(jButtonTennisDatePickerDay7, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(114, Short.MAX_VALUE))
+        );
+        jPanelTennisDatePickerLayout.setVerticalGroup(
+            jPanelTennisDatePickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTennisDatePickerLayout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(118, 118, 118)
+                .addGroup(jPanelTennisDatePickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonTennisDatePickerDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonTennisDatePickerDay2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonTennisDatePickerDay3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonTennisDatePickerDay4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelTennisDatePickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonTennisDatePickerDay7, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonTennisDatePickerDay6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonTennisDatePickerDay5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(232, 232, 232))
+        );
+
+        jPanelTennisDatePicker.setBounds(0, 0, 780, 580);
+        jLayeredPaneTennis.add(jPanelTennisDatePicker, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabelTimePickerHeader.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabelTimePickerHeader.setText("Pick a time to book");
+        jLabelTimePickerHeader.setBounds(310, 40, 250, 50);
+        jLayeredPaneTimePicker.add(jLabelTimePickerHeader, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButtonTimePickerHour8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonTimePickerHour8.setText("8:00 -> 9:00");
+        jButtonTimePickerHour8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimePickerHour8ActionPerformed(evt);
+            }
+        });
+        jButtonTimePickerHour8.setBounds(130, 160, 130, 60);
+        jLayeredPaneTimePicker.add(jButtonTimePickerHour8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButtonTimePickerHour9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonTimePickerHour9.setText("9:00 -> 10:00");
+        jButtonTimePickerHour9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimePickerHour9ActionPerformed(evt);
+            }
+        });
+        jButtonTimePickerHour9.setBounds(280, 160, 130, 60);
+        jLayeredPaneTimePicker.add(jButtonTimePickerHour9, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButtonTimePickerHour10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonTimePickerHour10.setText("10:00 -> 11:00");
+        jButtonTimePickerHour10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimePickerHour10ActionPerformed(evt);
+            }
+        });
+        jButtonTimePickerHour10.setBounds(430, 160, 130, 60);
+        jLayeredPaneTimePicker.add(jButtonTimePickerHour10, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButtonTimePickerHour11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonTimePickerHour11.setText("11:00 -> 12:00");
+        jButtonTimePickerHour11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimePickerHour11ActionPerformed(evt);
+            }
+        });
+        jButtonTimePickerHour11.setBounds(580, 160, 130, 60);
+        jLayeredPaneTimePicker.add(jButtonTimePickerHour11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButtonTimePickerHour12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonTimePickerHour12.setText("12:00 -> 13:00");
+        jButtonTimePickerHour12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimePickerHour12ActionPerformed(evt);
+            }
+        });
+        jButtonTimePickerHour12.setBounds(130, 240, 130, 60);
+        jLayeredPaneTimePicker.add(jButtonTimePickerHour12, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButtonTimePickerHour13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonTimePickerHour13.setText("13:00 -> 14:00");
+        jButtonTimePickerHour13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimePickerHour13ActionPerformed(evt);
+            }
+        });
+        jButtonTimePickerHour13.setBounds(280, 240, 130, 60);
+        jLayeredPaneTimePicker.add(jButtonTimePickerHour13, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButtonTimePickerHour14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonTimePickerHour14.setText("14:00 -> 15:00");
+        jButtonTimePickerHour14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimePickerHour14ActionPerformed(evt);
+            }
+        });
+        jButtonTimePickerHour14.setBounds(430, 240, 130, 60);
+        jLayeredPaneTimePicker.add(jButtonTimePickerHour14, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButtonTimePickerHour15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonTimePickerHour15.setText("15:00 -> 16:00");
+        jButtonTimePickerHour15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimePickerHour15ActionPerformed(evt);
+            }
+        });
+        jButtonTimePickerHour15.setBounds(580, 240, 130, 60);
+        jLayeredPaneTimePicker.add(jButtonTimePickerHour15, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButtonTimePickerHour16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonTimePickerHour16.setText("16:00 -> 17:00");
+        jButtonTimePickerHour16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimePickerHour16ActionPerformed(evt);
+            }
+        });
+        jButtonTimePickerHour16.setBounds(130, 320, 130, 60);
+        jLayeredPaneTimePicker.add(jButtonTimePickerHour16, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButtonTimePickerHour17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonTimePickerHour17.setText("17:00 -> 18:00");
+        jButtonTimePickerHour17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimePickerHour17ActionPerformed(evt);
+            }
+        });
+        jButtonTimePickerHour17.setBounds(280, 320, 130, 60);
+        jLayeredPaneTimePicker.add(jButtonTimePickerHour17, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButtonTimePickerHour18.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonTimePickerHour18.setText("18:00 -> 19:00");
+        jButtonTimePickerHour18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimePickerHour18ActionPerformed(evt);
+            }
+        });
+        jButtonTimePickerHour18.setBounds(430, 320, 130, 60);
+        jLayeredPaneTimePicker.add(jButtonTimePickerHour18, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jButtonTimePickerHour19.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonTimePickerHour19.setText("19:00 -> 20:00");
+        jButtonTimePickerHour19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTimePickerHour19ActionPerformed(evt);
+            }
+        });
+        jButtonTimePickerHour19.setBounds(580, 320, 130, 60);
+        jLayeredPaneTimePicker.add(jButtonTimePickerHour19, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel2.setText("Greyed out times are fully booked");
+        jLabel2.setBounds(350, 110, 190, 14);
+        jLayeredPaneTimePicker.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -389,6 +766,11 @@ public class FacilityGui extends javax.swing.JFrame {
                     .addContainerGap()
                     .addComponent(jLayeredPaneTennis, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
                     .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLayeredPaneTimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,6 +780,11 @@ public class FacilityGui extends javax.swing.JFrame {
                     .addGap(10, 10, 10)
                     .addComponent(jLayeredPaneTennis, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
                     .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLayeredPaneTimePicker, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -408,7 +795,8 @@ public class FacilityGui extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSplashKeypadGuestIDActionPerformed
 
     private void jButtonSplashWelcomeTennisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSplashWelcomeTennisActionPerformed
-        // TODO add your handling code here:
+        jLayeredPaneSplash.setVisible(false);
+        jLayeredPaneTennis.setVisible(true);
     }//GEN-LAST:event_jButtonSplashWelcomeTennisActionPerformed
 
     private void jButtonSplashKeypad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSplashKeypad1ActionPerformed
@@ -494,6 +882,96 @@ public class FacilityGui extends javax.swing.JFrame {
         control.logout();
     }//GEN-LAST:event_jButtonSplashWelcomeNotYouActionPerformed
 
+    private void jButtonTennisDatePickerDay3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTennisDatePickerDay3ActionPerformed
+        jLayeredPaneTennis.setVisible(false);
+        displayTennisTimes(2);
+        jLayeredPaneTimePicker.setVisible(true);
+    }//GEN-LAST:event_jButtonTennisDatePickerDay3ActionPerformed
+
+    private void jButtonTimePickerHour10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimePickerHour10ActionPerformed
+       bookTennis(10);
+    }//GEN-LAST:event_jButtonTimePickerHour10ActionPerformed
+
+    private void jButtonTennisDatePickerDay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTennisDatePickerDay1ActionPerformed
+        jLayeredPaneTennis.setVisible(false);
+        displayTennisTimes(0);
+        jLayeredPaneTimePicker.setVisible(true);
+    }//GEN-LAST:event_jButtonTennisDatePickerDay1ActionPerformed
+
+    private void jButtonTennisDatePickerDay2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTennisDatePickerDay2ActionPerformed
+               jLayeredPaneTennis.setVisible(false);
+        displayTennisTimes(1);
+        jLayeredPaneTimePicker.setVisible(true);
+    }//GEN-LAST:event_jButtonTennisDatePickerDay2ActionPerformed
+
+    private void jButtonTennisDatePickerDay4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTennisDatePickerDay4ActionPerformed
+              jLayeredPaneTennis.setVisible(false);
+        displayTennisTimes(3);
+        jLayeredPaneTimePicker.setVisible(true);
+    }//GEN-LAST:event_jButtonTennisDatePickerDay4ActionPerformed
+
+    private void jButtonTennisDatePickerDay5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTennisDatePickerDay5ActionPerformed
+              jLayeredPaneTennis.setVisible(false);
+        displayTennisTimes(4);
+        jLayeredPaneTimePicker.setVisible(true);
+    }//GEN-LAST:event_jButtonTennisDatePickerDay5ActionPerformed
+
+    private void jButtonTennisDatePickerDay6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTennisDatePickerDay6ActionPerformed
+               jLayeredPaneTennis.setVisible(false);
+        displayTennisTimes(5);
+        jLayeredPaneTimePicker.setVisible(true);
+    }//GEN-LAST:event_jButtonTennisDatePickerDay6ActionPerformed
+
+    private void jButtonTennisDatePickerDay7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTennisDatePickerDay7ActionPerformed
+               jLayeredPaneTennis.setVisible(false);
+        displayTennisTimes(6);
+        jLayeredPaneTimePicker.setVisible(true);
+    }//GEN-LAST:event_jButtonTennisDatePickerDay7ActionPerformed
+
+    private void jButtonTimePickerHour8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimePickerHour8ActionPerformed
+        bookTennis(8);
+    }//GEN-LAST:event_jButtonTimePickerHour8ActionPerformed
+
+    private void jButtonTimePickerHour9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimePickerHour9ActionPerformed
+         bookTennis(9);
+    }//GEN-LAST:event_jButtonTimePickerHour9ActionPerformed
+
+    private void jButtonTimePickerHour11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimePickerHour11ActionPerformed
+         bookTennis(11);
+    }//GEN-LAST:event_jButtonTimePickerHour11ActionPerformed
+
+    private void jButtonTimePickerHour12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimePickerHour12ActionPerformed
+        bookTennis(12);
+    }//GEN-LAST:event_jButtonTimePickerHour12ActionPerformed
+
+    private void jButtonTimePickerHour13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimePickerHour13ActionPerformed
+         bookTennis(13);
+    }//GEN-LAST:event_jButtonTimePickerHour13ActionPerformed
+
+    private void jButtonTimePickerHour14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimePickerHour14ActionPerformed
+         bookTennis(14);
+    }//GEN-LAST:event_jButtonTimePickerHour14ActionPerformed
+
+    private void jButtonTimePickerHour15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimePickerHour15ActionPerformed
+        bookTennis(15);
+    }//GEN-LAST:event_jButtonTimePickerHour15ActionPerformed
+
+    private void jButtonTimePickerHour16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimePickerHour16ActionPerformed
+       bookTennis(16);
+    }//GEN-LAST:event_jButtonTimePickerHour16ActionPerformed
+
+    private void jButtonTimePickerHour17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimePickerHour17ActionPerformed
+       bookTennis(17);
+    }//GEN-LAST:event_jButtonTimePickerHour17ActionPerformed
+
+    private void jButtonTimePickerHour18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimePickerHour18ActionPerformed
+        bookTennis(18);
+    }//GEN-LAST:event_jButtonTimePickerHour18ActionPerformed
+
+    private void jButtonTimePickerHour19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTimePickerHour19ActionPerformed
+        bookTennis(19);
+    }//GEN-LAST:event_jButtonTimePickerHour19ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -521,15 +999,39 @@ public class FacilityGui extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSplashWelcomeTableTennis;
     private javax.swing.JButton jButtonSplashWelcomeTennis;
     private javax.swing.JButton jButtonSplashWelcomeVolleyball;
+    private javax.swing.JButton jButtonTennisDatePickerDay1;
+    private javax.swing.JButton jButtonTennisDatePickerDay2;
+    private javax.swing.JButton jButtonTennisDatePickerDay3;
+    private javax.swing.JButton jButtonTennisDatePickerDay4;
+    private javax.swing.JButton jButtonTennisDatePickerDay5;
+    private javax.swing.JButton jButtonTennisDatePickerDay6;
+    private javax.swing.JButton jButtonTennisDatePickerDay7;
+    private javax.swing.JButton jButtonTimePickerHour10;
+    private javax.swing.JButton jButtonTimePickerHour11;
+    private javax.swing.JButton jButtonTimePickerHour12;
+    private javax.swing.JButton jButtonTimePickerHour13;
+    private javax.swing.JButton jButtonTimePickerHour14;
+    private javax.swing.JButton jButtonTimePickerHour15;
+    private javax.swing.JButton jButtonTimePickerHour16;
+    private javax.swing.JButton jButtonTimePickerHour17;
+    private javax.swing.JButton jButtonTimePickerHour18;
+    private javax.swing.JButton jButtonTimePickerHour19;
+    private javax.swing.JButton jButtonTimePickerHour8;
+    private javax.swing.JButton jButtonTimePickerHour9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelSplashKeypad;
     private javax.swing.JLabel jLabelSplashWelcomeName;
     private javax.swing.JLabel jLabelSplashWelcomeWelcome;
     private javax.swing.JLabel jLabelSplashWelcomeWhat;
+    private javax.swing.JLabel jLabelTimePickerHeader;
     private javax.swing.JLayeredPane jLayeredPaneSplash;
     private javax.swing.JLayeredPane jLayeredPaneTennis;
+    private javax.swing.JLayeredPane jLayeredPaneTimePicker;
     private javax.swing.JPanel jPanelSplash;
     private javax.swing.JPanel jPanelSplashKeypad;
     private javax.swing.JPanel jPanelSplashWelcome;
+    private javax.swing.JPanel jPanelTennisDatePicker;
     private javax.swing.JTextField jTextFieldSplashKeypadGuestID;
     // End of variables declaration//GEN-END:variables
 }
