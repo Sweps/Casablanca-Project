@@ -109,7 +109,7 @@ public class Controller implements ControllerInterface {
     }
 
     @Override
-    public int GuestRoomCost(int phone) {
+    public int GuestRoomCost(int phone)throws SQLException {
         return DBFacade.getInstance().getGuestRoomCost(phone);
     }
     
