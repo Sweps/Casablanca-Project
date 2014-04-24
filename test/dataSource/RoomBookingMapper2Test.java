@@ -173,7 +173,7 @@ public class RoomBookingMapper2Test
      public void testSearchPhonenumber() throws Exception
      {
         
-        ArrayList<RoomBooking> rbl =  rbmap.searchPhonenumber(34343434, con);
+        ArrayList<RoomBooking> rbl =  rbmap.searchPhonenumber(0, con);
          System.out.println(rbl.size() + " Roombookings were fetched:");
        for (int i = 0; i < rbl.size(); i++)
        {

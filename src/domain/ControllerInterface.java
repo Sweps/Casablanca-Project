@@ -26,4 +26,7 @@ public interface ControllerInterface
     
     Boolean newTravelAngecy(String CompanyName, int Companyphone, String CompanyEmail); //tester
     
+    int GuestRoomCost(int phone)throws SQLException;
+    
+    int[] searchForFreeRoomsAtDiffDates(Date enddate, Date startdate) throws SQLException;
   }

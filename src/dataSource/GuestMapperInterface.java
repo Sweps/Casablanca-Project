@@ -15,5 +15,11 @@ import java.util.ArrayList;
  */
 public interface GuestMapperInterface
 {
+    Guest find(long id, Connection con);
+    
     boolean InsertGuest(ArrayList<Guest> GuestList) throws SQLException;
+    
+    boolean updateGuest(ArrayList<Guest> GuestList, Connection con) throws SQLException;
+    
+    int GuestRoomCost(int phonenumber, Connection con)throws SQLException;
 }

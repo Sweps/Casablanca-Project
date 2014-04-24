@@ -168,14 +168,14 @@ public class DBFacade {
        return gm.find(id, con);
    }
 
-    public ArrayList<Integer> getIncompatibleTennisTimes(java.util.Date time) {
-        FacilityBookingMapper fbm = new FacilityBookingMapper();
-        
-        return fbm.getIncompatibleTennisTimes(time, con);
-    }
-
-    public int bookTennis(Guest currentguest, java.util.Date date) {
-        FacilityBookingMapper fbm = new FacilityBookingMapper();
-        return fbm.bookTennis(currentguest, date, con);//To change body of generated methods, choose Tools | Templates.
-    }
+   
+   public int getGuestRoomCost(int phone)throws SQLException{
+       GuestMapper gm = new GuestMapper(con);
+       return gm.GuestRoomCost(phone, con);
+   }
+   
+      public int[] searchForFreeRoomsAtDiffDates(java.util.Date enddate, java.util.Date startdate) throws SQLException{
+       RoomBookingMapper rbm = new RoomBookingMapper();
+       return rbm.searchForFreeRoomsAtDiffDates(enddate, startdate, con);
+   }
 }

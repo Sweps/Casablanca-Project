@@ -107,4 +107,15 @@ public class Controller implements ControllerInterface {
         return DBFacade.getInstance().commitBusinessTransaction();
         
     }
+
+    @Override
+    public int GuestRoomCost(int phone)throws SQLException {
+        return DBFacade.getInstance().getGuestRoomCost(phone);
+    }
+    
+    @Override
+    public int[] searchForFreeRoomsAtDiffDates(java.util.Date enddate, java.util.Date startdate) throws SQLException
+    {
+        return DBFacade.getInstance().searchForFreeRoomsAtDiffDates(enddate, startdate);
+    }
 }
