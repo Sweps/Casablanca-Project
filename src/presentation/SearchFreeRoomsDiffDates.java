@@ -51,9 +51,17 @@ public class SearchFreeRoomsDiffDates extends javax.swing.JFrame
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
-        jBCheck = new javax.swing.JButton();
-        jTFStartDate = new javax.swing.JTextField();
-        jTFEndDate = new javax.swing.JTextField();
+        jtfStDay = new javax.swing.JTextField();
+        jtfEnDay = new javax.swing.JTextField();
+        jtfStmonth = new javax.swing.JTextField();
+        jtfStYear = new javax.swing.JTextField();
+        jtfEnMonth = new javax.swing.JTextField();
+        jtfEnYear = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,30 +73,64 @@ public class SearchFreeRoomsDiffDates extends javax.swing.JFrame
         });
         jScrollPane1.setViewportView(jList1);
 
-        jBCheck.setText("Check");
-        jBCheck.addActionListener(new java.awt.event.ActionListener()
+        jtfStDay.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jBCheckActionPerformed(evt);
+                jtfStDayActionPerformed(evt);
             }
         });
 
-        jTFStartDate.setText("jTextField1");
-        jTFStartDate.addActionListener(new java.awt.event.ActionListener()
+        jtfEnDay.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jTFStartDateActionPerformed(evt);
+                jtfEnDayActionPerformed(evt);
             }
         });
 
-        jTFEndDate.setText("jTextField2");
-        jTFEndDate.addActionListener(new java.awt.event.ActionListener()
+        jtfStmonth.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jTFEndDateActionPerformed(evt);
+                jtfStmonthActionPerformed(evt);
+            }
+        });
+
+        jtfStYear.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jtfStYearActionPerformed(evt);
+            }
+        });
+
+        jtfEnMonth.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jtfEnMonthActionPerformed(evt);
+            }
+        });
+
+        jtfEnYear.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jtfEnYearActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("StartPeriod");
+
+        jLabel2.setText("EndPeriod");
+
+        jButton1.setText("Check");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -100,25 +142,58 @@ public class SearchFreeRoomsDiffDates extends javax.swing.JFrame
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTFEndDate, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jBCheck))
-                    .addComponent(jTFStartDate))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jtfStDay, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jtfStmonth, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jtfStYear, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jtfEnDay, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jtfEnMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jtfEnYear, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2)))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(37, 37, 37))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTFStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtfStDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfStmonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfStYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBCheck))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jtfEnDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfEnMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfEnYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
@@ -143,61 +218,92 @@ public class SearchFreeRoomsDiffDates extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBCheckActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jBCheckActionPerformed
-    {//GEN-HEADEREND:event_jBCheckActionPerformed
+    private void jtfStDayActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jtfStDayActionPerformed
+    {//GEN-HEADEREND:event_jtfStDayActionPerformed
+        jtfStDay.setText("Indtast Start dato");
+    }//GEN-LAST:event_jtfStDayActionPerformed
+
+    private void jtfEnDayActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jtfEnDayActionPerformed
+    {//GEN-HEADEREND:event_jtfEnDayActionPerformed
+        jtfEnDay.setText("Indtast slut dato");
+    }//GEN-LAST:event_jtfEnDayActionPerformed
+
+    private void jtfStmonthActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jtfStmonthActionPerformed
+    {//GEN-HEADEREND:event_jtfStmonthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfStmonthActionPerformed
+
+    private void jtfStYearActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jtfStYearActionPerformed
+    {//GEN-HEADEREND:event_jtfStYearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfStYearActionPerformed
+
+    private void jtfEnMonthActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jtfEnMonthActionPerformed
+    {//GEN-HEADEREND:event_jtfEnMonthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfEnMonthActionPerformed
+
+    private void jtfEnYearActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jtfEnYearActionPerformed
+    {//GEN-HEADEREND:event_jtfEnYearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfEnYearActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        System.out.println("inden første dato insættelse");
         Date enddate = null;
         Date startdate = null; 
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        String dateSta = (jTFStartDate.getText());
+        String datestart = (jtfStDay.getText() + "/" + jtfStmonth.getText() +  "/" +jtfStYear.getText());
         try { 
-            startdate = formatter.parse(dateSta); }
+            startdate = formatter.parse(datestart); }
         catch (ParseException e) {
-            jTFStartDate.setText("Error in Start date");
+            jLabel3.setText("Error in startdate");
         }
+        System.out.println("første date");
         SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
-        String dateEnd = (jTFEndDate.getText());
+        String dateEnd = (jtfEnDay.getText() + "/" + jtfEnMonth.getText() +  "/" +jtfEnYear.getText());
         try { 
             enddate = formatter2.parse(dateEnd); }
         catch (ParseException e) {
-            jTFEndDate.setText("Error in End date");
+            jLabel4.setText("Error in End date");
         }
+        System.out.println("har sat dato'er op");
         
                 try
             {
+                System.out.println("first try - gui");
                 int[] searchresults = conIf.searchForFreeRoomsAtDiffDates(startdate, enddate);
                 for (int i=0;i<searchresults.length;i++){
-                    model1.addElement(conIf.searchForFreeRoomsAtDiffDates(enddate, startdate));
+                    model1.addElement(searchresults[i]);
                 }
             } 
                catch (SQLException ex)
             {
-                jTFStartDate.setText("Error in Start date");
-                jTFEndDate.setText("Error in End date");
+                jtfStDay.setText("Error in Start date");
+                jtfEnDay.setText("Error in End date");
             }
             
-        
-    }//GEN-LAST:event_jBCheckActionPerformed
-
-    private void jTFStartDateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTFStartDateActionPerformed
-    {//GEN-HEADEREND:event_jTFStartDateActionPerformed
-        jTFStartDate.setText("Indtast Start dato");
-    }//GEN-LAST:event_jTFStartDateActionPerformed
-
-    private void jTFEndDateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jTFEndDateActionPerformed
-    {//GEN-HEADEREND:event_jTFEndDateActionPerformed
-        jTFEndDate.setText("Indtast slut dato");
-    }//GEN-LAST:event_jTFEndDateActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBCheck;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTFEndDate;
-    private javax.swing.JTextField jTFStartDate;
+    private javax.swing.JTextField jtfEnDay;
+    private javax.swing.JTextField jtfEnMonth;
+    private javax.swing.JTextField jtfEnYear;
+    private javax.swing.JTextField jtfStDay;
+    private javax.swing.JTextField jtfStYear;
+    private javax.swing.JTextField jtfStmonth;
     // End of variables declaration//GEN-END:variables
 }

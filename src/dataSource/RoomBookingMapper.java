@@ -167,7 +167,7 @@ public class RoomBookingMapper {
                                     + "AND startdate < to_date(?,'dd-mm-yyyy')";
     
         PreparedStatement statement;
-        
+         System.out.println("before try");
         try
         {
              statement = conn.prepareStatement(findfreeroomsdiffdates);
