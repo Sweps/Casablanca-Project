@@ -17,7 +17,7 @@ public interface FacilityControllerIF {
     public String getCurrentGuestName();
     public void logout();
 
-    public ArrayList<Date> getIncompatibleTennisTimes(Calendar cal);
+    public ArrayList<Integer> getIncompatibleTennisTimes(Calendar cal);
 
     public int bookTennis(Date thedate);
 }

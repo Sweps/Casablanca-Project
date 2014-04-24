@@ -86,7 +86,7 @@ public class FacilityGui extends javax.swing.JFrame {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_MONTH, additionnalday);
         pickeddate = cal;
-        ArrayList<Date> indates = control.getIncompatibleTennisTimes(cal);
+        ArrayList<Integer> indates = control.getIncompatibleTennisTimes(cal);
         SimpleDateFormat sdf = new SimpleDateFormat("HH");
         
         
@@ -94,31 +94,31 @@ public class FacilityGui extends javax.swing.JFrame {
         {
             for (int i = 0; i<indates.size(); i++)
             {
-                switch(sdf.format(indates.get(i).getTime()))
+                switch(indates.get(i))
                 {
-                   case "08": jButtonTimePickerHour8.setEnabled(false);
+                   case 8: jButtonTimePickerHour8.setEnabled(false);
                               break;
-                   case "09": jButtonTimePickerHour9.setEnabled(false);
+                   case 9: jButtonTimePickerHour9.setEnabled(false);
                               break;
-                   case "10": jButtonTimePickerHour10.setEnabled(false);
+                   case 10: jButtonTimePickerHour10.setEnabled(false);
                               break;
-                   case "11": jButtonTimePickerHour11.setEnabled(false);
+                   case 11: jButtonTimePickerHour11.setEnabled(false);
                               break;
-                   case "12": jButtonTimePickerHour12.setEnabled(false);
+                   case 12: jButtonTimePickerHour12.setEnabled(false);
                               break;
-                   case "13": jButtonTimePickerHour13.setEnabled(false);
+                   case 13: jButtonTimePickerHour13.setEnabled(false);
                               break;
-                   case "14": jButtonTimePickerHour14.setEnabled(false);
+                   case 14: jButtonTimePickerHour14.setEnabled(false);
                               break;
-                   case "15": jButtonTimePickerHour15.setEnabled(false);
+                   case 15: jButtonTimePickerHour15.setEnabled(false);
                               break;
-                   case "16": jButtonTimePickerHour16.setEnabled(false);
+                   case 16: jButtonTimePickerHour16.setEnabled(false);
                               break;
-                   case "17": jButtonTimePickerHour17.setEnabled(false);
+                   case 17: jButtonTimePickerHour17.setEnabled(false);
                               break;
-                   case "18": jButtonTimePickerHour18.setEnabled(false);
+                   case 18: jButtonTimePickerHour18.setEnabled(false);
                               break;
-                   case "19": jButtonTimePickerHour19.setEnabled(false);
+                   case 19: jButtonTimePickerHour19.setEnabled(false);
                               break;
                 }
             }
