@@ -166,17 +166,20 @@ public class RoomBookingMapper {
                                     + "WHERE enddate > to_date(?,'dd-mm-yyyy') "
                                     + "AND startdate < to_date(?,'dd-mm-yyyy')";
     
-        PreparedStatement statement;
+        PreparedStatement statement = null;
          System.out.println("before try");
         try
         {
+            System.out.println("im gonna try");
              statement = conn.prepareStatement(findfreeroomsdiffdates);
-             statement.setDate(1, convertdate(enddate));
-             statement.setDate(2, convertdate(startdate));
+             statement.setDate(2, convertdate(enddate));
+             statement.setDate(1, convertdate(startdate));
+             System.out.println("omg did i try");
              ResultSet rs2 = statement.executeQuery();
-             
+             System.out.println("statement executed");
              while (rs2.next())
              {
+                 System.out.println("im in while");
                  roomno[i] = rs2.getInt(1);
                  System.out.println(rs2.getString(1));
                  i++;
@@ -186,8 +189,9 @@ public class RoomBookingMapper {
              
         }
         
-        catch(Exception e)  
+        catch(SQLException e)  
                 {
+                    System.out.println("i failed - sorry");
                 }
         return roomno;
     }
