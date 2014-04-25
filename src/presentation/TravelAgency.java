@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author Charlie
  */
-public class TravelAngecy extends javax.swing.JFrame {
+public class TravelAgency extends javax.swing.JFrame {
 
     JFrame fr1;
     ControllerInterface conIf;
@@ -22,7 +22,7 @@ public class TravelAngecy extends javax.swing.JFrame {
     /**
      * Creates new form TravelAngecy
      */
-    public TravelAngecy(ControllerInterface c, JFrame fr1) {
+    public TravelAgency(ControllerInterface c, JFrame fr1) {
         initComponents();
         
         this.fr1 = fr1;

@@ -41,7 +41,7 @@ public class Controller implements ControllerInterface {
     //Charles & Phil
     @Override
     public Boolean newRoomBooking(String firstName, String lastName, String email, int phonenumber,
-            String address, String country, Date startDate, int noOfNights, String type, String travelAgency)
+            String address, String country, Date startDate, int noOfNights, String type, String travelAgency) //TravelAgency travel agency
     { 
         DBFacade.getInstance().startNewBusinessTransaction();
         Guest g = new Guest(firstName, lastName, phonenumber);
