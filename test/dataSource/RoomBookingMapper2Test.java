@@ -10,6 +10,7 @@ import domain.Guest;
 import domain.Room;
 import domain.RoomBooking;
 import domain.RoomType;
+import domain.TravelAgency;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -35,6 +36,8 @@ public class RoomBookingMapper2Test
     ArrayList<RoomBooking> rblist;
     ArrayList<Guest> glist;
     RoomMapper rmap;
+    ArrayList<TravelAgency> talist;
+    TravelAgencyMapper tam;
     
     public RoomBookingMapper2Test()
       {
@@ -79,7 +82,12 @@ public class RoomBookingMapper2Test
     @Test
     public void testFind() throws Exception
       {
-   
+        TravelAgency travelagency = new TravelAgency("eurotravel", 1234, "email");
+        travelagency.setCompanyId(98);
+        talist.add(travelagency);
+        tam.insertTravelAngecy(talist, con);
+          
+          
         //Make Guest:
         Guest guest = new Guest("Brian", "TestFind", 123);
         guest.setId(99);
@@ -89,7 +97,7 @@ public class RoomBookingMapper2Test
         // make make room
         Room temproom = rmap.find(0, con);
         //make roombooking #TODO FIX ROOMTYPE,ROOM AND TRAVELAGENCYHAQS
-        RoomBooking booking = new RoomBooking(guest,new Date(),4,temproom,"0");
+        RoomBooking booking = new RoomBooking(guest,new Date(),4,temproom,travelagency);
         booking.setId(100);
         //save roombooking
         rblist.add(booking);
@@ -173,7 +181,7 @@ public class RoomBookingMapper2Test
      public void testSearchPhonenumber() throws Exception
      {
         
-        ArrayList<RoomBooking> rbl =  rbmap.searchPhonenumber(0, con);
+        ArrayList<RoomBooking> rbl =  rbmap.searchPhonenumber(29904588, con);
          System.out.println(rbl.size() + " Roombookings were fetched:");
        for (int i = 0; i < rbl.size(); i++)
        {

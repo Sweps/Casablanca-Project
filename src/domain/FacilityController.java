@@ -43,23 +43,25 @@ public class FacilityController implements FacilityControllerIF{
     }
     
     @Override
-    public ArrayList<Date> getIncompatibleTennisTimes(Calendar cal)
+    public ArrayList<Integer> getIncompatibleTennisTimes(Calendar cal)
     {
-        Calendar cal2 = Calendar.getInstance();
-        cal2.set(1989, 03, 06, 19, 49);
-        Date testdate = cal2.getTime();
+//        Calendar cal2 = Calendar.getInstance();
+//        cal2.set(1989, 03, 06, 19, 49);
+//        Date testdate = cal2.getTime();
+//        
+//        ArrayList<Date> ragglefraggle = new ArrayList<>();
+//        
+//        ragglefraggle.add(testdate);
+//        
+//        
         
-        ArrayList<Date> ragglefraggle = new ArrayList<>();
-        
-        ragglefraggle.add(testdate);
-        
-        return ragglefraggle;
+        return DBFacade.getInstance().getIncompatibleTennisTimes(cal.getTime());
     }
     
     @Override
     public int bookTennis(Date date)
     {
-        return 2;
+        return DBFacade.getInstance().bookTennis(currentguest, date);
     }
     
 }

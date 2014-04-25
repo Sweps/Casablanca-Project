@@ -24,7 +24,7 @@ public interface ControllerInterface
     
     Boolean addGuestEmail(String firstName, String lastName, int phonenumber, String email);
     
-    Boolean newTravelAngecy(String CompanyName, int Companyphone, String CompanyEmail); //tester
+    Boolean newTravelAgency(String CompanyName, int Companyphone, String CompanyEmail); //tester
     
     int GuestRoomCost(int phone)throws SQLException;
     
