@@ -118,7 +118,7 @@ public class GuestMapper implements GuestMapperInterface
                 
     }
     public int GuestRoomCost(int phonenumber, Connection con)throws SQLException{
-        String findCostString = "select sum(rt.price) from ROOMTYPE rt" +
+        String findCostString = "select sum(rt.price * rb.nooofnights) from ROOMTYPE rt" +
                     " left join room r on r.roomtype = rt.roomtype" +
                     " left join roombooking rb on r.roomno = rb.roomno" +
                     " left join guest g on g.GUESTID = rb.GUESTNO" +
