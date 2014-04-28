@@ -7,6 +7,7 @@
 package domain;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -28,5 +29,5 @@ public interface ControllerInterface
     
     int GuestRoomCost(int phone)throws SQLException;
     
-    int[] searchForFreeRoomsAtDiffDates(Date enddate, Date startdate) throws SQLException;
+    ArrayList<Integer> searchForFreeRoomsAtDiffDates(Date enddate, Date startdate) throws SQLException;
   }

@@ -119,7 +119,7 @@ public class Controller implements ControllerInterface {
     }
     
     @Override
-    public int[] searchForFreeRoomsAtDiffDates(java.util.Date enddate, java.util.Date startdate) throws SQLException
+    public ArrayList<Integer> searchForFreeRoomsAtDiffDates(java.util.Date enddate, java.util.Date startdate) throws SQLException
     {
         return DBFacade.getInstance().searchForFreeRoomsAtDiffDates(enddate, startdate);
     }
