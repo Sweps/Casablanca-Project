@@ -157,7 +157,6 @@ public class TravelAgency extends javax.swing.JFrame {
         if(!comEmail.isEmpty() && !comName.isEmpty() && phoneNo != 0){
             try{
 //                System.out.println("før succes");
-                succes = conIf.newTravelAgency(comName, phoneNo, comEmail);
 //                System.out.println("efter succes");
             }
             catch(Exception ex){

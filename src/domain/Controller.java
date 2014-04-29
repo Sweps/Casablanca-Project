@@ -41,7 +41,7 @@ public class Controller implements ControllerInterface {
     //Charles & Phil
     @Override
     public Boolean newRoomBooking(String firstName, String lastName, String email, int phonenumber,
-            String address, String country, Date startDate, int noOfNights, String type, String travelAgency) //TravelAgency travel agency
+            String address, String country, Date startDate, int noOfNights, String type) //TravelAgency travel agency
     { 
         DBFacade.getInstance().startNewBusinessTransaction();
         Guest g = new Guest(firstName, lastName, phonenumber);
@@ -51,29 +51,27 @@ public class Controller implements ControllerInterface {
             
         DBFacade.getInstance().registerNewItem(g);
         
-        TravelAgency t = new TravelAgency(lastName, noOfNights, email);
-        DBFacade.getInstance().registerNewItem(t);
             
             Room theroom = DBFacade.getInstance().getAvailableRoom(startDate, noOfNights, type);
             
             
-            RoomBooking burgerking = new RoomBooking(g, startDate, noOfNights, theroom, t);
+            RoomBooking burgerking = new RoomBooking(g, startDate, noOfNights, theroom);
             DBFacade.getInstance().registerNewItem(burgerking);
         return DBFacade.getInstance().commitBusinessTransaction();
         
     }
     
     //Charles
-    @Override
-    public Boolean newTravelAgency(String companyName, int companyPhone, String companyEmail)
-    {
-        DBFacade.getInstance().startNewBusinessTransaction();
-        TravelAgency t = new TravelAgency(companyName, companyPhone, companyEmail);
-        
-        DBFacade.getInstance().registerNewItem(t);
-        
-        return DBFacade.getInstance().commitBusinessTransaction();
-    }    
+//    @Override
+//    public Boolean newTravelAgency(String companyName, int companyPhone, String companyEmail)
+//    {
+//        DBFacade.getInstance().startNewBusinessTransaction();
+//        TravelAgency t = new TravelAgency(companyName, companyPhone, companyEmail);
+//        
+//        DBFacade.getInstance().registerNewItem(t);
+//        
+//        return DBFacade.getInstance().commitBusinessTransaction();
+//    }    
     
 
     @Override

@@ -17,7 +17,7 @@ import java.util.Date;
 public interface ControllerInterface
   {
     Boolean newRoomBooking(String firstName, String lastName, String email, int phonenumber,
-            String address, String country, Date startDate, int noOfNights, String type, String travelAgency);
+            String address, String country, Date startDate, int noOfNights, String type);
     
     Boolean CancelRoomBooking(String firstName, String lastName, int phonenumber, Date startDate, int noOfNights)throws SQLException;
     
@@ -25,7 +25,7 @@ public interface ControllerInterface
     
     Boolean addGuestEmail(String firstName, String lastName, int phonenumber, String email);
     
-    Boolean newTravelAgency(String CompanyName, int Companyphone, String CompanyEmail); //tester
+//    Boolean newTravelAgency(String CompanyName, int Companyphone, String CompanyEmail); //tester
     
     int GuestRoomCost(int phone)throws SQLException;
     

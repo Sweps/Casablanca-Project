@@ -460,15 +460,15 @@ public class BookRoom extends javax.swing.JFrame {
         boolean bookedState = false;
         if(jCheckBoxSingle.isSelected())
         {           
-            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "singleroom", "tAgency");            
+            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "singleroom");            
         }
         else if(jCheckBoxDouble.isSelected())
         {            
-            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "doubleroom", "tAgency");
+            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "doubleroom");
         }
         else if(jCheckBoxFamily.isSelected())
         {
-            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "familyroom", "tAgency");
+            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "familyroom");
         }
         // TEMP HAQ END
         

@@ -28,7 +28,7 @@ public class RoomBookingMapper {
       {
         RoomBooking rb = null;
         String findstring = "SELECT roombookingid, roomno, guestno,"
-                          + "startdate, enddate, nooofnights, travelagency,"
+                          + "startdate, enddate, nooofnights,"
                           + "version FROM RoomBooking WHERE roombookingid = ?";
         PreparedStatement statement;
         try{
@@ -40,13 +40,7 @@ public class RoomBookingMapper {
             Guest guest = gmap.find(rs.getLong(3), con);
             RoomMapper rmap = new RoomMapper();
             Room room = rmap.find(rs.getLong(2), con);
-            TravelAgencyMapper tmap = new TravelAgencyMapper();
-            TravelAgency travelagency = tmap.find(id, con);
-            // room set to 0 fix lator 
-            // roomtype set manually, fix lator. wordskilove.
-            // travelagency skal laves til et object senere lullerskates
-            rb = new RoomBooking(guest, rs.getDate(4), rs.getInt(6),room,
-                                 travelagency);
+            rb = new RoomBooking(guest, rs.getDate(4), rs.getInt(6),room);
             
                    
         }
@@ -63,21 +57,21 @@ public class RoomBookingMapper {
     public boolean insertRoomBooking(ArrayList<RoomBooking> RoomBookingList, Connection conn) throws SQLException
     {
         int rowsInserted = 0;
-        String SQLString = "INSERT INTO ROOMBOOKING VALUES (?,?,?,?,?,?,?,?)";
+        String SQLString = "INSERT INTO ROOMBOOKING VALUES (?,?,?,?,?,?,?)";
         PreparedStatement statement = null;
         statement = conn.prepareStatement(SQLString);
         
         for(int i = 0; i < RoomBookingList.size(); i++)
         {
-            RoomBooking rb = RoomBookingList.get(i);        
+          
+            RoomBooking rb = RoomBookingList.get(i);    
             statement.setLong(1, rb.getId());            
             statement.setLong(2, rb.getRoom().getRoomNo());           
             statement.setLong(3, rb.getGuest().getId());
             statement.setDate(4, convertdate(rb.getStartdate()));                       
             statement.setDate(5, convertdate(rb.getEnddate()));                       
             statement.setInt(6, rb.getNoofnights());                          
-            statement.setInt(7, 0);  
-            statement.setInt(8, rb.getVersion());       
+            statement.setInt(7, rb.getVersion());       
             rowsInserted += statement.executeUpdate();
         }
         if (testRun)
@@ -124,11 +118,10 @@ public class RoomBookingMapper {
         Guest guest = null;
         Room room = null;
         RoomBooking rb = null;
-        TravelAgency t = null;
         
         
-        String findstring = "SELECT GUEST.FIRSTNAME, GUEST.LASTNAME, GUEST.PHONE, ROOMBOOKING.STARTDATE, ROOMBOOKING.NOOOFNIGHTS, ROOMBOOKING.ROOMNO, TRAVELAGENCY.COMPANYNAME, TRAVELAGENCY.COMPANYPHONE, TRAVELAGENCY.COMPANYEMAIL "
-                + "FROM GUEST, ROOMBOOKING, TRAVELAGENCY "
+        String findstring = "SELECT GUEST.FIRSTNAME, GUEST.LASTNAME, GUEST.PHONE, ROOMBOOKING.STARTDATE, ROOMBOOKING.NOOOFNIGHTS, ROOMBOOKING.ROOMNO "
+                + "FROM GUEST, ROOMBOOKING"
                 + "WHERE GUEST.GUESTID=ROOMBOOKING.GUESTNO AND GUEST.PHONE=?";
         
         PreparedStatement statement;
@@ -144,10 +137,8 @@ public class RoomBookingMapper {
             guest = new Guest(rs.getString(1),
                                 rs.getString(2),
                                 rs.getInt(3));
-//            t = tam.find(rs.getInt(8), conn);
-                t = new TravelAgency(rs.getString(7), rs.getInt(8), rs.getString(9));
              
-              rb = new RoomBooking(guest, rs.getDate(4), rs.getInt(5), room, t);
+              rb = new RoomBooking(guest, rs.getDate(4), rs.getInt(5), room);
               
 
               

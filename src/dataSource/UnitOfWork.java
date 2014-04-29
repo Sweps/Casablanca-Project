@@ -8,7 +8,6 @@ package dataSource;
 
 import domain.Guest;
 import domain.RoomBooking;
-import domain.TravelAgency;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +22,7 @@ public class UnitOfWork
   {
     private final Connection con = DBConnector.getConnection();
     private final ArrayList<Guest> newGuests;
-    private final ArrayList<TravelAgency> newTravelAgency;  //charles
+//    private final ArrayList<TravelAgency> newTravelAgency;  //charles
 //    private final ArrayList<Guest> dirtyGuests;
     private final ArrayList<RoomBooking> newRoomBookings;
 //    private final ArrayList<RoomBooking> dirtyRoomBookings;
@@ -33,7 +32,7 @@ public class UnitOfWork
 ////        dirtyGuests = new ArrayList<>();
         newGuests = new ArrayList<>();
         newRoomBookings = new ArrayList<>();
-        newTravelAgency = new ArrayList<>();
+//        newTravelAgency = new ArrayList<>();
 ////        dirtyRoomBookings = new ArrayList<>();   
     }
 //////    public static void main(String[] args)
@@ -68,15 +67,15 @@ public class UnitOfWork
         return findRoomBooking(key.longValue());
     }
     //Charles
-    public void addTravelAgency (TravelAgency ta)
-    {
-        items.put(ta.getCompanyId(), ta);
-    }
-    //Charles
-    public TravelAgency findTravelAgency (Long key)
-    {
-        return findTravelAgency(key.longValue());
-    }
+//    public void addTravelAgency (TravelAgency ta)
+//    {
+//        items.put(ta.getCompanyId(), ta);
+//    }
+//    //Charles
+//    public TravelAgency findTravelAgency (Long key)
+//    {
+//        return findTravelAgency(key.longValue());
+//    }
     
     
     //Hvis nøglen findes i mappet returneres den, ellers hentes det matchede object fra databasen
@@ -125,8 +124,8 @@ public class UnitOfWork
             case "RoomBooking": registerNewRoomBooking((RoomBooking)obj);
                             break;
                 //Charles
-            case "TravelAgency": registerNewTravelAgency((TravelAgency)obj);
-                            break;
+//            case "TravelAgency": registerNewTravelAgency((TravelAgency)obj);
+//                            break;
         }
     }
     
@@ -168,25 +167,25 @@ public class UnitOfWork
     //modtager et rent gæsteobjekt fra registerNewItem,
     // tjekker om det allerede er blevet lagt ind til persistering og 
     // hvis ikke, lægger det ind i arraylisten til persistering
-    private void registerNewTravelAgency(TravelAgency travelagency){
-        System.out.println("registerNewTravelAgency");
-        if(!newTravelAgency.contains(travelagency))
-        {
-            if(travelagency.getCompanyId() == 0)
-            {
-                System.out.println("registerNewTravelAgency1");
-                travelagency.setCompanyId(DBFacade.getInstance().getID());
-            }
-            if(travelagency.getVersion() == 0)
-            {
-                System.out.println("registerNewTravelAgency2");
-                travelagency.setVersion(1);
-            }
-            System.out.println("registerNewTravelAgency3");
-            newTravelAgency.add(travelagency);
-        }
-        
-    }
+//    private void registerNewTravelAgency(TravelAgency travelagency){
+//        System.out.println("registerNewTravelAgency");
+//        if(!newTravelAgency.contains(travelagency))
+//        {
+//            if(travelagency.getCompanyId() == 0)
+//            {
+//                System.out.println("registerNewTravelAgency1");
+//                travelagency.setCompanyId(DBFacade.getInstance().getID());
+//            }
+//            if(travelagency.getVersion() == 0)
+//            {
+//                System.out.println("registerNewTravelAgency2");
+//                travelagency.setVersion(1);
+//            }
+//            System.out.println("registerNewTravelAgency3");
+//            newTravelAgency.add(travelagency);
+//        }
+//        
+//    }
     
 /**
  * @Author Phill
@@ -235,11 +234,11 @@ public class UnitOfWork
           con.setAutoCommit(false);
           GuestMapper gm = new GuestMapper(con);
           RoomBookingMapper rbm = new RoomBookingMapper();
-          TravelAgencyMapper tam = new TravelAgencyMapper();
+         // TravelAgencyMapper tam = new TravelAgencyMapper();
           
           status = status && gm.InsertGuest(newGuests);
           status = status && rbm.insertRoomBooking(newRoomBookings, con);
-          status = status && tam.insertTravelAngecy(newTravelAgency, con);
+     //     status = status && tam.insertTravelAngecy(newTravelAgency, con);
           if (!status)
           {
              throw new Exception("Business Transaction Failed");

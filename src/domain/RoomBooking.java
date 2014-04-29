@@ -21,7 +21,6 @@ public class RoomBooking
     private Date startdate;
     private Date enddate;
 //    private String travelAgency;
-    private TravelAgency travelagency;
 
     
 
@@ -30,17 +29,13 @@ public class RoomBooking
     private Room room;
     private long id;
     
-    public RoomBooking(Guest guest, Date startdate, int noofnights,Room room, TravelAgency travelagency)
+    public RoomBooking(Guest guest, Date startdate, int noofnights,Room room)
       {
         this.guest = guest;
         this.startdate = startdate;
         this.noofnights = noofnights;
         this.room = room;
-        this.travelagency = travelagency;
         
-        //TODO CALCULATE ENDDATE
-        
-//            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             Calendar c = Calendar.getInstance();
             c.setTime(startdate);
             c.add(Calendar.DATE, noofnights);
@@ -89,8 +84,5 @@ public class RoomBooking
         return enddate;
     }
 
-    public TravelAgency getTravelagency() {
-        return travelagency;
-    }
     
   }

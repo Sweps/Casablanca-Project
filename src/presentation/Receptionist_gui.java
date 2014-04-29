@@ -630,15 +630,15 @@ public class Receptionist_gui extends javax.swing.JFrame {
         boolean bookedState = false;
         if(singleR == 1)
         {
-            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "singleroom", tAgency);
+            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "singleroom");
         }
         else if(doubleR == 1)
         {
-            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "doubleroom", tAgency);
+            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "doubleroom");
         }
         else if(familyR == 1)
         {
-            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "familyroom", tAgency);
+            bookedState = conIf.newRoomBooking(fn, ln, email, phone, address, country, date, nights, "familyroom");
         }
         // TEMP HAQ END
         
