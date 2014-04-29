@@ -192,6 +192,8 @@ public class FacilityGui extends javax.swing.JFrame {
         jButtonTennisDatePickerDay5 = new javax.swing.JButton();
         jButtonTennisDatePickerDay6 = new javax.swing.JButton();
         jButtonTennisDatePickerDay7 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLayeredPaneTimePicker = new javax.swing.JLayeredPane();
         jLabelTimePickerHeader = new javax.swing.JLabel();
         jButtonTimePickerHour8 = new javax.swing.JButton();
@@ -630,6 +632,17 @@ public class FacilityGui extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setText("Wrong activity?");
+
+        jButton1.setText("Go Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelTennisDatePickerLayout = new javax.swing.GroupLayout(jPanelTennisDatePicker);
         jPanelTennisDatePicker.setLayout(jPanelTennisDatePickerLayout);
         jPanelTennisDatePickerLayout.setHorizontalGroup(
@@ -654,15 +667,24 @@ public class FacilityGui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonTennisDatePickerDay6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
-                        .addComponent(jButtonTennisDatePickerDay7, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonTennisDatePickerDay7, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelTennisDatePickerLayout.createSequentialGroup()
+                        .addGap(349, 349, 349)
+                        .addGroup(jPanelTennisDatePickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
         jPanelTennisDatePickerLayout.setVerticalGroup(
             jPanelTennisDatePickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTennisDatePickerLayout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(118, 118, 118)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(54, 54, 54)
                 .addGroup(jPanelTennisDatePickerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonTennisDatePickerDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonTennisDatePickerDay2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1053,11 +1075,18 @@ public class FacilityGui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSplashWelcomeTableTennisActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
+    {//GEN-HEADEREND:event_jButton1ActionPerformed
+        jLayeredPaneSplash.setVisible(true);
+        jLayeredPaneTennis.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonSplashKeypad0;
     private javax.swing.JButton jButtonSplashKeypad1;
     private javax.swing.JButton jButtonSplashKeypad2;
@@ -1101,6 +1130,7 @@ public class FacilityGui extends javax.swing.JFrame {
     private javax.swing.JButton jButtonTimePickerHour9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelSplashKeypad;
     private javax.swing.JLabel jLabelSplashWelcomeName;
     private javax.swing.JLabel jLabelSplashWelcomeWelcome;
