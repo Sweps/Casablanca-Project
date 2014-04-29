@@ -38,7 +38,8 @@ public class BookRoom extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         JTextFirstNameBooker = new javax.swing.JTextField();
         JTextLastNameBooker = new javax.swing.JTextField();
@@ -56,7 +57,6 @@ public class BookRoom extends javax.swing.JFrame {
         JTextMonth = new javax.swing.JTextField();
         JTextYear = new javax.swing.JTextField();
         JTextNightsStaying = new javax.swing.JTextField();
-        JTextSpecificRoom = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jCheckBoxSingle = new javax.swing.JCheckBox();
@@ -70,23 +70,24 @@ public class BookRoom extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         JLabelStatus = new javax.swing.JLabel();
-        JTextTravelAgency = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        JTextFirstNameBooker.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        JTextFirstNameBooker.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 JTextFirstNameBookerActionPerformed(evt);
             }
         });
 
-        JTextEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        JTextEmail.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 JTextEmailActionPerformed(evt);
             }
         });
@@ -103,20 +104,26 @@ public class BookRoom extends javax.swing.JFrame {
 
         jLabel6.setText("Country");
 
-        JTextDay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        JTextDay.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 JTextDayActionPerformed(evt);
             }
         });
 
-        JTextMonth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        JTextMonth.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 JTextMonthActionPerformed(evt);
             }
         });
 
-        JTextNightsStaying.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        JTextNightsStaying.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 JTextNightsStayingActionPerformed(evt);
             }
         });
@@ -125,20 +132,26 @@ public class BookRoom extends javax.swing.JFrame {
 
         jLabel8.setText("/");
 
-        jCheckBoxSingle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jCheckBoxSingle.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jCheckBoxSingleActionPerformed(evt);
             }
         });
 
-        jCheckBoxDouble.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jCheckBoxDouble.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jCheckBoxDoubleActionPerformed(evt);
             }
         });
 
-        jCheckBoxFamily.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jCheckBoxFamily.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jCheckBoxFamilyActionPerformed(evt);
             }
         });
@@ -159,20 +172,20 @@ public class BookRoom extends javax.swing.JFrame {
 
         jLabel16.setText("Family Room");
 
-        jLabel17.setText("Specific room no");
-
-        jLabel18.setText("Travel agency");
-
         jButton1.setText("Book Room");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
 
         jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton2ActionPerformed(evt);
             }
         });
@@ -212,12 +225,10 @@ public class BookRoom extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(JTextSpecificRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(JTextDay, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel7)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(JTextDay, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel7))
                             .addComponent(jCheckBoxSingle)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -244,10 +255,7 @@ public class BookRoom extends javax.swing.JFrame {
                             .addComponent(JTextNightsStaying, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCheckBoxFamily)))
                     .addComponent(jLabel14)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18)
-                    .addComponent(jButton2)
-                    .addComponent(JTextTravelAgency, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2))
                 .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -293,23 +301,17 @@ public class BookRoom extends javax.swing.JFrame {
                                 .addComponent(jCheckBoxSingle))))
                     .addComponent(jCheckBoxFamily))
                 .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel17))
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JTextPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTextSpecificRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(JTextPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel18))
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JTextAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTextCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTextTravelAgency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTextCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addComponent(JLabelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -375,9 +377,9 @@ public class BookRoom extends javax.swing.JFrame {
         String email = JTextEmail.getText().toLowerCase();
         String address = JTextAddress.getText().toLowerCase();
         String country = JTextCountry.getText().toLowerCase();
-        System.out.println("før tagency");
-        String tAgency = JTextTravelAgency.toString().toLowerCase();
-        System.out.println("efter tagency");
+        //System.out.println("før tagency");
+        //String tAgency = JTextTravelAgency.toString().toLowerCase();
+        //System.out.println("efter tagency");
         
         if(fn.isEmpty()){
             JLabelStatus.setText("Missing booker firstname");
@@ -483,7 +485,7 @@ public class BookRoom extends javax.swing.JFrame {
             JTextYear.setText("");
             JTextNightsStaying.setText("");
             JTextPhone.setText("");
-            JTextSpecificRoom.setText("");
+            //JTextSpecificRoom.setText("");
             jCheckBoxSingle.setSelected(false);
             jCheckBoxDouble.setSelected(false);
             jCheckBoxFamily.setSelected(false);
@@ -529,8 +531,6 @@ public class BookRoom extends javax.swing.JFrame {
     private javax.swing.JTextField JTextMonth;
     private javax.swing.JTextField JTextNightsStaying;
     private javax.swing.JTextField JTextPhone;
-    private javax.swing.JTextField JTextSpecificRoom;
-    private javax.swing.JTextField JTextTravelAgency;
     private javax.swing.JTextField JTextYear;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -545,8 +545,6 @@ public class BookRoom extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
