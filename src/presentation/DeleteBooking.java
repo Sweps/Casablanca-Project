@@ -14,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -189,7 +190,7 @@ public class DeleteBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void ButtonDeleteBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDeleteBookingActionPerformed
-boolean succes = false;
+        boolean succes = false;
         int phoneNr = 0;
         int day = 0;
         int month = 0;
@@ -250,7 +251,25 @@ boolean succes = false;
             }
         }
         if(succes == true){
-            JLabelDeleteStatus.setText("booking cancelled");
+            JTextYearDelete.setText("");
+            JTextdayDelete.setText("");
+            JTextMonthDelete.setText("");
+            JTextFirstNameDelete.setText("");
+            JTextLastNameDelete.setText("");
+            JTextphoneDelete.setText("");
+            JTextNightStayingDelete.setText("");
+            
+            int reply = JOptionPane.showConfirmDialog(
+            fr1,
+            "Would you like to delete another room booking?",
+            "Roombooking deleted",
+            JOptionPane.YES_NO_OPTION);
+            
+            if(reply == JOptionPane.NO_OPTION){
+                fr1.setVisible(true);
+                this.setVisible(false);
+            }
+            
         }else{
             JLabelDeleteStatus.setText("No booking cancelled");
         }        
