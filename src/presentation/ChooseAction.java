@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Charlie
+ * @author Charles
  */
 public class ChooseAction extends javax.swing.JFrame {
 

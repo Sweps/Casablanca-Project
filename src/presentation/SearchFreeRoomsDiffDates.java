@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -294,6 +295,7 @@ public class SearchFreeRoomsDiffDates extends javax.swing.JFrame
                 jtfStDay.setText("Error in Start date");
                 jtfEnDay.setText("Error in End date");
             }
+                
             
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Charlie
+ * @author Charles
  */
 public class DeleteBooking extends javax.swing.JFrame {
 
@@ -188,7 +188,7 @@ public class DeleteBooking extends javax.swing.JFrame {
         fr1.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+        //Charles og Christoffer
     private void ButtonDeleteBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDeleteBookingActionPerformed
         boolean succes = false;
         int phoneNr = 0;

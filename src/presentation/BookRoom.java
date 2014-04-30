@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Charlie
+ * @author Charles
  */
 public class BookRoom extends javax.swing.JFrame {
     ControllerInterface conIf;
@@ -364,6 +364,7 @@ public class BookRoom extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    //Charles og Christoffer
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         

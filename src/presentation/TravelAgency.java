@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Charlie
+ * @author Charles
  */
 public class TravelAgency extends javax.swing.JFrame {
 
@@ -134,7 +134,7 @@ public class TravelAgency extends javax.swing.JFrame {
         fr1.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_JButtonBackActionPerformed
-
+        //Charles
     private void jButtonAddAgencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddAgencyActionPerformed
         String comName = jTextCompanyName.getText().toLowerCase();
         String comEmail = jTextEmail.getText().toLowerCase();

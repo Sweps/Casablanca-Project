@@ -54,6 +54,7 @@ public class RoomBookingMapper {
       }
     
     //Charles
+    //SQL statement der indsætter værdier i vores roombooking tabel
     public boolean insertRoomBooking(ArrayList<RoomBooking> RoomBookingList, Connection conn) throws SQLException
     {
         int rowsInserted = 0;
@@ -110,7 +111,9 @@ public class RoomBookingMapper {
         return status;
     }
     
-    //virker ikke!
+    //Charles
+    //Skulle have været brugt til at søge efter en person med et telefon nummber
+    //for dermed at få en liste med roombookings tilsvarende det telefon nummer
     public ArrayList<RoomBooking> searchPhonenumber(int phonenumber, Connection conn) throws SQLException{
         
        ArrayList<RoomBooking> searchPhonenumber = new ArrayList<RoomBooking>();
@@ -198,7 +201,10 @@ public class RoomBookingMapper {
         return search;
     }
     
-    
+
+     //Charles
+     //Skulle have været brugt til at ændre en roombooking
+     //Vi blev dog enig om det ikke var nødvendigt, og man istedet vil slette den og oprette en ny
 //    public boolean updateRoombooking(ArrayList<RoomBooking> RoomBookingList, Connection conn)
 //    {
 //        int rowsUpdated = 0;

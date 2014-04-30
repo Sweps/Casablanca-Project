@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Charlie
+ * @author Charles
  */
 public class AddGuest extends javax.swing.JFrame {
 
@@ -155,6 +155,7 @@ public class AddGuest extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+        //Charles og Christoffer
     private void jbuttonAddGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonAddGuestActionPerformed
         String fnGuest = JTextFirstNameGuest.getText().toLowerCase();
         String lnGuest = JTextLastNameGuest.getText().toLowerCase();

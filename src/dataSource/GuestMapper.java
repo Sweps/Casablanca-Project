@@ -82,6 +82,8 @@ public class GuestMapper implements GuestMapperInterface
         return (rowsInserted == GuestList.size());
     }
     
+    //Charles
+    //Skulle bruges til at updatere en guest, blev dog aldrig nødvendigt
     public boolean updateGuest(ArrayList<Guest> GuestList, Connection con) throws SQLException
     {
         int rowsUpdated = 0;
