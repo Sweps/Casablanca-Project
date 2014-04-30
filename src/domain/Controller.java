@@ -73,11 +73,9 @@ public class Controller implements ControllerInterface {
 //        return DBFacade.getInstance().commitBusinessTransaction();
 //    }    
     
-
+    //Christoffer
     @Override
     public Boolean CancelRoomBooking(String firstName, String lastName, int phonenumber, Date startDate, int noOfNights)throws SQLException {
-        System.out.println("controller");
-        
         java.util.Date utilStartDate = startDate;
         java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
         
@@ -88,7 +86,7 @@ public class Controller implements ControllerInterface {
     }
     
    
-
+    //Christoffer
     @Override
     public Boolean addGuest(String firstName, String lastName, int phonenumber) {
         DBFacade.getInstance().startNewBusinessTransaction();
@@ -110,12 +108,14 @@ public class Controller implements ControllerInterface {
         return DBFacade.getInstance().commitBusinessTransaction();
         
     }
-
+    
+    //Christoffer
     @Override
     public int GuestRoomCost(int phone)throws SQLException {
         return DBFacade.getInstance().getGuestRoomCost(phone);
     }
     
+    //Anders, Christoffer
     @Override
     public ArrayList<Integer> searchForFreeRoomsAtDiffDates(java.util.Date enddate, java.util.Date startdate) throws SQLException
     {

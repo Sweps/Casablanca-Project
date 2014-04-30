@@ -62,6 +62,7 @@ public class DBFacade {
         return status;
     }
     
+    //Christoffer
     public boolean deleteRoomBookingTransaction(String firstname, String lastname, int phonenumber, Date startDate, int noOfNights)throws SQLException
     {
         System.out.println("DBFacade");
@@ -168,12 +169,13 @@ public class DBFacade {
        return gm.find(id, con);
    }
 
-   
+   //Christoffer
    public int getGuestRoomCost(int phone)throws SQLException{
        GuestMapper gm = new GuestMapper(con);
        return gm.GuestRoomCost(phone, con);
    }
    
+      //Anders, Christoffer
       public ArrayList<Integer> searchForFreeRoomsAtDiffDates(java.util.Date enddate, java.util.Date startdate) throws SQLException{
        RoomBookingMapper rbm = new RoomBookingMapper();
        return rbm.searchForFreeRoomsAtDiffDates(enddate, startdate, con);

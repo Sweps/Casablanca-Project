@@ -117,6 +117,8 @@ public class GuestMapper implements GuestMapperInterface
                 
                 
     }
+    
+    //Christoffer
     public int GuestRoomCost(int phonenumber, Connection con)throws SQLException{
         String findCostString = "select sum(rt.price * rb.nooofnights) from ROOMTYPE rt" +
                     " left join room r on r.roomtype = rt.roomtype" +

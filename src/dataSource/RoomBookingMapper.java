@@ -81,6 +81,8 @@ public class RoomBookingMapper {
         return (rowsInserted == RoomBookingList.size());
             
 }
+    
+    //Christoffer, Anders
     public boolean cancelRoomBooking(String firstName, String lastName, int phonenumber,
             Date startDate, int noOfNights, Connection conn) throws SQLException
     {
@@ -157,10 +159,9 @@ public class RoomBookingMapper {
         
         
 }
-    
-     public ArrayList<Integer> searchForFreeRoomsAtDiffDates(java.util.Date enddate, java.util.Date startdate, Connection conn) throws SQLException{
-
-    
+    //Anders, Christoffer
+     public ArrayList<Integer> searchForFreeRoomsAtDiffDates(java.util.Date enddate,
+             java.util.Date startdate, Connection conn) throws SQLException{
         String findfreeroomsdiffdates = "SELECT roomno FROM room " + 
 "WHERE roomno not in (SELECT roomno FROM roombooking " +
 "WHERE enddate > ? " +

@@ -544,7 +544,9 @@ public class Receptionist_gui extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BookRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookRoomButtonActionPerformed
-                int singleR = 0;
+        //Christoffer
+        
+        int singleR = 0;
         int doubleR = 0;
         int familyR = 0;
         int nights = 0;
@@ -670,6 +672,8 @@ public class Receptionist_gui extends javax.swing.JFrame {
     }//GEN-LAST:event_BookRoomButtonActionPerformed
 
     private void ButtonDeleteBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDeleteBookingActionPerformed
+        //Christoffer
+        
         boolean succes = false;
         int phoneNr = 0;
         int day = 0;
@@ -739,6 +743,8 @@ public class Receptionist_gui extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonDeleteBookingActionPerformed
 
     private void jbuttonAddGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonAddGuestActionPerformed
+        //Christoffer
+        
         String fnGuest = JTextFirstNameGuest.getText().toLowerCase();
         String lnGuest = JTextLastNameGuest.getText().toLowerCase();
         boolean succes = false;

@@ -208,6 +208,7 @@ public class UnitOfWork
         }
     }
     
+    //Christoffer
     public boolean cancelRoomBooking(String firstname, String lastname, int phonenumber, Date startDate, int noOfNights, Connection con)throws SQLException
      {
          boolean status = false;
