@@ -14,7 +14,8 @@ import java.sql.SQLException;
  */
 public class DBConnector {
     
-  //Insert ORACLE id and password SEM2_TEST_GR03 = test db SEM2_GR03 = rigtig db
+  //Christoffer
+    
   private static final String id = "SEM2_TEST_GR03"; 
   private static final String pw = "SEM2_TEST_GR03";
   private static Connection connection;

@@ -190,6 +190,8 @@ public class DeleteBooking extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
         //Charles og Christoffer
     private void ButtonDeleteBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonDeleteBookingActionPerformed
+        //Christoffer
+        
         boolean succes = false;
         int phoneNr = 0;
         int day = 0;

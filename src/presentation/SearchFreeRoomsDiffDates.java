@@ -265,6 +265,8 @@ public class SearchFreeRoomsDiffDates extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
+        //Anders, Christoffer
+        
         model1.clear();
         Date enddate = null;
         Date startdate = null; 
