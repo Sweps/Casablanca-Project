@@ -10,7 +10,7 @@ import domain.Guest;
 import domain.Room;
 import domain.RoomBooking;
 import domain.RoomType;
-import domain.TravelAgency;
+//import domain.TravelAgency;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -36,8 +36,8 @@ public class RoomBookingMapper2Test
     ArrayList<RoomBooking> rblist;
     ArrayList<Guest> glist;
     RoomMapper rmap;
-    ArrayList<TravelAgency> talist;
-    TravelAgencyMapper tam;
+//    ArrayList<TravelAgency> talist;
+//    TravelAgencyMapper tam;
     
     public RoomBookingMapper2Test()
       {
@@ -82,10 +82,10 @@ public class RoomBookingMapper2Test
     @Test
     public void testFind() throws Exception
       {
-        TravelAgency travelagency = new TravelAgency("eurotravel", 1234, "email");
-        travelagency.setCompanyId(98);
-        talist.add(travelagency);
-        tam.insertTravelAngecy(talist, con);
+//        TravelAgency travelagency = new TravelAgency("eurotravel", 1234, "email");
+//        travelagency.setCompanyId(98);
+//        talist.add(travelagency);
+//        tam.insertTravelAngecy(talist, con);
           
           
         //Make Guest:
@@ -95,9 +95,9 @@ public class RoomBookingMapper2Test
         glist.add(guest);
         gmap.InsertGuest(glist);
         // make make room
-        Room temproom = rmap.find(0, con);
-        //make roombooking #TODO FIX ROOMTYPE,ROOM AND TRAVELAGENCYHAQS
-        RoomBooking booking = new RoomBooking(guest,new Date(),4,temproom,travelagency);
+        Room temproom = rmap.find(1, con);
+        //make roombooking #TODO FIX ROOMTYPE,ROOM
+        RoomBooking booking = new RoomBooking(guest,new Date(),4,temproom);
         booking.setId(100);
         //save roombooking
         rblist.add(booking);
@@ -145,15 +145,33 @@ public class RoomBookingMapper2Test
     @Test
     public void testInsertRoomBooking() throws Exception
       {
-        System.out.println("insertRoomBooking");
-        ArrayList<RoomBooking> RoomBookingList = null;
-        Connection conn = null;
-        RoomBookingMapper instance = new RoomBookingMapper();
-        boolean expResult = false;
-        boolean result = instance.insertRoomBooking(RoomBookingList, conn);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //Make Guest
+        Guest guest = new Guest("Hans", "Ole", 4545);
+        guest.setId(5);
+        //save guest to db
+        glist.add(guest);
+        gmap.InsertGuest(glist);
+        //make room
+        Room temproom = rmap.find(1, con);
+        //make roombooking
+        RoomBooking booking = new RoomBooking(guest,new Date(),4,temproom);
+        booking.setId(10);
+        //save roombooking to db
+        rblist.add(booking);
+        rbmap.insertRoomBooking(rblist, con);
+        //test
+        RoomBooking returnedbooking = rbmap.find(10, con);
+          assertTrue(returnedbooking.getGuest().getFirstname().equals("Hans"));
+          assertTrue(returnedbooking.getGuest().getLastname().equals("Ole"));
+          assertTrue(returnedbooking.getGuest().getPhonenumber() == 4545);
+          assertTrue(returnedbooking.getRoom().getRoomNo() == 1);
+          assertFalse(returnedbooking.getGuest().getFirstname().equals("Ulla"));
+          assertFalse(returnedbooking.getGuest().getPhonenumber() == 4646);
+          assertFalse(returnedbooking.getRoom().getRoomNo() == 2);
+        
+        
+        
+        
       }
 
     /**
@@ -162,19 +180,28 @@ public class RoomBookingMapper2Test
     @Test
     public void testCancelRoomBooking() throws Exception
       {
-        System.out.println("cancelRoomBooking");
-        String firstName = "";
-        String lastName = "";
-        int phonenumber = 0;
-        Date startDate = null;
-        int noOfNights = 0;
-        Connection conn = null;
-        RoomBookingMapper instance = new RoomBookingMapper();
-        boolean expResult = false;
-        boolean result = instance.cancelRoomBooking(firstName, lastName, phonenumber, startDate, noOfNights, conn);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //Make Guest
+        Guest guest = new Guest("Allan", "Nilsen", 3094);
+        guest.setId(20);
+        //save guest to db
+        glist.add(guest);
+        gmap.InsertGuest(glist);
+        //make room
+        Room temproom = rmap.find(4, con);
+        //make roombooking
+        RoomBooking booking = new RoomBooking(guest,new Date(),4,temproom);
+        booking.setId(30);
+        //save roombooking to db
+        rblist.add(booking);
+        rbmap.insertRoomBooking(rblist, con);
+        
+        RoomBooking returnedbooking = rbmap.find(30, con);
+          assertTrue(returnedbooking.getGuest().getFirstname().equals("Allan"));
+        //delete roombooking from database
+        rbmap.cancelRoomBooking(returnedbooking.getGuest().getFirstname(), returnedbooking.getGuest().getLastname(), returnedbooking.getGuest().getPhonenumber(), returnedbooking.getStartdate(), returnedbooking.getNoofnights(), con);
+        
+        assertTrue(returnedbooking.getGuest().getFirstname().equals("Allan"));
+        
       }
     
      @Test
@@ -194,6 +221,7 @@ public class RoomBookingMapper2Test
        }
          
      }
+    //Charles
     //Slettes måske senere. Overvejes
 //    @Test
 //    public void testUpdateRoomBooking() throws SQLException

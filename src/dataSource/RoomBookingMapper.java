@@ -67,7 +67,7 @@ public class RoomBookingMapper {
           
             RoomBooking rb = RoomBookingList.get(i);    
             statement.setLong(1, rb.getId());            
-            statement.setLong(2, rb.getRoom().getRoomNo());           
+            statement.setLong(2, rb.getRoom().getRoomNo());    
             statement.setLong(3, rb.getGuest().getId());
             statement.setDate(4, convertdate(rb.getStartdate()));                       
             statement.setDate(5, convertdate(rb.getEnddate()));                       
@@ -126,7 +126,7 @@ public class RoomBookingMapper {
         
         
         String findstring = "SELECT GUEST.FIRSTNAME, GUEST.LASTNAME, GUEST.PHONE, ROOMBOOKING.STARTDATE, ROOMBOOKING.NOOOFNIGHTS, ROOMBOOKING.ROOMNO "
-                + "FROM GUEST, ROOMBOOKING"
+                + "FROM GUEST, ROOMBOOKING "
                 + "WHERE GUEST.GUESTID=ROOMBOOKING.GUESTNO AND GUEST.PHONE=?";
         
         PreparedStatement statement;
