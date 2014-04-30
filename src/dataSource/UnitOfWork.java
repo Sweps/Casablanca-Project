@@ -208,7 +208,7 @@ public class UnitOfWork
         }
     }
     
-    //Christoffer
+    //Christoffer, Anders
     public boolean cancelRoomBooking(String firstname, String lastname, int phonenumber, Date startDate, int noOfNights, Connection con)throws SQLException
      {
          boolean status = false;

@@ -166,15 +166,17 @@ public class ChooseAction extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    //Christoffer
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         GuiGuestOwes frame5 = new GuiGuestOwes(conIf, this);
         frame5.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    //Anders
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton6ActionPerformed
     {//GEN-HEADEREND:event_jButton6ActionPerformed
-        SearchFreeRoomsDiffDates frame6 = new SearchFreeRoomsDiffDates(conIf, this);
+ SearchFreeRoomsDiffDates frame6 = new SearchFreeRoomsDiffDates(conIf, this);
         frame6.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton6ActionPerformed

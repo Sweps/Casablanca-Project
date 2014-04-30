@@ -55,6 +55,8 @@ public class GuestMapper implements GuestMapperInterface
           }
         return guest;
       }
+    
+    //Anders, Christoffer
     @Override
     public boolean InsertGuest(ArrayList<Guest> GuestList) throws SQLException
     {

@@ -1012,6 +1012,7 @@ public class FacilityGui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSplashWelcomeTableTennisActionPerformed
 
+    //Anders
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
     {//GEN-HEADEREND:event_jButton1ActionPerformed
         jLayeredPaneSplash.setVisible(true);
